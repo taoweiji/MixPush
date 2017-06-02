@@ -1,0 +1,1 @@
+include ':demo', ':server', ':client-getui', ':client-core', ':client-mipush', ':client-meizu'

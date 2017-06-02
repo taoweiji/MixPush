@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
+    package="com.mixpush.client.core">
+    <!--MIX PUSH-->
+    <permission android:name="${PACKAGE_NAME}.permission.MIXPUSH_RECEIVE" android:protectionLevel="signature"/>
+    <uses-permission android:name="${PACKAGE_NAME}.permission.MIXPUSH_RECEIVE" />
+
+
+    <application>
+
+    </application>
+
+</manifest>

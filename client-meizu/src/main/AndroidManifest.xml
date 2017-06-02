@@ -1,0 +1,15 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
+    package="com.mixpush.client.meizu">
+    <!--魅族-->
+    <permission android:name="${PACKAGE_NAME}.push.permission.MESSAGE" android:protectionLevel="signature"/>
+    <uses-permission android:name="${PACKAGE_NAME}.push.permission.MESSAGE"/>
+    <uses-permission android:name="com.meizu.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.meizu.flyme.push.permission.RECEIVE"/>
+    <permission android:name="${PACKAGE_NAME}.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+    <uses-permission android:name="${PACKAGE_NAME}.permission.C2D_MESSAGE"/>
+    <application>
+
+    </application>
+
+</manifest>

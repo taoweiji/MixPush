@@ -1,0 +1,19 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
+    package="com.mixpush.client.getui">
+
+    <application>
+        <!--<service android:name=".GeTuiMessageIntentService"/>-->
+        <receiver
+            android:name="com.mixpush.client.getui.GeTuiMessageReceiver"
+            android:exported="false">
+            <intent-filter>
+                <!-- APPID需要替换为相应的个推应用ID -->
+                <action android:name="com.igexin.sdk.action.${GETUI_APP_ID}" />
+                <action android:name="com.igexin.sdk.action.${PACKAGE_NAME}" />
+            </intent-filter>
+
+        </receiver>
+    </application>
+
+</manifest>
