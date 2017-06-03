@@ -10,21 +10,20 @@
 
 Step 1. Add the JitPack repository to your build file
 ```
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+allprojects {
+	repositories {
+		maven { url 'https://jitpack.io' }
 	}
+}
 ```
 
 Step 2. Add the dependency
 ```
-	dependencies {
-	  compile 'com.github.joyrun.MixPush:client-core:0.1'
-    compile 'com.github.joyrun.MixPush:client-mipush:0.1'
-    compile 'com.github.joyrun.MixPush:client-getui:0.1'
-    compile 'com.github.joyrun.MixPush:client-meizu:0.1'
-	}
+dependencies {
+	compile 'com.github.joyrun.MixPush:client-core:0.1'
+    	compile 'com.github.joyrun.MixPush:client-mipush:0.1'
+    	compile 'com.github.joyrun.MixPush:client-getui:0.1'
+    	compile 'com.github.joyrun.MixPush:client-meizu:0.1'
+}
   
 ```
