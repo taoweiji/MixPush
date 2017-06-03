@@ -30,6 +30,7 @@ public class DemoApplication extends Application {
         MixPushClient.addPushAdapter(new MeizuPushManager("110697", "b39d231fc8a14043a556f56881f56e3b"));
         MixPushClient.addPushAdapter(new MiPushManager("2882303761517582575", "5841758274575"));
         MixPushClient.addPushAdapter(new GeTuiManager());
+        MixPushClient.setPushIntentService(PushIntentService.class);
         MixPushClient.setSelector(new MixPushClient.Selector() {
             @Override
             public String select(Map<String, MixPushManager> pushAdapterMap, String brand) {

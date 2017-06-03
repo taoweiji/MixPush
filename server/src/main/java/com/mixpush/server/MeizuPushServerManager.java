@@ -130,4 +130,19 @@ public class MeizuPushServerManager implements MixPushServerManager {
     public void sendNotifyToAll(String title, String description, String messagePayload) throws IOException, ParseException {
 
     }
+
+    @Override
+    public void sendNotifyLinkToAlias(List<String> alias, String title, String description, String url) throws Exception {
+
+    }
+
+    @Override
+    public void sendNotifyLinkToTags(List<String> tags, String title, String description, String url) throws Exception {
+
+    }
+
+    @Override
+    public void sendNotifyLinkToAll(String title, String description, String url) throws Exception {
+
+    }
 }

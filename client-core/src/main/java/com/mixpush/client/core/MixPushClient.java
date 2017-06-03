@@ -16,10 +16,15 @@ public class MixPushClient {
     private static String sUsePushName;
     private static Selector sSelector;
     private static String sReceiverPermission = null;// 避免被其它APP接收
+    private static Class<? extends MixPushIntentService> sMixPushIntentServiceClass;
 
 
     private MixPushClient() {
 
+    }
+
+    public static void setPushIntentService(Class<? extends MixPushIntentService> mixPushIntentServiceClass) {
+        MixPushClient.sMixPushIntentServiceClass = mixPushIntentServiceClass;
     }
 
     public static void setSelector(Selector selector) {
@@ -101,6 +106,11 @@ public class MixPushClient {
             intent.putExtra("message", message);
             context.sendBroadcast(intent, sReceiverPermission);
             Log.d("onReceivePassThrough", message.getContent());
+
+            if (sMixPushIntentServiceClass != null){
+                intent.setClass(context,sMixPushIntentServiceClass);
+                context.startService(intent);
+            }
         }
 
         @Override
@@ -110,6 +120,11 @@ public class MixPushClient {
             intent.putExtra(MixPushMessageReceiver.MESSAGE, message);
             context.sendBroadcast(intent, sReceiverPermission);
             Log.d("onNotificationClicked", message.getContent());
+
+            if (sMixPushIntentServiceClass != null){
+                intent.setClass(context,sMixPushIntentServiceClass);
+                context.startService(intent);
+            }
         }
 
         @Override
@@ -118,6 +133,11 @@ public class MixPushClient {
             intent.putExtra("message", message);
             context.sendBroadcast(intent, sReceiverPermission);
             Log.d("onNotificationArrived", message.getContent());
+
+            if (sMixPushIntentServiceClass != null){
+                intent.setClass(context,sMixPushIntentServiceClass);
+                context.startService(intent);
+            }
         }
     };
 }

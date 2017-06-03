@@ -42,4 +42,10 @@ public class MixPushServerTest {
         MixPushServer.sendNotifyToTags("广东", "title", "description", "{\"name\":\"Wiki\",\"age\":24}");
     }
 
+
+    @Test
+    public void sendNotifyOpenWebViewToAlias() throws Exception {
+        MixPushServer.sendNotifyToAlias("100", "title", "description", "{\"option\":\"web\",\"url\":\"http://baidu.com\"}");
+    }
+
 }

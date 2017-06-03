@@ -57,16 +57,12 @@ public abstract class MixPushMessageReceiver extends BroadcastReceiver {
     /**
      * 透传
      */
-    public void onReceivePassThroughMessage(Context context, MixPushMessage message) {
-
-    }
+    public abstract void onReceivePassThroughMessage(Context context, MixPushMessage message);
 
     /**
      * 通知栏消息点击
      */
-    public void onNotificationMessageClicked(Context context, MixPushMessage message) {
-
-    }
+    public abstract void onNotificationMessageClicked(Context context, MixPushMessage message);
 
     /**
      * 通知栏消息到达,

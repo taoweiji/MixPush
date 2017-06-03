@@ -121,4 +121,19 @@ public class MiPushServerManager implements MixPushServerManager {
         Result result = sender.broadcastAll(message, 10);
         System.out.println("all:" + result.toString());
     }
+
+    @Override
+    public void sendNotifyLinkToAlias(List<String> alias, String title, String description, String url) throws Exception {
+
+    }
+
+    @Override
+    public void sendNotifyLinkToTags(List<String> tags, String title, String description, String url) throws Exception {
+
+    }
+
+    @Override
+    public void sendNotifyLinkToAll(String title, String description, String url) throws Exception {
+
+    }
 }

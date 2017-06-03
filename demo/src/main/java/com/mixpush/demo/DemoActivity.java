@@ -65,27 +65,19 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private BroadcastReceiver mBroadcastReceiver = new MixPushMessageReceiver() {
-//        @Override
-//        public void onReceive(Context context, Intent intent) {
-//            onReceive(context, intent);
-//            text.setText(text.getText().toString() + "\nonReceive");
-//        }
 
         @Override
         public void onReceivePassThroughMessage(Context context, MixPushMessage message) {
-            super.onReceivePassThroughMessage(context, message);
             text.setText(text.getText().toString() + "\nonReceivePassThroughMessage:" + message.getContent());
         }
 
         @Override
         public void onNotificationMessageClicked(Context context, MixPushMessage message) {
-            super.onNotificationMessageClicked(context, message);
             text.setText(text.getText().toString() + "\nonNotificationMessageClicked:" + message.getContent());
         }
 
         @Override
         public void onNotificationMessageArrived(Context context, MixPushMessage message) {
-            super.onNotificationMessageArrived(context, message);
             text.setText(text.getText().toString() + "\nonNotificationMessageArrived:" + message.getContent());
         }
     };

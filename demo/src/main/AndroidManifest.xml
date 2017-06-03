@@ -17,25 +17,27 @@
             </intent-filter>
         </activity>
 
+        <!--需要定义一个receiver 或 Service 来接收透传和通知栏点击的信息，建议使用Service，更加简单-->
+        <!--请在Application 调用 MixPushClient.setPushIntentService(PushIntentService.class);-->
+        <service android:name=".PushIntentService"/>
 
-        <receiver
-            android:name=".MyPushMessageReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.mixpush.RECEIVE_THROUGH_MESSAGE" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="com.mixpush.NOTIFICATION_ARRIVED" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="com.mixpush.NOTIFICATION_CLICKED" />
-            </intent-filter>
+        <!--<receiver-->
+            <!--android:name=".MyPushMessageReceiver"-->
+            <!--android:exported="true">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.mixpush.RECEIVE_THROUGH_MESSAGE" />-->
+            <!--</intent-filter>-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.mixpush.NOTIFICATION_ARRIVED" />-->
+            <!--</intent-filter>-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.mixpush.NOTIFICATION_CLICKED" />-->
+            <!--</intent-filter>-->
 
-            <intent-filter>
-                <action android:name="com.mixpush.ERROR" />
-            </intent-filter>
-        </receiver>
-
+            <!--<intent-filter>-->
+                <!--<action android:name="com.mixpush.ERROR" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
 
     </application>
 
