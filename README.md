@@ -7,7 +7,9 @@ MixPush SDK融合多家推送平台，小米推送、魅族推送、个推等，
 
 为了降低开发者融合多家推送的开发成本，所以就开源了MixPush SDK，让开发者更加简单地集成多家推送平台，提高推送的到达率。
 
-原理图
+##### 原理图
+ ![image](logic_chart.jpg)
+
 
 
 #### Android客户端配置
@@ -72,9 +74,9 @@ public class DemoApplication extends Application {
         initPush();
     }
     private void initPush() {
-        MixPushClient.addPushAdapter(new MeizuPushManager(MEIZU_APP_KEY, MEIZU_APP_ID));
-        MixPushClient.addPushAdapter(new MiPushManager(MIPUSH_APP_ID, MIPUSH_APP_KEY));
-        MixPushClient.addPushAdapter(new GeTuiManager());
+        MixPushClient.addPushManager(new MeizuPushManager(MEIZU_APP_KEY, MEIZU_APP_ID));
+        MixPushClient.addPushManager(new MiPushManager(MIPUSH_APP_ID, MIPUSH_APP_KEY));
+        MixPushClient.addPushManager(new GeTuiManager());
         MixPushClient.setPushIntentService(PushIntentService.class);
         MixPushClient.setSelector(new MixPushClient.Selector() {
             @Override

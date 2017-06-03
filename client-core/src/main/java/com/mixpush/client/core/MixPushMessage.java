@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 public class MixPushMessage implements Serializable{
     private String messageId;
-    private int messageType;
     private String content;
     private String alias;
     private String topic;
@@ -20,7 +19,6 @@ public class MixPushMessage implements Serializable{
     private String description;
     private String title;
     private String category;
-    private boolean arrived = false;
     private int notify;
 
     public MixPushMessage() {

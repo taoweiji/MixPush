@@ -36,7 +36,7 @@ public class MixPushClient {
         return sUsePushName;
     }
 
-    public static void addPushAdapter(MixPushManager pushAdapter) {
+    public static void addPushManager(MixPushManager pushAdapter) {
         sPushManagerMap.put(pushAdapter.getName(), pushAdapter);
         pushAdapter.setMessageProvider(mMixMessageProvider);
     }
