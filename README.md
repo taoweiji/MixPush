@@ -3,9 +3,7 @@
 
 MixPush SDK融合多家推送平台，小米推送、魅族推送、个推等，在MIUI和Flyme OS共享系统级推送，杀死APP也能收到推送消息。
 
-由于国产手机厂商的“优化”，APP基本都无法在后台正常运行，所以大多数的推送服务在一键杀死APP后都无法正常收到推送。小米和魅族也由此推出了系统级别的推送服务，让APP在被杀死的情况下正常收到推送消息。
-
-为了降低开发者融合多家推送的开发成本，所以就开源了MixPush SDK，让开发者更加简单地集成多家推送平台，提高推送的到达率。
+消息推送是App运营的重要一环，为了优化消息推送成功率，降低电量和流量消耗，系统级的推送服务显得尤为重要。所以小米和魅族都推出了自家的推送平台，让APP在被杀死的情况下正常收到推送消息。以后也会有越来越多的手机厂商会推出自己的推送平台，为了降低开发者融合多家推送的开发成本，所以就开源了MixPush，让开发者更加简单地集成多家推送平台，提高推送的到达率。
 
 ##### 原理图
  ![image](logic_chart.jpg)
@@ -142,15 +140,15 @@ or
 
 ```
 public class MixPushServerTest {
-    public static final String APP_PACKAGE_NAME = "com.mixpush.demo";
-    public static final String MIPUSH_APP_SECRET_KEY = "0Evhdw93wlSfAiZ3JEkCMA==";
+    public static final String APP_PACKAGE_NAME = "<APP的包名>";
+    public static final String MIPUSH_APP_SECRET_KEY = "<MIPUSH_APP_SECRET_KEY>";
 
-    public static final Long MEIZU_APP_ID = 110697L;
-    public static final String MEIZU_APP_SECRET_KEY = "ef7778880d264ec28a47399509974659";
+    public static final Long MEIZU_APP_ID = <MEIZU_APP_ID>;
+    public static final String MEIZU_APP_SECRET_KEY = "<MEIZU_APP_SECRET_KEY>";
 
-    public static final String GETUI_APP_ID = "51xb25cmJx9I28wet1Rtd5";
-    public static final String GETUI_APP_KEY = "Wq0MtiYBdO7YwpTLbR8iI3";
-    public static final String GETUI_MASTER_SECRET = "W0EHO18Yk77sSLJxCvBlf4";
+    public static final String GETUI_APP_ID = "<GETUI_APP_ID>";
+    public static final String GETUI_APP_KEY = "<GETUI_APP_KEY>";
+    public static final String GETUI_MASTER_SECRET = "<GETUI_MASTER_SECRET>";
     public static final String GETUI_URL = "http://sdk.open.api.igexin.com/apiex.htm";
     static {
         MixPushServer.addPushServerManager(new MiPushServerManager(APP_PACKAGE_NAME, MIPUSH_APP_SECRET_KEY));
