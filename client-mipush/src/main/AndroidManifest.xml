@@ -55,6 +55,14 @@
                 <action android:name="com.xiaomi.mipush.ERROR" />
             </intent-filter>
         </receiver>
+
+        <!--<meta-data-->
+            <!--android:name="APP_ID"-->
+            <!--android:value="${MEIZU_PUSH_APP_ID}"/>-->
+
+        <!--<meta-data-->
+            <!--android:name="APP_KEY"-->
+            <!--android:value="${MEIZU_PUSH_APP_KEY}"/>-->
         <!--小米推送 结束-->
     </application>
 

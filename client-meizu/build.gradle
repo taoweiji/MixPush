@@ -1,4 +1,8 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 android {
     compileSdkVersion 24
@@ -29,5 +33,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
     compile project(':client-core')
-    compile 'com.meizu.flyme.internet:push-internal-publish:3.3.170505'
+    compile 'com.meizu.flyme.internet:push-internal-publish:3.3.+@aar'
 }

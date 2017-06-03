@@ -69,8 +69,12 @@ public abstract class MixPushMessageReceiver extends BroadcastReceiver {
     }
 
     /**
-     * 通知栏消息到达
+     * 通知栏消息到达,
+     * flyme6基于android6.0以上不再回调，
+     * MIUI基于小米推送，在APP被杀死不会回调，
+     * 在个推不会回调，所以不建议使用，
      */
+    @Deprecated
     public void onNotificationMessageArrived(Context context, MixPushMessage message) {
 
     }

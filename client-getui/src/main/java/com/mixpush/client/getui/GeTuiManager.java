@@ -19,7 +19,7 @@ public class GeTuiManager implements MixPushManager {
     @Override
     public void registerPush(Context context) {
         PushManager.getInstance().initialize(context, null);
-//        PushManager.getInstance().registerPushIntentService(context, GeTuiMessageIntentService.class);
+        PushManager.getInstance().registerPushIntentService(context, GeTuiMessageIntentService.class);
     }
 
     @Override
@@ -67,6 +67,6 @@ public class GeTuiManager implements MixPushManager {
 
     @Override
     public void disable(Context context) {
-
+        unRegisterPush(context);
     }
 }

@@ -1,15 +1,59 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
     package="com.mixpush.client.meizu">
-    <!--魅族-->
+
+
+    <!-- 兼容flyme5.0以下版本，魅族内部集成pushSDK必填，不然无法收到消息-->
+    <uses-permission android:name="com.meizu.flyme.push.permission.RECEIVE"/>
     <permission android:name="${PACKAGE_NAME}.push.permission.MESSAGE" android:protectionLevel="signature"/>
     <uses-permission android:name="${PACKAGE_NAME}.push.permission.MESSAGE"/>
+
+    <!--  兼容flyme3.0配置权限-->
     <uses-permission android:name="com.meizu.c2dm.permission.RECEIVE" />
-    <uses-permission android:name="com.meizu.flyme.push.permission.RECEIVE"/>
-    <permission android:name="${PACKAGE_NAME}.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+    <permission android:name="${PACKAGE_NAME}.permission.C2D_MESSAGE"
+        android:protectionLevel="signature"/>
     <uses-permission android:name="${PACKAGE_NAME}.permission.C2D_MESSAGE"/>
+    
+    
     <application>
 
+
+        <!-- push应用定义消息receiver声明 -->
+        <receiver android:name=".MeizuPushMsgReceiver">
+            <intent-filter>
+                <!-- 接收push消息 -->
+                <action android:name="com.meizu.flyme.push.intent.MESSAGE" />
+                <!-- 接收register消息 -->
+                <action android:name="com.meizu.flyme.push.intent.REGISTER.FEEDBACK" />
+                <!-- 接收unregister消息-->
+                <action android:name="com.meizu.flyme.push.intent.UNREGISTER.FEEDBACK"/>
+                <!-- 兼容低版本Flyme3推送服务配置 -->
+                <action android:name="com.meizu.c2dm.intent.REGISTRATION" />
+                <action android:name="com.meizu.c2dm.intent.RECEIVE" />
+
+                <category android:name="${PACKAGE_NAME}"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="APP_ID"
+                android:value="110697"/>
+
+            <meta-data
+                android:name="APP_KEY"
+                android:value="b39d231fc8a14043a556f56881f56e3b"/>
+
+
+
+            <!--<meta-data-->
+                <!--android:name="APP_ID"-->
+                <!--android:value="${MEIZU_PUSH_APP_ID}"/>-->
+
+            <!--<meta-data-->
+                <!--android:name="APP_KEY"-->
+                <!--android:value="${MEIZU_PUSH_APP_KEY}"/>-->
+            <!---->
+            <!---->
+        </receiver>
     </application>
 
 </manifest>

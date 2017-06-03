@@ -8,7 +8,9 @@ import com.gexin.rp.sdk.base.impl.SingleMessage;
 import com.gexin.rp.sdk.base.impl.TagTarget;
 import com.gexin.rp.sdk.base.impl.Target;
 import com.gexin.rp.sdk.http.IGtPush;
+import com.gexin.rp.sdk.template.NotificationTemplate;
 import com.gexin.rp.sdk.template.TransmissionTemplate;
+import com.gexin.rp.sdk.template.style.Style0;
 
 import org.json.simple.parser.ParseException;
 
@@ -100,51 +102,40 @@ public class GeTuiPushServerManager implements MixPushServerManager {
         IPushResult ret = push.pushMessageToApp(message);
         System.out.println("all:" + ret.getResponse().toString());
     }
-
-    @Override
-    public void sendNotifyToAlias(List<String> alias, String title, String description, String messagePayload) throws IOException {
+    private NotificationTemplate getNotificationTemplate(String title, String description, String messagePayload){
         JSONObject jsonObject = JSON.parseObject(messagePayload);
-        jsonObject.put("title",title);
-        jsonObject.put("description",description);
+        // 用于区分 通知和透传，因为个推Android是不支持区分，所以要自己实现
         jsonObject.put("notify",1);
         messagePayload = jsonObject.toJSONString();
-
-
-//        IGtPush push = new IGtPush(url, appKey, masterSecret);
-//        push.connect();
-//
-//
-//        NotificationTemplate template = new NotificationTemplate();
-//        template.setTransmissionContent(messagePayload);
-//        template.setTransmissionType(2);
-//        template.setAppId(appId);
-//        template.setAppkey(appKey);
-//
-//        Style0 style = new Style0();
-//        // 设置通知栏标题与内容
-//        style.setTitle(title);
-//        style.setText(description);
-//        // 配置通知栏图标
-//        style.setLogo("ic_launcher.png");
-//        // 配置通知栏网络图标
-//        style.setLogoUrl("");
-//        // 设置通知是否响铃，震动，或者可清除
-//        style.setRing(true);
-//        style.setVibrate(true);
-//        style.setClearable(true);
-//        template.setStyle(style);
-
-
-        IGtPush push = new IGtPush(url, appKey, masterSecret);
-        push.connect();
-        TransmissionTemplate template = new TransmissionTemplate();
+        NotificationTemplate template = new NotificationTemplate();
         template.setTransmissionContent(messagePayload);
         template.setTransmissionType(2);
         template.setAppId(appId);
         template.setAppkey(appKey);
 
+        Style0 style = new Style0();
+        // 设置通知栏标题与内容
+        style.setTitle(title);
+        style.setText(description);
+        // 配置通知栏图标
+        style.setLogo("ic_launcher.png");
+        // 配置通知栏网络图标
+        style.setLogoUrl("");
+        // 设置通知是否响铃，震动，或者可清除
+        style.setRing(true);
+        style.setVibrate(true);
+        style.setClearable(true);
+        template.setStyle(style);
+        return template;
+    }
+
+    @Override
+    public void sendNotifyToAlias(List<String> alias, String title, String description, String messagePayload) throws IOException {
+        IGtPush push = new IGtPush(url, appKey, masterSecret);
+        push.connect();
+
         SingleMessage message = new SingleMessage();
-        message.setData(template);
+        message.setData(getNotificationTemplate(title, description, messagePayload));
 
         message.setOffline(true);
         message.setOfflineExpireTime(1000 * 3600 * 72);
@@ -160,22 +151,10 @@ public class GeTuiPushServerManager implements MixPushServerManager {
 
     @Override
     public void sendNotifyToTags(List<String> tags, String title, String description, String messagePayload) throws IOException {
-        JSONObject jsonObject = JSON.parseObject(messagePayload);
-        jsonObject.put("title",title);
-        jsonObject.put("description",description);
-        jsonObject.put("notify",1);
-        messagePayload = jsonObject.toJSONString();
-
         IGtPush push = new IGtPush(url, appKey, masterSecret);
         push.connect();
-        TransmissionTemplate template = new TransmissionTemplate();
-        template.setTransmissionContent(messagePayload);
-        template.setTransmissionType(2);
-        template.setAppId(appId);
-        template.setAppkey(appKey);
-
         SingleMessage message = new SingleMessage();
-        message.setData(template);
+        message.setData(getNotificationTemplate(title, description, messagePayload));
 
         message.setOffline(true);
         message.setOfflineExpireTime(1000 * 3600 * 72);
@@ -191,24 +170,11 @@ public class GeTuiPushServerManager implements MixPushServerManager {
 
     @Override
     public void sendNotifyToAll(String title, String description, String messagePayload) throws IOException, ParseException {
-        JSONObject jsonObject = JSON.parseObject(messagePayload);
-        jsonObject.put("title",title);
-        jsonObject.put("description",description);
-        jsonObject.put("notify",1);
-        messagePayload = jsonObject.toJSONString();
-
-
-
         IGtPush push = new IGtPush(url, appKey, masterSecret);
         push.connect();
-        TransmissionTemplate template = new TransmissionTemplate();
-        template.setTransmissionContent(messagePayload);
-        template.setTransmissionType(2);
-        template.setAppId(appId);
-        template.setAppkey(appKey);
 
         AppMessage message = new AppMessage();
-        message.setData(template);
+        message.setData(getNotificationTemplate(title, description, messagePayload));
         List<String> appIdList = new ArrayList<String>();
         appIdList.add(appId);
         message.setAppIdList(appIdList);

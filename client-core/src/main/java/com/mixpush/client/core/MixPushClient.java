@@ -12,8 +12,8 @@ import java.util.Set;
 public class MixPushClient {
 
 
-    private static Map<String, MixPushManager> sPushAdapterMap = new HashMap<>();
-    private static String sUsePushAdapterName;
+    private static Map<String, MixPushManager> sPushManagerMap = new HashMap<>();
+    private static String sUsePushName;
     private static Selector sSelector;
     private static String sReceiverPermission = null;// 避免被其它APP接收
 
@@ -24,40 +24,61 @@ public class MixPushClient {
 
     public static void setSelector(Selector selector) {
         sSelector = selector;
+        sUsePushName = sSelector.select(sPushManagerMap, Build.BRAND);
+    }
+
+    public static String getUsePushName() {
+        return sUsePushName;
     }
 
     public static void addPushAdapter(MixPushManager pushAdapter) {
-        sPushAdapterMap.put(pushAdapter.getName(), pushAdapter);
+        sPushManagerMap.put(pushAdapter.getName(), pushAdapter);
         pushAdapter.setMessageProvider(mMixMessageProvider);
     }
 
     public static void registerPush(Context context) {
-        sUsePushAdapterName = sSelector.select(sPushAdapterMap, Build.BRAND);
+
         sReceiverPermission = context.getPackageName() + ".permission.MIXPUSH_RECEIVE";
 
-        Set<String> keys = sPushAdapterMap.keySet();
+        Set<String> keys = sPushManagerMap.keySet();
         for (String key : keys) {
-            if (key.contains(sUsePushAdapterName)) {
-                sPushAdapterMap.get(key).registerPush(context);
+            if (key.contains(sUsePushName)) {
+                sPushManagerMap.get(key).registerPush(context);
             } else {
-                sPushAdapterMap.get(key).unRegisterPush(context);
+                sPushManagerMap.get(key).unRegisterPush(context);
             }
         }
     }
-
-    public static void unRegisterPush(Context context) {
-        sPushAdapterMap.get(sUsePushAdapterName).unRegisterPush(context);
+    private static MixPushManager getPushManager(){
+        if (sUsePushName == null){
+            throw new RuntimeException("you need setSelector or setUsePushName");
+        }
+        return sPushManagerMap.get(sUsePushName);
     }
 
+    public static void unRegisterPush(Context context) {
+        getPushManager().unRegisterPush(context);
+    }
+
+    public static void setUsePushName(String sUsePushName) {
+        MixPushClient.sUsePushName = sUsePushName;
+    }
 
     public static void bindAlias(Context context, String alias) {
-        sPushAdapterMap.get(sUsePushAdapterName).bindAlias(context, alias);
+        getPushManager().bindAlias(context, alias);
     }
 
     public static void unBindAlias(Context context, String alias) {
-        sPushAdapterMap.get(sUsePushAdapterName).unBindAlias(context, alias);
+        getPushManager().unBindAlias(context, alias);
     }
 
+    public static void subscribeTags(Context context, String... tags){
+        getPushManager().subscribeTags(context, tags);
+    }
+
+    public static void unSubscribeTags(Context context, String... tags){
+        getPushManager().unSubscribeTags(context, tags);
+    }
 
     public static class Selector {
         public String select(Map<String, MixPushManager> pushAdapterMap, String brand) {
