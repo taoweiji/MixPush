@@ -24,10 +24,17 @@ import java.util.List;
 
 public class GeTuiPushServerManager implements MixPushServerManager {
     //定义常量, appId、appKey、masterSecret 采用本文档 "第二步 获取访问凭证 "中获得的应用配置
-    private static String appId = "51xb25cmJx9I28wet1Rtd5";
-    private static String appKey = "Wq0MtiYBdO7YwpTLbR8iI3";
-    private static String masterSecret = "W0EHO18Yk77sSLJxCvBlf4";
-    private static String url = "http://sdk.open.api.igexin.com/apiex.htm";
+    private String appId;
+    private String appKey;
+    private String masterSecret;
+    private String url;
+
+    public GeTuiPushServerManager(String appId, String appKey, String masterSecret, String url) {
+        this.appId = appId;
+        this.appKey = appKey;
+        this.masterSecret = masterSecret;
+        this.url = url;
+    }
 
     @Override
     public void sendMessageToAlias(List<String> alias, String messagePayload) throws IOException {
@@ -102,10 +109,11 @@ public class GeTuiPushServerManager implements MixPushServerManager {
         IPushResult ret = push.pushMessageToApp(message);
         System.out.println("all:" + ret.getResponse().toString());
     }
-    private NotificationTemplate getNotificationTemplate(String title, String description, String messagePayload){
+
+    private NotificationTemplate getNotificationTemplate(String title, String description, String messagePayload) {
         JSONObject jsonObject = JSON.parseObject(messagePayload);
         // 用于区分 通知和透传，因为个推Android是不支持区分，所以要自己实现
-        jsonObject.put("notify",1);
+        jsonObject.put("notify", 1);
         messagePayload = jsonObject.toJSONString();
         NotificationTemplate template = new NotificationTemplate();
         template.setTransmissionContent(messagePayload);

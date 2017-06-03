@@ -10,11 +10,9 @@ import java.util.List;
 public class MixPushServer {
     private static List<MixPushServerManager> managers = new ArrayList<>();
 
-    static {
-        managers.add(new MeizuPushServerManager(110697L,"ef7778880d264ec28a47399509974659"));
-        managers.add(new GeTuiPushServerManager());
-        managers.add(new MiPushServerManager("com.mixpush.demo","0Evhdw93wlSfAiZ3JEkCMA=="));
 
+    public static void addPushServerManager(MixPushServerManager serverManager){
+        managers.add(serverManager);
     }
 
 
