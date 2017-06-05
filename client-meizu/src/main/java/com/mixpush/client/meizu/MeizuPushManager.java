@@ -53,26 +53,26 @@ public class MeizuPushManager implements MixPushManager {
     }
 
     @Override
-    public void bindAlias(Context context, String alias) {
-        Log.e(TAG,"bindAlias");
+    public void setAlias(Context context, String alias) {
+        Log.e(TAG,"setAlias");
         PushManager.subScribeAlias(context, appId, appKey, PushManager.getPushId(context), alias);
     }
 
     @Override
-    public void unBindAlias(Context context, String alias) {
-        Log.e(TAG,"unBindAlias");
+    public void unsetAlias(Context context, String alias) {
+        Log.e(TAG,"unsetAlias");
         PushManager.unSubScribeAlias(context, appId, appKey, PushManager.getPushId(context), alias);
     }
 
     @Override
-    public void subscribeTags(Context context, String... tags) {
+    public void setTags(Context context, String... tags) {
         for (String tag : tags) {
             PushManager.subScribeTags(context, appId, appKey, PushManager.getPushId(context), tag);
         }
     }
 
     @Override
-    public void unSubscribeTags(Context context, String... tags) {
+    public void unsetTags(Context context, String... tags) {
         for (String tag : tags) {
             PushManager.unSubScribeTags(context, appId, appKey, PushManager.getPushId(context), tag);
         }

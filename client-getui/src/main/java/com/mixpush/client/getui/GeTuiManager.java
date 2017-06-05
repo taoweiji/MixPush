@@ -29,17 +29,17 @@ public class GeTuiManager implements MixPushManager {
 
 
     @Override
-    public void bindAlias(Context context, String alias) {
+    public void setAlias(Context context, String alias) {
         PushManager.getInstance().bindAlias(context, alias);
     }
 
     @Override
-    public void unBindAlias(Context context, String alias) {
+    public void unsetAlias(Context context, String alias) {
         PushManager.getInstance().unBindAlias(context, alias, false);
     }
 
     @Override
-    public void subscribeTags(Context context, String... tags) {
+    public void setTags(Context context, String... tags) {
         Tag[] temps = new Tag[tags.length];
         for (int i = 0; i < tags.length; i++) {
             Tag tag = new Tag();
@@ -50,7 +50,7 @@ public class GeTuiManager implements MixPushManager {
     }
 
     @Override
-    public void unSubscribeTags(Context context, String... tags) {
+    public void unsetTags(Context context, String... tags) {
         PushManager.getInstance().setTag(context, new Tag[0], null);
     }
 

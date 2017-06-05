@@ -69,20 +69,20 @@ public class MixPushClient {
         MixPushClient.sUsePushName = sUsePushName;
     }
 
-    public static void bindAlias(Context context, String alias) {
-        getPushManager().bindAlias(context, alias);
+    public static void setAlias(Context context, String alias) {
+        getPushManager().setAlias(context, alias);
     }
 
-    public static void unBindAlias(Context context, String alias) {
-        getPushManager().unBindAlias(context, alias);
+    public static void unsetAlias(Context context, String alias) {
+        getPushManager().unsetAlias(context, alias);
     }
 
-    public static void subscribeTags(Context context, String... tags){
-        getPushManager().subscribeTags(context, tags);
+    public static void setTags(Context context, String... tags){
+        getPushManager().setTags(context, tags);
     }
 
-    public static void unSubscribeTags(Context context, String... tags){
-        getPushManager().unSubscribeTags(context, tags);
+    public static void unsetTags(Context context, String... tags){
+        getPushManager().unsetTags(context, tags);
     }
 
     public static class Selector {

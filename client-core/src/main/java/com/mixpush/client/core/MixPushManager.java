@@ -10,13 +10,13 @@ public interface MixPushManager {
 
 //    String getToken(Context context);
 
-    void bindAlias(Context context, String alias);
+    void setAlias(Context context, String alias);
 
-    void unBindAlias(Context context, String alias);
+    void unsetAlias(Context context, String alias);
 
-    void subscribeTags(Context context, String... tags);
+    void setTags(Context context, String... tags);
 
-    void unSubscribeTags(Context context, String... tags);
+    void unsetTags(Context context, String... tags);
 
 //    void setToken(String token);
 

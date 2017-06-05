@@ -101,10 +101,10 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
                 MixPushClient.unRegisterPush(getApplicationContext());
                 break;
             case R.id.btn_set_alias:
-                MixPushClient.bindAlias(getApplicationContext(), "100");
+                MixPushClient.setAlias(getApplicationContext(), "100");
                 break;
             case R.id.btn_set_tags:
-                MixPushClient.subscribeTags(getApplicationContext(), "广东");
+                MixPushClient.setTags(getApplicationContext(), "广东");
                 break;
         }
     }

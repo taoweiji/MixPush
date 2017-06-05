@@ -30,19 +30,19 @@ public class MiPushManager implements MixPushManager {
 
     @Override
     public void unRegisterPush(Context context) {
-        unBindAlias(context, null);
+        unsetAlias(context, null);
         MiPushClient.unregisterPush(context.getApplicationContext());
     }
 
     @Override
-    public void bindAlias(Context context, String alias) {
+    public void setAlias(Context context, String alias) {
         if (!MiPushClient.getAllAlias(context).contains(alias)) {
             MiPushClient.setAlias(context, alias, null);
         }
     }
 
     @Override
-    public void unBindAlias(Context context, String alias) {
+    public void unsetAlias(Context context, String alias) {
         List<String> allAlias = MiPushClient.getAllAlias(context);
         for (int i = 0; i < allAlias.size(); i++) {
             MiPushClient.unsetAlias(context, allAlias.get(i), null);
@@ -50,7 +50,7 @@ public class MiPushManager implements MixPushManager {
     }
 
     @Override
-    public void subscribeTags(Context context, String... tags) {
+    public void setTags(Context context, String... tags) {
         for (String tag : tags){
             MiPushClient.subscribe(context, tag, null);
         }
@@ -58,7 +58,7 @@ public class MiPushManager implements MixPushManager {
     }
 
     @Override
-    public void unSubscribeTags(Context context, String... tags) {
+    public void unsetTags(Context context, String... tags) {
         for (String tag : tags) {
             MiPushClient.unsubscribe(context, tag, null);
         }
