@@ -47,7 +47,7 @@ public class MixPushClient {
 
         Set<String> keys = sPushManagerMap.keySet();
         for (String key : keys) {
-            if (key.contains(sUsePushName)) {
+            if (key.equals(sUsePushName)) {
                 sPushManagerMap.get(key).registerPush(context);
             } else {
                 sPushManagerMap.get(key).unRegisterPush(context);

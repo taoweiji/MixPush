@@ -11,34 +11,10 @@ public class MixPushServer {
     private static List<MixPushServerManager> managers = new ArrayList<>();
 
 
-    public static void addPushServerManager(MixPushServerManager serverManager){
+    public static void addPushServerManager(MixPushServerManager serverManager) {
         managers.add(serverManager);
     }
 
-
-    public static void sendMessageToAlias(String alias, String messagePayload) throws Exception {
-        List<String> aliases = new ArrayList<>();
-        aliases.add(alias);
-        sendMessageToAlias(aliases, messagePayload);
-    }
-
-    public static void sendMessageToTags(String tag, String messagePayload) throws Exception {
-        List<String> tags = new ArrayList<>();
-        tags.add(tag);
-        sendMessageToTags(tags, messagePayload);
-    }
-
-    public static void sendNotifyToAlias(String alias, String title, String description, String messagePayload) throws Exception {
-        List<String> aliases = new ArrayList<>();
-        aliases.add(alias);
-        sendNotifyToAlias(aliases, title, description, messagePayload);
-    }
-
-    public static void sendNotifyToTags(String tag, String title, String description, String messagePayload) throws Exception {
-        List<String> tags = new ArrayList<>();
-        tags.add(tag);
-        sendNotifyToTags(tags, title, description, messagePayload);
-    }
 
     public static void sendMessageToAlias(List<String> alias, String messagePayload) throws Exception {
         for (MixPushServerManager item : managers) {
@@ -52,7 +28,11 @@ public class MixPushServer {
             item.sendMessageToTags(tags, messagePayload);
         }
     }
-
+    public static void sendMessageToAll(String messagePayload) throws Exception {
+        for (MixPushServerManager item : managers) {
+            item.sendMessageToAll(messagePayload);
+        }
+    }
 
     public static void sendNotifyToAlias(List<String> alias, String title, String description, String messagePayload) throws Exception {
         for (MixPushServerManager item : managers) {
@@ -74,10 +54,25 @@ public class MixPushServer {
     }
 
 
-    public static void sendMessageToAll(String messagePayload) throws Exception {
+
+
+    public static void sendLinkNotifyToAlias(List<String> alias, String title, String description, String url) throws Exception {
         for (MixPushServerManager item : managers) {
-            item.sendMessageToAll(messagePayload);
+            item.sendLinkNotifyToAlias(alias, title, description, url);
         }
     }
+
+    public static void sendLinkNotifyToTags(List<String> tags, String title, String description, String url) throws Exception {
+        for (MixPushServerManager item : managers) {
+            item.sendLinkNotifyToTags(tags, title, description, url);
+        }
+    }
+
+    public static void sendLinkNotifyToAll(String title, String description, String url) throws Exception {
+        for (MixPushServerManager item : managers) {
+            item.sendLinkNotifyToAll(title, description, url);
+        }
+    }
+
 
 }

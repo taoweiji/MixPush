@@ -123,17 +123,17 @@ public class MiPushServerManager implements MixPushServerManager {
     }
 
     @Override
-    public void sendNotifyLinkToAlias(List<String> alias, String title, String description, String url) throws Exception {
+    public void sendLinkNotifyToAlias(List<String> alias, String title, String description, String url) throws Exception {
 
     }
 
     @Override
-    public void sendNotifyLinkToTags(List<String> tags, String title, String description, String url) throws Exception {
+    public void sendLinkNotifyToTags(List<String> tags, String title, String description, String url) throws Exception {
 
     }
 
     @Override
-    public void sendNotifyLinkToAll(String title, String description, String url) throws Exception {
+    public void sendLinkNotifyToAll(String title, String description, String url) throws Exception {
 
     }
 }

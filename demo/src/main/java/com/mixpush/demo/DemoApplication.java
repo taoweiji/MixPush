@@ -30,7 +30,7 @@ public class DemoApplication extends Application {
         initPush();
     }
     private void initPush() {
-        MixPushClient.addPushManager(new MeizuPushManager(MEIZU_APP_KEY, MEIZU_APP_ID));
+        MixPushClient.addPushManager(new MeizuPushManager(MEIZU_APP_ID,MEIZU_APP_KEY));
         MixPushClient.addPushManager(new MiPushManager(MIPUSH_APP_ID, MIPUSH_APP_KEY));
         MixPushClient.addPushManager(new GeTuiManager());
         MixPushClient.setPushIntentService(PushIntentService.class);
@@ -44,7 +44,6 @@ public class DemoApplication extends Application {
         });
         // 配置接收推送消息的服务类
         MixPushClient.setPushIntentService(PushIntentService.class);
-        MixPushClient.registerPush(this);
 
         // start - 下面代码在正式使用不用设置，这里仅仅用于测试
         String usePushName = getUsePushName(this);
@@ -53,6 +52,7 @@ public class DemoApplication extends Application {
         }
         // - end
 
+        MixPushClient.registerPush(this);
         // 绑定别名，一般是填写用户的ID，便于定向推送
         String userId = "100";
         MixPushClient.bindAlias(this, userId);
@@ -65,6 +65,13 @@ public class DemoApplication extends Application {
     }
 
     public static void setUsePushName(Context context, String usePushName) {
+        MixPushClient.unBindAlias(context,"100");
+        MixPushClient.unRegisterPush(context);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         preferences.edit().putString("usePushName", usePushName).commit();
 //        throw new RuntimeException();
