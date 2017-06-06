@@ -13,6 +13,7 @@ import com.xiaomi.mipush.sdk.PushMessageReceiver;
 import java.util.List;
 
 public class MiPushMessageReceiver extends PushMessageReceiver {
+    private static final String TAG = "MiPushMessageReceiver";
     private String mRegId;
     private String mAlias;
     private String mTopic;
@@ -26,6 +27,7 @@ public class MiPushMessageReceiver extends PushMessageReceiver {
         }
         String content = message.getContent();
         MixPushMessage mixPushMessage = new MixPushMessage();
+        mixPushMessage.setPlatform(MiPushManager.NAME);
         mixPushMessage.setContent(content);
         mixPushMessage.setTitle(message.getTitle());
         mixPushMessage.setDescription(message.getDescription());
@@ -41,6 +43,7 @@ public class MiPushMessageReceiver extends PushMessageReceiver {
         }
         String content = message.getContent();
         MixPushMessage mixPushMessage = new MixPushMessage();
+        mixPushMessage.setPlatform(MiPushManager.NAME);
         mixPushMessage.setContent(content);
         mixPushMessage.setTitle(message.getTitle());
         mixPushMessage.setDescription(message.getDescription());
@@ -57,6 +60,7 @@ public class MiPushMessageReceiver extends PushMessageReceiver {
         }
         String content = message.getContent();
         MixPushMessage mixPushMessage = new MixPushMessage();
+        mixPushMessage.setPlatform(MiPushManager.NAME);
         mixPushMessage.setContent(content);
         mixPushMessage.setTitle(message.getTitle());
         mixPushMessage.setDescription(message.getDescription());
@@ -73,7 +77,7 @@ public class MiPushMessageReceiver extends PushMessageReceiver {
     @Override
     public void onCommandResult(Context context, MiPushCommandMessage message) {
         String command = message.getCommand();
-        Log.d("onCommandResult",command);
+        Log.d(TAG,"onCommandResult => " + message.toString());
         List<String> arguments = message.getCommandArguments();
         String cmdArg1 = ((arguments != null && arguments.size() > 0) ? arguments.get(0) : null);
         String cmdArg2 = ((arguments != null && arguments.size() > 1) ? arguments.get(1) : null);
@@ -103,5 +107,16 @@ public class MiPushMessageReceiver extends PushMessageReceiver {
                 mEndTime = cmdArg2;
             }
         }
+    }
+
+    @Override
+    public void onReceiveMessage(Context context, MiPushMessage miPushMessage) {
+        super.onReceiveMessage(context, miPushMessage);
+    }
+
+    @Override
+    public void onReceiveRegisterResult(Context context, MiPushCommandMessage miPushCommandMessage) {
+        super.onReceiveRegisterResult(context, miPushCommandMessage);
+        Log.d(TAG,"onReceiveRegisterResult => " + miPushCommandMessage.toString());
     }
 }

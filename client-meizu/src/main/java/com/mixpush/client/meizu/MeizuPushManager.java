@@ -1,22 +1,19 @@
 package com.mixpush.client.meizu;
 
 import android.content.Context;
-import android.text.TextUtils;
-import android.util.Log;
 
 import com.meizu.cloud.pushsdk.PushManager;
 import com.mixpush.client.core.MixMessageProvider;
 import com.mixpush.client.core.MixPushManager;
 
 /**
+ * 魅族推送只支持Flyme系统，务必需要注意
  * Created by Wiki on 2017/6/1.
  */
 
 public class MeizuPushManager implements MixPushManager {
     public static final String NAME = "meizuPush";
-    private static final String TAG = "MeizuPushManager";
     public static MixMessageProvider sMixMessageProvider;
-    public static boolean REGISTER_PUSH = false;
 
     private String appId;
     private String appKey;
@@ -28,39 +25,21 @@ public class MeizuPushManager implements MixPushManager {
 
     @Override
     public void registerPush(Context context) {
-        Log.e(TAG,"registerPush");
         PushManager.register(context, appId, appKey);
-        REGISTER_PUSH = true;
-
-        String pushId = PushManager.getPushId(context);
-        if (!TextUtils.isEmpty(pushId)) {
-            // 需要确保，不能收到推送
-            PushManager.switchPush(context, appId, appKey, pushId, true);
-        }
     }
 
     @Override
     public void unRegisterPush(Context context) {
-        Log.e(TAG,"unRegisterPush");
-        REGISTER_PUSH = false;
-        String pushId = PushManager.getPushId(context);
-        if (!TextUtils.isEmpty(pushId)) {
-            // 需要确保，不能收到推送
-            PushManager.switchPush(context, appId, appKey, pushId, false);
-//            PushManager.checkSubScribeAlias(context,appId,appKey,pushId);
-        }
         PushManager.unRegister(context, appId, appKey);
     }
 
     @Override
     public void setAlias(Context context, String alias) {
-        Log.e(TAG,"setAlias");
         PushManager.subScribeAlias(context, appId, appKey, PushManager.getPushId(context), alias);
     }
 
     @Override
     public void unsetAlias(Context context, String alias) {
-        Log.e(TAG,"unsetAlias");
         PushManager.unSubScribeAlias(context, appId, appKey, PushManager.getPushId(context), alias);
     }
 
@@ -93,9 +72,5 @@ public class MeizuPushManager implements MixPushManager {
     @Override
     public void disable(Context context) {
         unRegisterPush(context);
-    }
-
-    public String getClientId(Context context) {
-        return PushManager.getPushId(context);
     }
 }

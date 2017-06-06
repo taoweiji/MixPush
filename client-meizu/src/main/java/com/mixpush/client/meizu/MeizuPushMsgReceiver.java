@@ -1,6 +1,7 @@
 package com.mixpush.client.meizu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.meizu.cloud.pushinternal.DebugLogger;
@@ -19,18 +20,33 @@ import com.mixpush.client.core.MixPushMessage;
  */
 public class MeizuPushMsgReceiver extends MzPushMessageReceiver {
     private static final String TAG = "MeizuPushMsgReceiver";
+    private int mipush_notification;
+    private int mipush_small_notification;
 
     @Override
     @Deprecated
     public void onRegister(Context context, String pushid) {
         //应用在接受返回的pushid
+
+    }
+
+    @Override
+    public void onHandleIntent(Context context, Intent intent) {
+        mipush_notification = context.getResources().getIdentifier("mipush_notification", "drawable", context.getPackageName());
+        mipush_small_notification = context.getResources().getIdentifier("mipush_small_notification", "drawable", context.getPackageName());
+
+
+        super.onHandleIntent(context, intent);
     }
 
     @Override
     public void onMessage(Context context, String s) {
         //接收服务器推送的透传消息
         if (MeizuPushManager.sMixMessageProvider != null){
-            MeizuPushManager.sMixMessageProvider.onReceivePassThroughMessage(context,new MixPushMessage(s));
+            MixPushMessage message = new MixPushMessage();
+            message.setContent(s);
+            message.setPlatform(MeizuPushManager.NAME);
+            MeizuPushManager.sMixMessageProvider.onReceivePassThroughMessage(context,message);
         }
     }
 
@@ -43,9 +59,17 @@ public class MeizuPushMsgReceiver extends MzPushMessageReceiver {
     //设置通知栏小图标
     @Override
     public void onUpdateNotificationBuilder(PushNotificationBuilder pushNotificationBuilder) {
-//        pushNotificationBuilder.setmLargIcon(R.drawable.flyme_status_ic_notification);
-//        pushNotificationBuilder.setmStatusbarIcon(R.drawable.mz_push_notification_small_icon);
-//        pushNotificationBuilder.setmStatusbarIcon(R.drawable.mz_push_notification_small_icon);
+        if (mipush_notification > 0){
+            pushNotificationBuilder.setmLargIcon(mipush_notification);
+            Log.d(TAG,"设置通知栏大图标");
+        }else {
+            Log.e(TAG,"缺少drawable/mipush_notification.png");
+        }
+        if (mipush_small_notification > 0){
+            pushNotificationBuilder.setmStatusbarIcon(mipush_small_notification);
+            Log.d(TAG,"设置通知栏小图标");
+            Log.e(TAG,"缺少drawable/mipush_small_notification.png");
+        }
     }
 
     @Override
@@ -83,6 +107,7 @@ public class MeizuPushMsgReceiver extends MzPushMessageReceiver {
 
         if (MeizuPushManager.sMixMessageProvider != null){
             MixPushMessage message = new MixPushMessage();
+            message.setPlatform(MeizuPushManager.NAME);
             message.setTitle(title);
             message.setDescription(content);
             message.setContent(selfDefineContentString);
@@ -97,6 +122,7 @@ public class MeizuPushMsgReceiver extends MzPushMessageReceiver {
 
         if (MeizuPushManager.sMixMessageProvider != null){
             MixPushMessage message = new MixPushMessage();
+            message.setPlatform(MeizuPushManager.NAME);
             message.setTitle(title);
             message.setDescription(content);
             message.setContent(selfDefineContentString);

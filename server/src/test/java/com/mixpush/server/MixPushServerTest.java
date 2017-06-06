@@ -32,7 +32,7 @@ public class MixPushServerTest {
 
 
 
-        alias.add("100");
+        alias.add("103");
         tags.add("广东");
     }
 

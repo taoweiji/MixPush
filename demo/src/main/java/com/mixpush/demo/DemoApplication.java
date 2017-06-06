@@ -54,7 +54,7 @@ public class DemoApplication extends Application {
 
         MixPushClient.registerPush(this);
         // 绑定别名，一般是填写用户的ID，便于定向推送
-        String userId = "100";
+        String userId = "103";
         MixPushClient.setAlias(this, userId);
         MixPushClient.setTags(this,"广东");
     }
@@ -66,7 +66,7 @@ public class DemoApplication extends Application {
     }
 
     public static void setUsePushName(Context context, String usePushName) {
-        MixPushClient.unsetAlias(context,"100");
+        MixPushClient.unsetAlias(context,"103");
         MixPushClient.unRegisterPush(context);
         try {
             Thread.sleep(2000);

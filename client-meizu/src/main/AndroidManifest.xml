@@ -32,6 +32,26 @@
 
                 <category android:name="${PACKAGE_NAME}"/>
             </intent-filter>
+
+            <meta-data
+                android:name="APP_ID"
+                android:value="110697"/>
+
+            <meta-data
+                android:name="APP_KEY"
+                android:value="b39d231fc8a14043a556f56881f56e3b"/>
+
+
+
+            <!--<meta-data-->
+                <!--android:name="APP_ID"-->
+                <!--android:value="${MEIZU_PUSH_APP_ID}"/>-->
+
+            <!--<meta-data-->
+                <!--android:name="APP_KEY"-->
+                <!--android:value="${MEIZU_PUSH_APP_KEY}"/>-->
+            <!---->
+            <!---->
         </receiver>
     </application>
 

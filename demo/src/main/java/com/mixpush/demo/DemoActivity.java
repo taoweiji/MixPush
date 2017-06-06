@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,6 +15,8 @@ import com.mixpush.client.core.MixPushMessageReceiver;
 import com.mixpush.client.getui.GeTuiManager;
 import com.mixpush.client.meizu.MeizuPushManager;
 import com.mixpush.client.mipush.MiPushManager;
+import com.xiaomi.channel.commonutils.logger.LoggerInterface;
+import com.xiaomi.mipush.sdk.Logger;
 
 public class DemoActivity extends AppCompatActivity implements View.OnClickListener {
     TextView text;
@@ -41,21 +44,21 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_set_tags).setOnClickListener(this);
 
 
-//        LoggerInterface newLogger = new LoggerInterface() {
-//            @Override
-//            public void setTag(String tag) {
-//                // ignore
-//            }
-//            @Override
-//            public void log(String content, Throwable t) {
-//                Log.d("mipush", content, t);
-//            }
-//            @Override
-//            public void log(String content) {
-//                Log.d("mipush", content);
-//            }
-//        };
-//        Logger.setLogger(this, newLogger);
+        LoggerInterface newLogger = new LoggerInterface() {
+            @Override
+            public void setTag(String tag) {
+                // ignore
+            }
+            @Override
+            public void log(String content, Throwable t) {
+                Log.d("mipush", content, t);
+            }
+            @Override
+            public void log(String content) {
+                Log.d("mipush", content);
+            }
+        };
+        Logger.setLogger(this, newLogger);
     }
 
     @Override
@@ -101,7 +104,7 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
                 MixPushClient.unRegisterPush(getApplicationContext());
                 break;
             case R.id.btn_set_alias:
-                MixPushClient.setAlias(getApplicationContext(), "100");
+                MixPushClient.setAlias(getApplicationContext(), "103");
                 break;
             case R.id.btn_set_tags:
                 MixPushClient.setTags(getApplicationContext(), "广东");

@@ -28,7 +28,7 @@ dependencies {
     compile 'com.github.joyrun.MixPush:client-core:0.1' //必填
     compile 'com.github.joyrun.MixPush:client-mipush:0.1' // 小米推送
     compile 'com.github.joyrun.MixPush:client-getui:0.1' // 个推
-    compile 'com.github.joyrun.MixPush:client-meizu:0.1' // 魅族推送
+    compile 'com.github.joyrun.MixPush:client-meizu:0.1' // 魅族推送，魅族推送只支持Flyme系统，务必需要注意
 }
 ```
 创建一个继承MixPushIntentService的服务类，用于接收事件：
@@ -110,6 +110,26 @@ android {
     }
 }
 ```
+#### 定制通知栏通知的图标
+##### 小米推送
+
+目前通知类的消息， 通知的图标展示规则如下：
+
+1. 如果app中同时存在名为mipush_notification和mipush_small_notification的drawable文件，则使用mipush_notification的drawable作为通知的大图标，mipush_small_notification的drawable作为通知的小图标。
+2. 如果app中只存在其中一个drawable文件，则使用该drawable作为通知的图标。
+3. 如果app中不存在这两个drawable文件，则使用app的icon作为通知的图标。在MIUI中，通知栏图标统一显示为app的icon，不可以定制。
+
+##### 个推推送
+
+为了修改默认的通知栏顶部提示小图标，请在资源目录的res/drawable-ldpi/、res/drawable-mdpi/、res/drawable-hdpi/、res/drawable-xhdpi/、res/drawable-xxhdpi/等各分辨率目录下，放置相应尺寸的文件名为`push.png`图片。
+
+##### 魅族推送
+
+
+#### 注意
+1. 魅族推送只支持Flyme系统，务必需要注意。
+
+
 Android客户端的配置就只有这么多。
 ### 服务端配置测试
 目前只有Java的服务端代码，如果服务端使用其它语言，请参考设计思路自己开发。

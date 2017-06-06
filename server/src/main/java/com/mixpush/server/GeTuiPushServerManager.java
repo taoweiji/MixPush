@@ -128,7 +128,7 @@ public class GeTuiPushServerManager implements MixPushServerManager {
         style.setTitle(title);
         style.setText(description);
         // 配置通知栏图标
-        style.setLogo("ic_launcher.png");
+        style.setLogo("push.png");
         // 配置通知栏网络图标
         style.setLogoUrl("");
         // 设置通知是否响铃，震动，或者可清除
@@ -150,7 +150,7 @@ public class GeTuiPushServerManager implements MixPushServerManager {
         style.setTitle(title);
         style.setText(description);
         // 配置通知栏图标
-        style.setLogo("ic_launcher.png");
+        style.setLogo("push.png");
         // 配置通知栏网络图标
         style.setLogoUrl("");
         // 设置通知是否响铃，震动，或者可清除

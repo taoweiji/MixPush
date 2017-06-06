@@ -16,11 +16,13 @@ import org.json.JSONObject;
 public class PushIntentService extends MixPushIntentService {
     @Override
     public void onReceivePassThroughMessage(MixPushMessage message) {
+        Log.e(TAG, "收到透传消息 -> " + message.getPlatform());
         Log.e(TAG, "收到透传消息 -> " + message.getContent());
     }
 
     @Override
     public void onNotificationMessageClicked(MixPushMessage message) {
+        Log.e(TAG, "通知栏消息点击 -> " + message.getPlatform());
         Log.e(TAG, "通知栏消息点击 -> " + message.getContent());
 
         try {

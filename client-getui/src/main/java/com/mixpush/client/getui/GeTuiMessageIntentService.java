@@ -39,11 +39,17 @@ public class GeTuiMessageIntentService extends GTIntentService {
             JSONObject jsonObject = new JSONObject(data);
             if (jsonObject.optInt("notify", 0) == 1) {
                 if (GeTuiManager.sMixMessageProvider != null) {
-                    GeTuiManager.sMixMessageProvider.onNotificationMessageClicked(context, new MixPushMessage(data));
+                    MixPushMessage message = new MixPushMessage();
+                    message.setContent(data);
+                    message.setPlatform(GeTuiManager.NAME);
+                    GeTuiManager.sMixMessageProvider.onNotificationMessageClicked(context, message);
                 }
             } else {
                 if (GeTuiManager.sMixMessageProvider != null) {
-                    GeTuiManager.sMixMessageProvider.onReceivePassThroughMessage(context, new MixPushMessage(data));
+                    MixPushMessage message = new MixPushMessage();
+                    message.setContent(data);
+                    message.setPlatform(GeTuiManager.NAME);
+                    GeTuiManager.sMixMessageProvider.onReceivePassThroughMessage(context, message);
                 }
             }
         } catch (JSONException e) {

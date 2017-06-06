@@ -18,15 +18,12 @@ public class MixPushMessage implements Serializable{
     private boolean isNotified;
     private String description;
     private String title;
-    private String category;
+    private String platform;//
     private int notify;
 
     public MixPushMessage() {
     }
 
-    public MixPushMessage(String content) {
-        this.content = content;
-    }
 
     public String getContent() {
         return content;
@@ -74,5 +71,13 @@ public class MixPushMessage implements Serializable{
 
     public int getPassThrough() {
         return passThrough;
+    }
+
+    public String getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
     }
 }
