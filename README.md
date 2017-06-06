@@ -124,13 +124,12 @@ android {
 为了修改默认的通知栏顶部提示小图标，请在资源目录的res/drawable-ldpi/、res/drawable-mdpi/、res/drawable-hdpi/、res/drawable-xhdpi/、res/drawable-xxhdpi/等各分辨率目录下，放置相应尺寸的文件名为`push.png`图片。
 
 ##### 魅族推送
-
+和小米推送的一样。
 
 #### 注意
 1. 魅族推送只支持Flyme系统，务必需要注意。
 
 
-Android客户端的配置就只有这么多。
 ### 服务端配置测试
 目前只有Java的服务端代码，如果服务端使用其它语言，请参考设计思路自己开发。
 

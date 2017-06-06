@@ -45,5 +45,5 @@ dependencies {
 //    compile 'com.github.joyrun.MixPush:client-core:0.1'
 //    compile 'com.github.joyrun.MixPush:client-mipush:0.1'
 //    compile 'com.github.joyrun.MixPush:client-getui:0.1'
-//    compile 'com.github.joyrun.MixPush:client-meizu:0.1'
+//    compile 'com.github.joyrun.MixPush:client-meizu:0.1'//魅族推送只支持Flyme系统，务必需要注意
 }
