@@ -122,6 +122,13 @@ android {
 ##### 个推推送
 
 为了修改默认的通知栏顶部提示小图标，请在资源目录的res/drawable-ldpi/、res/drawable-mdpi/、res/drawable-hdpi/、res/drawable-xhdpi/、res/drawable-xxhdpi/等各分辨率目录下，放置相应尺寸的文件名为`push.png`图片。
+```
+ldpi:    48*48
+mdpi:    64*64
+hdpi:    96*96
+xhdpi:   128*128
+xxhdpi:  192*192
+```
 
 ##### 魅族推送
 和小米推送的一样。
