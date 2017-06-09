@@ -87,11 +87,15 @@ public class DemoApplication extends Application {
         });
         // 配置接收推送消息的服务类
         MixPushClient.setPushIntentService(PushIntentService.class);
+        // 注册推送
         MixPushClient.registerPush(this);
         // 绑定别名，一般是填写用户的ID，便于定向推送
-        String userId = "100";
-        MixPushClient.setAlias(this, userId);
+        MixPushClient.setAlias(this, getUserId());
+        // 设置标签，用于对用户进行划分
         MixPushClient.setTags(this,"广东");
+    }
+    private String getUserId(){
+        return "103";
     }
 }
 ```

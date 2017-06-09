@@ -52,11 +52,16 @@ public class DemoApplication extends Application {
         }
         // - end
 
+
+        // 注册推送
         MixPushClient.registerPush(this);
         // 绑定别名，一般是填写用户的ID，便于定向推送
-        String userId = "103";
-        MixPushClient.setAlias(this, userId);
+        MixPushClient.setAlias(this, getUserId());
+        // 设置标签
         MixPushClient.setTags(this,"广东");
+    }
+    private String getUserId(){
+        return "103";
     }
 
 

@@ -71,17 +71,20 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public void onReceivePassThroughMessage(Context context, MixPushMessage message) {
-            text.setText(text.getText().toString() + "\nonReceivePassThroughMessage:" + message.getContent());
+            text.setText(text.getText().toString() + "\n收到透传消息:" + message.getPlatform());
+            text.setText(text.getText().toString() + "\n收到透传消息:" + message.getContent());
         }
 
         @Override
         public void onNotificationMessageClicked(Context context, MixPushMessage message) {
-            text.setText(text.getText().toString() + "\nonNotificationMessageClicked:" + message.getContent());
+            text.setText(text.getText().toString() + "\n通知栏消息点击:" + message.getPlatform());
+            text.setText(text.getText().toString() + "\n通知栏消息点击:" + message.getContent());
         }
 
         @Override
         public void onNotificationMessageArrived(Context context, MixPushMessage message) {
-            text.setText(text.getText().toString() + "\nonNotificationMessageArrived:" + message.getContent());
+            text.setText(text.getText().toString() + "\n通知栏消息到达:" + message.getPlatform());
+            text.setText(text.getText().toString() + "\n通知栏消息到达:" + message.getContent());
         }
     };
 
