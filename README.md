@@ -25,10 +25,10 @@ MixPush只是一个降低集成多家推送服务的框架，自身不拥有推�
 ```
 
 dependencies {
-    compile 'com.github.joyrun.MixPush:client-core:0.1' //必填
-    compile 'com.github.joyrun.MixPush:client-mipush:0.1' // 小米推送
-    compile 'com.github.joyrun.MixPush:client-getui:0.1' // 个推
-    compile 'com.github.joyrun.MixPush:client-meizu:0.1' // 魅族推送，魅族推送只支持Flyme系统，务必需要注意
+    compile 'com.github.joyrun.MixPush:client-core:0.2.0' //必填
+    compile 'com.github.joyrun.MixPush:client-mipush:0.2.0' // 小米推送
+    compile 'com.github.joyrun.MixPush:client-getui:0.2.0' // 个推
+    compile 'com.github.joyrun.MixPush:client-meizu:0.2.0' // 魅族推送，魅族推送只支持Flyme系统，务必需要注意
 }
 ```
 创建一个继承MixPushIntentService的服务类，用于接收事件：
