@@ -37,13 +37,15 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     testCompile 'junit:junit:4.12'
+
+
     compile project(':client-core')
     compile project(':client-mipush')
     compile project(':client-getui')
     compile project(':client-meizu')
 
-//    compile 'com.github.joyrun.MixPush:client-core:0.1'
-//    compile 'com.github.joyrun.MixPush:client-mipush:0.1'
-//    compile 'com.github.joyrun.MixPush:client-getui:0.1'
-//    compile 'com.github.joyrun.MixPush:client-meizu:0.1'//魅族推送只支持Flyme系统，务必需要注意
+//    compile 'com.github.joyrun.MixPush:client-core:1.0.0'
+//    compile 'com.github.joyrun.MixPush:client-mipush:1.0.0'
+//    compile 'com.github.joyrun.MixPush:client-getui:1.0.0'
+//    compile 'com.github.joyrun.MixPush:client-meizu:1.0.0'//魅族推送只支持Flyme系统，务必需要注意
 }
