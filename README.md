@@ -5,6 +5,18 @@
 
 消息推送是App运营的重要一环，为了优化消息推送成功率，降低电量和流量消耗，系统级的推送服务显得尤为重要。小米和魅族由此推出了自家的推送平台，在MIUI和Flyme上共享系统级推送服务，让APP在被杀死的情况下也能正常收到推送消息。以后也会有越来越多的手机厂商会推出自己的推送平台，MixPush由此而生，降低开发者集成多家推送的开发成本，提高推送的到达率。
 
+
+#### 推荐推送平台
+##### 小米推送
+支持所有的Android平台，特点是在MIUI系统上共享系统级推送，APP被杀死也可以收到通知栏推送。
+https://dev.mi.com/console/appservice/push.html
+##### 魅族推送
+仅仅支持Flyme系统，不能在非Flyme系统上使用，特点是在Flyme系统共享系统级推送，APP被杀死也可以收到通知栏推送。
+https://open.flyme.cn/open-web/views/push.html
+##### 个推推送
+Android平台上最大的第三方推送平台，推送消息稳定。
+http://www.getui.com/cn/index.html
+
 ##### 原理图
  ![image](logic_chart.jpg)
 ##### 原理分析
@@ -143,28 +155,6 @@ xxhdpi:  192*192
 
 ### 服务端配置测试
 目前只有Java的服务端代码，如果服务端使用其它语言，请参考设计思路自己开发。
-
-服务端的代码可以通过Maven方式引入，但还是建议复制代码到项目中来实现。这样子能够有更大的可控性，比如消息的有效期、消息提醒的时间、重试的次数等，我的代码已经编写了较优的配置，如果没有其它要求可以通过Maven引入。
-
-增加Maven仓库
-```
-	<repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
-```
-添加依赖
-```
-	<dependency>
-	    <groupId>com.github.joyrun.MixPush</groupId>
-	    <artifactId>server</artifactId>
-	    <version>0.1</version>
-	</dependency>
-```
-
-or
 
 复制代码和jar包到项目。
 

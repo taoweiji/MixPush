@@ -12,6 +12,12 @@ public class MixPushServer {
 
 
     public static void addPushServerManager(MixPushServerManager serverManager) {
+        for(MixPushServerManager item : managers){
+            // 避免重复添加
+            if (item.getClass().equals(serverManager.getClass())){
+                return;
+            }
+        }
         managers.add(serverManager);
     }
 
