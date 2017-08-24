@@ -29,6 +29,7 @@ MixPush只是一个降低集成多家推送服务的框架，自身不拥有推�
 	allprojects {
 		repositories {
 			...
+			maven {url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/"}
 			maven { url 'https://jitpack.io' }
 		}
 	}
