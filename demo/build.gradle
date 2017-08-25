@@ -39,13 +39,13 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
 
-//    compile project(':client-core')
-//    compile project(':client-mipush')
-//    compile project(':client-getui')
-//    compile project(':client-meizu')
+    compile project(':client-core')
+    compile project(':client-mipush')
+    compile project(':client-getui')
+    compile project(':client-meizu')
 
-    compile 'com.github.joyrun.MixPush:client-core:1.1.0'
-    compile 'com.github.joyrun.MixPush:client-mipush:1.1.0'
-    compile 'com.github.joyrun.MixPush:client-getui:1.1.0'
-    compile 'com.github.joyrun.MixPush:client-meizu:1.1.0'//魅族推送只支持Flyme系统，务必需要注意
+//    compile 'com.github.joyrun.MixPush:client-core:1.1.0'
+//    compile 'com.github.joyrun.MixPush:client-mipush:1.1.0'
+//    compile 'com.github.joyrun.MixPush:client-getui:1.1.0'
+//    compile 'com.github.joyrun.MixPush:client-meizu:1.1.0'//魅族推送只支持Flyme系统，务必需要注意
 }
