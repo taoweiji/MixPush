@@ -32,5 +32,5 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     compile project(':client-core')
-    compile 'com.meizu.flyme.internet:push-internal:3.4.0@aar'
+    compile 'com.meizu.flyme.internet:push-internal:3.4.2@aar'
 }
