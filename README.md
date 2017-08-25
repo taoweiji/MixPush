@@ -13,6 +13,8 @@ https://dev.mi.com/console/appservice/push.html
 ##### 魅族推送
 仅仅支持Flyme系统，不能在非Flyme系统上使用，特点是在Flyme系统共享系统级推送，APP被杀死也可以收到通知栏推送。
 https://open.flyme.cn/open-web/views/push.html
+
+https://github.com/MEIZUPUSH/PushDemo
 ##### 个推推送
 Android平台上最大的第三方推送平台，推送消息稳定。
 http://www.getui.com/cn/index.html
