@@ -1,12 +1,12 @@
 
-## MixPush：混合推送SDK，快速集成6个厂商推送，共享系统推送通道，杀死也能收到推送，推送到达率90%以上
+## MixPush：混合推送SDK，快速集成六个厂商推送，共享系统推送通道，杀死也能收到推送，推送到达率90%以上
 [![Download](https://api.bintray.com/packages/mixpush/maven/mixpush-core/images/download.svg)](https://bintray.com/mixpush/maven/mixpush-core)
 
 
 
-基于 [统一推送联盟](http://chinaupa.com/) 的思想，快速集成了五个厂商的推送平台，共享系统的厂商推送通道，避免APP需要长期在后台运行，杀死APP也能收到推送，大大提高推送到达率。接入有一定的开发成本，需要前后端一起参与才可以完成，如果遇到什么问题可以发Issue提问解答。
+基于 [统一推送联盟](http://chinaupa.com/) 的思想，快速集成了六个厂商的推送平台，共享系统的厂商推送通道，避免APP需要长期在后台运行，杀死APP也能收到推送，大大提高推送到达率。接入有一定的开发成本，需要前后端一起参与才可以完成，如果遇到什么问题可以发Issue提问解答。
 
-1. 开发者只需要少量代码即可集成 小米、华为、魅族、OPPO、VIVO的厂商推送；
+1. 开发者只需要少量代码即可集成 小米、华为、魅族、OPPO、VIVO，苹果的厂商推送；
 
 2. 会根据手机厂商推送的支持情况智能选择不同的推送；
 
@@ -16,32 +16,32 @@
 
 5. SDK已经为开发者考虑好各种问题，避免碰壁，从2人超一周开发时间压缩到只需要半天时间即可。
 
-6. 提供Flutter插件，支持Android 和 iOS。
+      
 
-     
 
 > 本SDK不支持商业推送平台，因为第三方商业推送SDK的免费版本基本都存在黑产行为，偷偷给用户推送通知栏广告，诱导用户下载其他APP或打开其他APP，非法获利。
 >
 > 这一点我们已经亲身经历过，我们集成的国内排名前三的推送平台就对我们公司的APP下了毒手，618的时候偷偷给用户发伪造成拼多多、淘宝、京东、微博的通知栏消息，诱导用户打开电商APP领红包，我们通过源码分析查证了，并且他们的商务已经向我公司道歉，所以切莫使用免费的商业推送SDK。
 
+#### 厂商推送平台介绍
 
-#### 推送平台介绍
+在以前没有厂商推送的情况下，各家公司或推送平台为了让APP可以在后台收到推送，会通过各种方式让APP保持后台运行，甚至还会出现`APP之间相互唤醒`。近年来，手机系统的管控越来越严格，不再允许后台运行也不允许APP相互唤醒。如果无法收到推送，会导致很多APP无法正常工作，比如微信消息，淘宝订单等。为了解决APP收到推送的问题，国内的手机厂商纷纷推出了自己的厂商推送平台，APP无需在后台运行即可收到推送，可以大大节省手机的电量问题。那么另外一个问题来了，这么多推送平台，每一个平台的接入方式都不一样，会导致接入成本大大增加，为了解决这个问题，MixPush 来了。
 
 | 推送平台                                                     | 透传   | 全局推送 | 别名/标签 | 支持说明                                                     |
 | ------------------------------------------------------------ | ------ | -------- | --------- | ------------------------------------------------------------ |
-| [小米推送](https://dev.mi.com/console/appservice/push.html)  | 支持   | 支持     | 支持      | 支持所有Android设备，小米设备支持系级别推送，其它设备支持普通推送 |
+| [小米推送](https://dev.mi.com/console/appservice/push.html)  | 支持   | 支持     | 支持      | 所有Android设备，小米设备支持系级别推送，其它设备支持普通推送 |
 | [华为推送](https://developer.huawei.com/consumer/cn/console) | 支持   | 不支持   | 不支持    | 仅华为设备，部分EMUI4.0和4.1，及EMUI5.0及之后的华为设备。    |
-| [OPPO推送](https://push.oppo.com)                            | 不支持 | 不支持   | 支持      | 仅OPPO和一加手机，支持ColorOS3.1及以上的系统。               |
+| [OPPO推送](https://push.oppo.com)                            | 不支持 | 支持     | 支持      | 仅OPPO和一加手机，支持ColorOS3.1及以上的系统。               |
 | [VIVO推送](https://dev.vivo.com.cn/openAbility/pushNews)     | 不支持 | 支持     | 支持      | 仅VIVO手机，部分 Android 9.0，及 9.0 以上手机                |
 | [魅族推送](http://open-wiki.flyme.cn/doc-wiki/index#id?129)  | 不支持 | 支持     | 支持      | 仅魅族手机，Flyme系统全平台                                  |
-| APNs                                                         | 不支持 | 不支持   | 不支持    | 仅苹果设备                                                   |
-| [小米推送 APNs](https://dev.mi.com/console/appservice/push.html) | 不支持 | 支持     | 支持      | 仅苹果设备，代替APNs，可以有效降低服务器压力                 |
+| [APNs](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns) | 不支持 | 不支持   | 不支持    | 仅苹果设备                                                   |
+| [小米推送 APNs](https://dev.mi.com/console/doc/detail?pId=98) | 不支持 | 支持     | 支持      | 仅苹果设备，代替APNs，可以有效降低服务器压力                 |
 ##### 建议
 
 1. 如果手机支持建厂商推送就使用厂商推送SDK，否则使用小米推送。
 2. 由于华为推送不支持别名和标签，所以建议所有的手机都统一通过regId进行推送。
 3. 由于多数的推送SDK不支持透传，如果APP需要支持透传，建议统一使用小米推送作为透传方案，但是如果使用小米作为所有Android手机的透传功能，那么小米推送就不再支持全局推送。
-4. 由于部分推送不支持全局推送，如果要推送给所有用户，请查询最近3个月有打开APP的用户，进行分组推送，之所以只查询3个人是因为厂家推送多数的有效期都是三个月，就算推送用户也收不到，如果把所有历史的用户都查询出来，推送压力将会加倍。
+4. 由于华为推送和APNs不支持全局推送，如果要推送给所有用户，请查询最近3个月有打开APP的用户，进行分组推送。因为多数的有效期都是三个月，就算推送用户也收不到，如果把所有历史的用户都查询出来，推送压力将会加倍。
 5. 建议 iOS 也使用[小米推送](https://dev.mi.com/console/doc/detail?pId=98)，可以有效降低服务器的推送压力，特别是在全局推送和分组推送的时候。
 
 
@@ -126,7 +126,8 @@ public class MyUnifiedPushReceiver extends UnifiedPushReceiver {
 
     @Override
     public void onRegisterSucceed(Context context,PushPlatform platform) {
-        // 这里需要实现上传regId和推送平台信息到服务端保存，也可以通过getRegisterId的方式实现
+        // 这里需要实现上传regId和推送平台信息到服务端保存，
+        //也可以通过MixPushClient.getInstance().getRegisterId的方式实现
     }
 
     @Override
@@ -142,7 +143,7 @@ public class MyUnifiedPushReceiver extends UnifiedPushReceiver {
 // 开启日志
 //UnifiedPush.getInstance().setLogger(new PushLogger(){});
 UnifiedPush.getInstance().setPushListener(new MyUnifiedPushReceiver());
-// 默认初始化5大推送平台（小米推送、华为推送、魅族推送、OPPO推送、VIVO推送）
+// 默认初始化5个推送平台（小米推送、华为推送、魅族推送、OPPO推送、VIVO推送），以小米推荐作为默认平台
 UnifiedPush.getInstance().register(this);
 ```
 获取regId，建议在首页的onCreate调用,并上报regId给服务端
@@ -157,7 +158,7 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
 });
 ```
 
-1. 务必在 onRegisterSucceed 实现上传 RegId 到服务端。
+1. 务必在 onRegisterSucceed或getRegisterId 实现上传 RegId 到服务端。
 2. 请在 onNotificationMessageClicked 实现对通知栏的操作，比如打开浏览器、跳转某个页面。
 
 
@@ -178,7 +179,7 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
 -keep class com.huawei.hms.**{*;}
 
 # 小米推送
-
+-keep class com.xiaomi.**{*;}
 
 # OPPO
 -keep public class * extends android.app.Service
@@ -190,8 +191,11 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
 -keep class com.vivo.vms.**{*; }
 
 # 魅族
+-keep class com.meizu.**{*;}
 
 ```
+
+
 
 
 
@@ -256,20 +260,20 @@ class MixPushServerExample {
 }
 ```
 
-##### MixPushMessageConfig
+##### MixPushMessageConfig.Builder
 
-|                     |                                                              |
+| 方法                | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| channelId           | 作废                                                         |
-| vivoSystemMessage   | false：运营类消息，true：系统类消息                          |
+| huaweiPushChannelId | 非必填                                                       |
+| vivoSystemMessage   | 必填，false：运营类消息，true：系统类消息                    |
 | timeToLive          | 非必填，消息有效期，最长72小时，单位：毫秒                   |
 | miPushChannelId     | 非必填，由于普通消息内日推送数量有限，如果是IM、订单变化等消息可以向[小米官方申请](https://dev.mi.com/console/doc/detail?pId=2086#faq-permission) |
 | oppoPushChannelId   | 必填，必须在“通道配置 → 新建通道”模块中登记通道，[OPPO渠道适配](https://open.oppomobile.com/wiki/doc#id=10289) |
-| huaweiPushChannelId | 非必填，                                                     |
+|                     |                                                              |
 
-##### MixPushMessage
+##### MixPushMessage.Builder
 
-|             |                                            |
+| 方法        | 说明                                       |
 | ----------- | ------------------------------------------ |
 | title       | 通知栏标题，如果passThrough是false，必填   |
 | description | 通知栏副标题，如果passThrough是false，必填 |
@@ -297,7 +301,7 @@ class MixPushServerExample {
 2. 用户单应用每日运营消息接收条数上限5条，系统消息无限制。
 3. 正式消息分为运营消息和系统消息，两者每日限制发送量均根据SDK订阅数推算，SDK订阅数小于10000，按10000计数；大于10000，则等于SDK订阅数。
 
-##### 魅族推送
+##### [魅族推送](http://open-wiki.flyme.cn/doc-wiki/index#id?130)
 
 
 
@@ -305,20 +309,23 @@ class MixPushServerExample {
 
 1. 不支持全局推送，需要从数据库查询所有的regId进行推送，建议不要查询超过3个月没有打开APP的regId，降低推送压力。
 
-
+   
 
 ##### 小米推送 APNs服务
 
 1. 不支持透传功能。
 2. 推荐用来代替APNs，可以有效降低服务器推送压力。
 
-##### APNs
+##### [APNs](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)
 
 1. 不支持全局推送。
+2. 推送的证书需要区分正式和测试，并且有效期是一年，需要及时更换。
 
 
 
-##### 通知栏渠道匹配
+##### 区分运营推送和系统推送（通知栏渠道匹配）
+
+由于运营推送每日推送的数量是有限，如果需要用于开发IM和订单变化的推送，推送的数量是不够的，为了解决这个问题，各家推送都有自己的规范，推出了“系统消息”推送。必须严格准守，运营推送严禁走系统消息通道，否则会被禁用。
 
 - [Android 通用渠道适配](https://developer.android.com/training/notify-user/channels)
 - [华为渠道适配](https://developer.huawei.com/consumer/cn/doc/development/HMS-Guides/push-other#channel_id)
@@ -342,10 +349,10 @@ mi代表使用小米推送，huawei代表是使用华为推送。ok代表通过�
 |        | 小米手机 | 华为手机 | 魅族手机 | OPPO手机 | VIVO手机 | 一加手机 |
 | ------ | -------- | -------- | -------- | -------- | -------- | --------  |
 | 4.4 | mi, ok | mi, ok | mi, ok | mi, ok | mi, ok | -  |
-| 5.0   | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | oppo, ok |
+| 5.0   | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | mi, ok |
 | 6.0   | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | - |
-| 7.0   | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | oppo, ok |
-| 8.0   | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | oppo, ok |
+| 7.0   | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | mi, ok |
+| 8.0   | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | mi, ok |
 | 9.0   | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | oppo, ok |
 | 10.0   | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | oppo, ok |
 
