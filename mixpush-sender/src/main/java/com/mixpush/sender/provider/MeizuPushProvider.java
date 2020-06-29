@@ -71,12 +71,17 @@ public class MeizuPushProvider extends MixPushProvider {
     private MixPushResult toMixPushResult(MixPushMessage message, ResultPack<?> result) {
         String errorCode = String.valueOf(result.code());
         String reason = result.comment();
+        String taskId = null;
+        if(result.value() instanceof PushResult){
+            taskId = ((PushResult) result.value()).getMsgId();
+        }
         return new MixPushResult.Builder()
                 .provider(this)
                 .message(message)
                 .statusCode(errorCode)
                 .reason(reason)
                 .extra(result)
+                .taskId(taskId)
                 .succeed(result.isSucceed())
                 .build();
     }

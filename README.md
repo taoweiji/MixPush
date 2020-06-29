@@ -1,5 +1,9 @@
 
 ## MixPush：混合推送SDK，快速集成6个厂商推送，共享系统推送通道，杀死也能收到推送，推送到达率90%以上
+[![Download](https://api.bintray.com/packages/mixpush/maven/mixpush-core/images/download.svg)](https://bintray.com/mixpush/maven/mixpush-core)
+
+
+
 基于 [统一推送联盟](http://chinaupa.com/) 的思想，快速集成了五个厂商的推送平台，共享系统的厂商推送通道，避免APP需要长期在后台运行，杀死APP也能收到推送，大大提高推送到达率。接入有一定的开发成本，需要前后端一起参与才可以完成，如果遇到什么问题可以发Issue提问解答。
 
 1. 开发者只需要少量代码即可集成 小米、华为、魅族、OPPO、VIVO的厂商推送；
@@ -37,7 +41,7 @@
 1. 如果手机支持建厂商推送就使用厂商推送SDK，否则使用小米推送。
 2. 由于华为推送不支持别名和标签，所以建议所有的手机都统一通过regId进行推送。
 3. 由于多数的推送SDK不支持透传，如果APP需要支持透传，建议统一使用小米推送作为透传方案，但是如果使用小米作为所有Android手机的透传功能，那么小米推送就不再支持全局推送。
-4. 由于部分推送不支持全局推送，如果要推送给所有用户，请查询最近3个月有打开APP的用户，进行分组推送。
+4. 由于部分推送不支持全局推送，如果要推送给所有用户，请查询最近3个月有打开APP的用户，进行分组推送，之所以只查询3个人是因为厂家推送多数的有效期都是三个月，就算推送用户也收不到，如果把所有历史的用户都查询出来，推送压力将会加倍。
 5. 建议 iOS 也使用[小米推送](https://dev.mi.com/console/doc/detail?pId=98)，可以有效降低服务器的推送压力，特别是在全局推送和分组推送的时候。
 
 
@@ -91,12 +95,12 @@ android {
     }
 }
 dependencies {
-    implementation 'com.mixpush:mixpush-core:2.0.1'// 核心包
-    implementation 'com.mixpush:mixpush-mi:2.0.1' // 小米推送
-    implementation 'com.mixpush:mixpush-meizu:2.0.1' // 魅族推送
-    implementation 'com.mixpush:mixpush-huawei:2.0.1' // 华为推送
-    implementation 'com.mixpush:mixpush-oppo:2.0.1' // OPPO推送
-    implementation 'com.mixpush:mixpush-vivo:2.0.1' // VIVO推送
+    implementation 'com.mixpush:mixpush-core:2.0.2'// 核心包
+    implementation 'com.mixpush:mixpush-mi:2.0.2' // 小米推送
+    implementation 'com.mixpush:mixpush-meizu:2.0.2' // 魅族推送
+    implementation 'com.mixpush:mixpush-huawei:2.0.2' // 华为推送
+    implementation 'com.mixpush:mixpush-oppo:2.0.2' // OPPO推送
+    implementation 'com.mixpush:mixpush-vivo:2.0.2' // VIVO推送
 }
 ```
 
@@ -122,12 +126,12 @@ public class MyUnifiedPushReceiver extends UnifiedPushReceiver {
 
     @Override
     public void onRegisterSucceed(Context context,PushPlatform platform) {
-        // 这里需要实现上传regId和推送平台信息到服务端保存。
+        // 这里需要实现上传regId和推送平台信息到服务端保存，也可以通过getRegisterId的方式实现
     }
 
     @Override
     public void onNotificationMessageClicked(Context context, UnifiedPushMessage message) {
-        // 通知栏消息点击触发，实现打开具体页面，打开浏览器等。
+        // TODO 通知栏消息点击触发，实现打开具体页面，打开浏览器等。
     }
 }
 ```
@@ -141,9 +145,8 @@ UnifiedPush.getInstance().setPushListener(new MyUnifiedPushReceiver());
 // 默认初始化5大推送平台（小米推送、华为推送、魅族推送、OPPO推送、VIVO推送）
 UnifiedPush.getInstance().register(this);
 ```
-
+获取regId，建议在首页的onCreate调用,并上报regId给服务端
 ```java
-// 建议在首页的onCreate调用,并上报regId给服务端
 MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
     public void callback(MixPushPlatform platform) {
         if (platform != null) {
@@ -217,7 +220,7 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
     <dependency>
         <groupId>com.mixpush</groupId>
         <artifactId>mixpush-sender</artifactId>
-        <version>2.0.1</version>
+        <version>2.0.2</version>
         <type>pom</type>
     </dependency>
 </dependencies>

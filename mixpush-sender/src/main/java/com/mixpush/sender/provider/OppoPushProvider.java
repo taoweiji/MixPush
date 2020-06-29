@@ -142,6 +142,7 @@ public class OppoPushProvider extends MixPushProvider {
                 .statusCode(errorCode)
                 .reason(reason)
                 .extra(result)
+                .taskId(message.getOppoTaskId())
                 .succeed(result.getReturnCode().getCode() == 0)
                 .build();
     }
