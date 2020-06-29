@@ -1,0 +1,21 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.mixpush.vivo">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application>
+        <!--Vivo Push开放平台中应用的appid 和api key-->
+        <meta-data
+                android:name="com.vivo.push.api_key"
+                android:value="${VIVO_APP_KEY}" />
+        <meta-data
+                android:name="com.vivo.push.app_id"
+                android:value="${VIVO_APP_ID}" />
+        <service
+                android:name="com.vivo.push.sdk.service.CommandClientService"
+                android:exported="true" />
+        <receiver android:name="com.mixpush.vivo.PushMessageReceiverImpl">
+            <intent-filter>
+                <action android:name="com.vivo.pushclient.action.RECEIVE" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>
