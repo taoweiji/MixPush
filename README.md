@@ -1,5 +1,9 @@
 
 ## MixPush：混合推送SDK，快速集成6个厂商推送，共享系统推送通道，杀死也能收到推送，推送到达率90%以上
+[![Download](https://api.bintray.com/packages/mixpush/maven/mixpush-core/images/download.svg)](https://bintray.com/mixpush/maven/mixpush-core)
+
+
+
 基于 [统一推送联盟](http://chinaupa.com/) 的思想，快速集成了五个厂商的推送平台，共享系统的厂商推送通道，避免APP需要长期在后台运行，杀死APP也能收到推送，大大提高推送到达率。接入有一定的开发成本，需要前后端一起参与才可以完成，如果遇到什么问题可以发Issue提问解答。
 
 1. 开发者只需要少量代码即可集成 小米、华为、魅族、OPPO、VIVO的厂商推送；
@@ -91,12 +95,12 @@ android {
     }
 }
 dependencies {
-    implementation 'com.mixpush:mixpush-core:2.0.1'// 核心包
-    implementation 'com.mixpush:mixpush-mi:2.0.1' // 小米推送
-    implementation 'com.mixpush:mixpush-meizu:2.0.1' // 魅族推送
-    implementation 'com.mixpush:mixpush-huawei:2.0.1' // 华为推送
-    implementation 'com.mixpush:mixpush-oppo:2.0.1' // OPPO推送
-    implementation 'com.mixpush:mixpush-vivo:2.0.1' // VIVO推送
+    implementation 'com.mixpush:mixpush-core:2.0.2'// 核心包
+    implementation 'com.mixpush:mixpush-mi:2.0.2' // 小米推送
+    implementation 'com.mixpush:mixpush-meizu:2.0.2' // 魅族推送
+    implementation 'com.mixpush:mixpush-huawei:2.0.2' // 华为推送
+    implementation 'com.mixpush:mixpush-oppo:2.0.2' // OPPO推送
+    implementation 'com.mixpush:mixpush-vivo:2.0.2' // VIVO推送
 }
 ```
 
@@ -216,7 +220,7 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
     <dependency>
         <groupId>com.mixpush</groupId>
         <artifactId>mixpush-sender</artifactId>
-        <version>2.0.1</version>
+        <version>2.0.2</version>
         <type>pom</type>
     </dependency>
 </dependencies>
