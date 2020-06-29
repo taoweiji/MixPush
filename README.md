@@ -37,7 +37,7 @@
 1. 如果手机支持建厂商推送就使用厂商推送SDK，否则使用小米推送。
 2. 由于华为推送不支持别名和标签，所以建议所有的手机都统一通过regId进行推送。
 3. 由于多数的推送SDK不支持透传，如果APP需要支持透传，建议统一使用小米推送作为透传方案，但是如果使用小米作为所有Android手机的透传功能，那么小米推送就不再支持全局推送。
-4. 由于部分推送不支持全局推送，如果要推送给所有用户，请查询最近3个月有打开APP的用户，进行分组推送。
+4. 由于部分推送不支持全局推送，如果要推送给所有用户，请查询最近3个月有打开APP的用户，进行分组推送，之所以只查询3个人是因为厂家推送多数的有效期都是三个月，就算推送用户也收不到，如果把所有历史的用户都查询出来，推送压力将会加倍。
 5. 建议 iOS 也使用[小米推送](https://dev.mi.com/console/doc/detail?pId=98)，可以有效降低服务器的推送压力，特别是在全局推送和分组推送的时候。
 
 
@@ -122,12 +122,12 @@ public class MyUnifiedPushReceiver extends UnifiedPushReceiver {
 
     @Override
     public void onRegisterSucceed(Context context,PushPlatform platform) {
-        // 这里需要实现上传regId和推送平台信息到服务端保存。
+        // 这里需要实现上传regId和推送平台信息到服务端保存，也可以通过getRegisterId的方式实现
     }
 
     @Override
     public void onNotificationMessageClicked(Context context, UnifiedPushMessage message) {
-        // 通知栏消息点击触发，实现打开具体页面，打开浏览器等。
+        // TODO 通知栏消息点击触发，实现打开具体页面，打开浏览器等。
     }
 }
 ```
@@ -141,9 +141,8 @@ UnifiedPush.getInstance().setPushListener(new MyUnifiedPushReceiver());
 // 默认初始化5大推送平台（小米推送、华为推送、魅族推送、OPPO推送、VIVO推送）
 UnifiedPush.getInstance().register(this);
 ```
-
+获取regId，建议在首页的onCreate调用,并上报regId给服务端
 ```java
-// 建议在首页的onCreate调用,并上报regId给服务端
 MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
     public void callback(MixPushPlatform platform) {
         if (platform != null) {

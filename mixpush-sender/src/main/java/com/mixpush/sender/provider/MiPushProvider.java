@@ -100,6 +100,7 @@ public class MiPushProvider extends MixPushProvider {
                 .statusCode(errorCode)
                 .reason(reason)
                 .extra(result)
+                .taskId(result.getMessageId())
                 .succeed(ErrorCode.Success == result.getErrorCode())
                 .build();
     }

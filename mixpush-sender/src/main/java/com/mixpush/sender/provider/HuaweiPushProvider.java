@@ -139,6 +139,7 @@ public class HuaweiPushProvider extends MixPushProvider {
                 .statusCode(errorCode)
                 .reason(reason)
                 .extra(result)
+                .taskId(result.getRequestId())
                 .succeed("Success".equals(result.getMsg()))
                 .build();
     }

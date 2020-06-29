@@ -18,6 +18,7 @@ public class MixPushResult {
     private String messageId;
     private Throwable error;
     private boolean succeed;
+    private String taskId;
 
     private MixPushResult() {
 
@@ -49,6 +50,10 @@ public class MixPushResult {
 
     public Throwable getError() {
         return error;
+    }
+
+    public String getTaskId() {
+        return taskId;
     }
 
     public boolean isSucceed() {
@@ -100,6 +105,7 @@ public class MixPushResult {
                 ", statusCode='" + statusCode + '\'' +
                 ", reason='" + reason + '\'' +
                 ", messageId='" + messageId + '\'' +
+                ", taskId='" + taskId + '\'' +
                 ", results=" + results +
                 ", extra=" + extra +
                 ", error=" + error +
@@ -152,6 +158,11 @@ public class MixPushResult {
 
         public Builder platformName(String platformName) {
             result.platformName = platformName;
+            return this;
+        }
+
+        public Builder taskId(String taskId) {
+            result.taskId = taskId;
             return this;
         }
     }
