@@ -3,11 +3,18 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MixPush.iml" filepath="$PROJECT_DIR$/MixPush.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client-core/MixPush-client-core.iml" filepath="$PROJECT_DIR$/.idea/modules/client-core/MixPush-client-core.iml" group="MixPush/client-core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client-getui/MixPush-client-getui.iml" filepath="$PROJECT_DIR$/.idea/modules/client-getui/MixPush-client-getui.iml" group="MixPush/client-getui" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client-meizu/MixPush-client-meizu.iml" filepath="$PROJECT_DIR$/.idea/modules/client-meizu/MixPush-client-meizu.iml" group="MixPush/client-meizu" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client-mipush/MixPush-client-mipush.iml" filepath="$PROJECT_DIR$/.idea/modules/client-mipush/MixPush-client-mipush.iml" group="MixPush/client-mipush" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo/MixPush-demo.iml" filepath="$PROJECT_DIR$/.idea/modules/demo/MixPush-demo.iml" group="MixPush/demo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/server/MixPush-server.iml" filepath="$PROJECT_DIR$/.idea/modules/server/MixPush-server.iml" group="MixPush/server" />
       <module fileurl="file://$PROJECT_DIR$/client-core/client-core.iml" filepath="$PROJECT_DIR$/client-core/client-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/client-getui/client-getui.iml" filepath="$PROJECT_DIR$/client-getui/client-getui.iml" />
       <module fileurl="file://$PROJECT_DIR$/client-meizu/client-meizu.iml" filepath="$PROJECT_DIR$/client-meizu/client-meizu.iml" />
       <module fileurl="file://$PROJECT_DIR$/client-mipush/client-mipush.iml" filepath="$PROJECT_DIR$/client-mipush/client-mipush.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/github-MixPush.iml" filepath="$PROJECT_DIR$/.idea/modules/github-MixPush.iml" group="MixPush" />
       <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
     </modules>
   </component>
