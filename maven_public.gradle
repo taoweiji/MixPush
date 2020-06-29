@@ -1,5 +1,5 @@
 group = "com.mixpush"
-version = "2.0.1"
+version = "2.0.2"
 
 apply plugin: 'maven'
 apply plugin: 'com.novoda.bintray-release'
