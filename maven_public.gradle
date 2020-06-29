@@ -1,0 +1,14 @@
+group = "com.mixpush"
+version = "2.0.1"
+
+apply plugin: 'maven'
+apply plugin: 'com.novoda.bintray-release'
+publish {
+    userOrg = "mixpush"
+    groupId = group
+    artifactId = project.name
+    publishVersion = version
+    desc = "集成六大厂家推送,推送到达率高达90%以上"
+    website = "https://github.com/taoweiji/MixPush"
+    dryRun = false
+}
