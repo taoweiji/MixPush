@@ -142,6 +142,18 @@ UnifiedPush.getInstance().setPushListener(new MyUnifiedPushReceiver());
 UnifiedPush.getInstance().register(this);
 ```
 
+```java
+// 建议在首页的onCreate调用,并上报regId给服务端
+MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
+    public void callback(MixPushPlatform platform) {
+        if (platform != null) {
+            Log.e("GetRegisterIdCallback", platform.toString());
+            // TODO 上报regId给服务端
+        }
+    }
+});
+```
+
 1. 务必在 onRegisterSucceed 实现上传 RegId 到服务端。
 2. 请在 onNotificationMessageClicked 实现对通知栏的操作，比如打开浏览器、跳转某个页面。
 
@@ -223,17 +235,17 @@ class MixPushServerExample {
                 .huawei("<appId>", "<appSecretKey>")
                 .oppo("<appKey>", "<masterSecret>")
                 .vivo("<appId>", "<appKey>", "<appSecretKey>")
-          		//.miAPNs("<appSecretKey>")
+                .miAPNs("<appSecretKey>")
                 .build();
         MixPushMessageConfig activitiesMessageConfig = new MixPushMessageConfig.Builder()
-         		 // OPPO 必须在“通道配置 → 新建通道”模块中登记通道，再在发送消息时选择
-          		 .oppoPushChannelId("activities")
-           		 .build();
+                // OPPO 必须在“通道配置 → 新建通道”模块中登记通道，再在发送消息时选择
+                .oppoPushChannelId("activities")
+                .build();
         UnifiedPushMessage message = new UnifiedPushMessage.Builder()
                 .title("这里是标题")
                 .description("这里是副标题")
                 .payload("{\"url\":\"http://github.com/taoweiji\"}")
-          		.config(activitiesMessageConfig)
+                .config(activitiesMessageConfig)
                 .build();
       	UnifiedPushTarget target = UnifiedPushTarget.single("mi","xxxx");
         sender.sendNotificationMessage(message,target);
