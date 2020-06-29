@@ -16,7 +16,7 @@
 
 5. SDK已经为开发者考虑好各种问题，避免碰壁，从2人超一周开发时间压缩到只需要半天时间即可。
 
-      
+  ​    
 
 
 > 本SDK不支持商业推送平台，因为第三方商业推送SDK的免费版本基本都存在黑产行为，偷偷给用户推送通知栏广告，诱导用户下载其他APP或打开其他APP，非法获利。
@@ -346,15 +346,15 @@ class MixPushServerExample {
 
 ## 测试报告
 mi代表使用小米推送，huawei代表是使用华为推送。ok代表通过、- 代表没有测试设备、error代表异常。
-|        | 小米手机 | 华为手机 | 魅族手机 | OPPO手机 | VIVO手机 | 一加手机 |
+| Android系统 | 小米手机 | 华为手机 | 魅族手机 | OPPO手机 | VIVO手机 | 一加手机 |
 | ------ | -------- | -------- | -------- | -------- | -------- | --------  |
-| 4.4 | mi, ok | mi, ok | mi, ok | mi, ok | mi, ok | -  |
-| 5.0   | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | mi, ok |
-| 6.0   | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | - |
-| 7.0   | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | mi, ok |
-| 8.0   | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | mi, ok |
-| 9.0   | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | oppo, ok |
-| 10.0   | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | oppo, ok |
+| 4.4 | mi, ok | mi, ok | - | mi, ok | mi, ok | -  |
+| 5.x  | mi, ok | mi, ok | meizu, ok | mi, ok | mi, ok | mi, ok |
+| 6.x  | mi, ok | mi, ok | meizu, ok | mi, ok | mi, ok | - |
+| 7.x  | mi, ok | huawei, ok | meizu, ok | oppo, ok | mi, ok | mi, ok |
+| 8.x  | mi, ok | huawei, ok | meizu, ok | oppo, ok | mi, ok | mi, ok |
+| 9.x  | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | oppo, ok |
+| 10.x  | mi, ok | huawei, ok | meizu, ok | oppo, ok | vivo, ok | oppo, ok |
 
 
 
