@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        tools:context=".MainActivity">
+
+    <TextView
+            android:id="@+id/text_reg_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="text_reg_id" />
+
+    <Button
+            android:id="@+id/copy_reg_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="复制通知栏推送 regId" />
+
+    <TextView
+            android:id="@+id/text_pass_through_reg_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="text_pass_through_reg_id" />
+
+    <Button
+            android:id="@+id/copy_pass_through_reg_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="复制透传推送 regId" />
+
+    <TextView
+            android:id="@+id/log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+</LinearLayout>

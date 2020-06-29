@@ -223,17 +223,17 @@ class MixPushServerExample {
                 .huawei("<appId>", "<appSecretKey>")
                 .oppo("<appKey>", "<masterSecret>")
                 .vivo("<appId>", "<appKey>", "<appSecretKey>")
-          			//.miAPNs("<appSecretKey>")
+          		//.miAPNs("<appSecretKey>")
                 .build();
-    		MixPushMessageConfig activitiesMessageConfig = new MixPushMessageConfig.Builder()
-         		 	  // OPPO 必须在“通道配置 → 新建通道”模块中登记通道，再在发送消息时选择
-          		  .oppoPushChannelId("activities")
-           		  .build();
+        MixPushMessageConfig activitiesMessageConfig = new MixPushMessageConfig.Builder()
+         		 // OPPO 必须在“通道配置 → 新建通道”模块中登记通道，再在发送消息时选择
+          		 .oppoPushChannelId("activities")
+           		 .build();
         UnifiedPushMessage message = new UnifiedPushMessage.Builder()
                 .title("这里是标题")
                 .description("这里是副标题")
                 .payload("{\"url\":\"http://github.com/taoweiji\"}")
-          			.config(activitiesMessageConfig)
+          		.config(activitiesMessageConfig)
                 .build();
       	UnifiedPushTarget target = UnifiedPushTarget.single("mi","xxxx");
         sender.sendNotificationMessage(message,target);
