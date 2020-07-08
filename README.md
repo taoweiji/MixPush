@@ -8,7 +8,7 @@
 
 1. 开发者只需要少量代码即可集成 小米、华为、魅族、OPPO、VIVO，苹果的厂商推送；
 
-2. 会根据手机厂商推送的支持情况智能选择不同的推送；
+2. 根据手机厂商推送的支持情况智能选择不同的推送；
 
 3. 共享系统推送通道，杀死APP也能收到推送，推送到达率高达90%以上；
 
@@ -205,7 +205,7 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
 ## Java 服务端配置
 
 1. 支持全局推送、单条推送、分组推送。
-2. 建议客户端每次打开APP的时候，都请求api登记RegId更新，并记录最后修改时间，无论regId是否有修改。
+2. 建议客户端每次打开APP的时候，都请求api登记RegId更新，服务端并记录时间，无论regId是否有修改。
 3. **由于华为和苹果推送不支持全局推送，需要从数据库查询全部的RegId进行分组推送。**
 4. **超过3个月没有打开APP，建议不要推送，避免浪费资源，特别是全局推送的时候。**
 
@@ -282,12 +282,14 @@ class MixPushServerExample {
 | messageId   | 非必填，会默认生成一个，用于追踪Result     |
 | config      | 必填，配置ChannelId等信息                  |
 
+
+
 ### 问题汇总
 
 ##### [小米推送](https://dev.mi.com/console/doc/detail?pId=863)
 
-2. MIUI日联网设备数≥10000时，当日可推送`普通消息`数量为MIUI日联网设备数*5。
-3. `普通消息`每日推送数量有限，如果需要开发即时聊天/订单变化，请申请[通知消息权限](https://dev.mi.com/console/doc/detail?pId=2086#faq-permission)，发送数量不受限制。
+1. MIUI日联网设备数≥10000时，当日可推送`普通消息`数量为MIUI日联网设备数*5。
+2. 普通消息`每日推送数量有限，如果需要开发即时聊天/订单变化，请申请[通知消息权限](https://dev.mi.com/console/doc/detail?pId=2086#faq-permission)，发送数量不受限制。
 
 ##### [OPPO推送](https://open.oppomobile.com/wiki/doc#id=10194)
 
@@ -300,30 +302,31 @@ class MixPushServerExample {
 1. 目前vivo手机接收的消息为7:00-23:00，服务器允许推送时间为7:00-22:00，系统消息不受此时间限制。
 2. 用户单应用每日运营消息接收条数上限5条，系统消息无限制。
 3. 正式消息分为运营消息和系统消息，两者每日限制发送量均根据SDK订阅数推算，SDK订阅数小于10000，按10000计数；大于10000，则等于SDK订阅数。
+4. 运营推送vivoSystemMessage必须设置为false，否则会被禁用推送功能。
 
 ##### [魅族推送](http://open-wiki.flyme.cn/doc-wiki/index#id?130)
 
+1. 无需区分运营推送和系统消息。
 
-
-##### 华为推送
+##### [华为推送](https://developer.huawei.com/consumer/cn/doc/development/HMS-2-References/hmssdk_huaweipush_api_reference_errorcode)
 
 1. 不支持全局推送，需要从数据库查询所有的regId进行推送，建议不要查询超过3个月没有打开APP的regId，降低推送压力。
 
    
 
-##### 小米推送 APNs服务
+##### [小米推送 APNs服务](https://dev.mi.com/console/doc/detail?pId=98)
 
 1. 不支持透传功能。
 2. 推荐用来代替APNs，可以有效降低服务器推送压力。
 
 ##### [APNs](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)
 
-1. 不支持全局推送。
+1. 不支持全局推送，需要从数据库查询所有的regId进行推送，建议不要查询超过6个月没有打开APP的regId，降低推送压力。
 2. 推送的证书需要区分正式和测试，并且有效期是一年，需要及时更换。
 
 
 
-##### 区分运营推送和系统推送（通知栏渠道匹配）
+##### 需要区分运营推送和系统推送（通知栏渠道匹配）
 
 由于运营推送每日推送的数量是有限，如果需要用于开发IM和订单变化的推送，推送的数量是不够的，为了解决这个问题，各家推送都有自己的规范，推出了“系统消息”推送。必须严格准守，运营推送严禁走系统消息通道，否则会被禁用。
 
@@ -338,9 +341,10 @@ class MixPushServerExample {
 
 ##### 透传消息
 
-1. 默认不开启透传功能，需要手动开启。
+1. 默认不开启透传功能，需要手动开启，但是如果开启小米推送作为默认透传，将无法使用小米进行全局推送，因为会导致非小米手机推送2条推送，必须走分组推送。
 2. iOS不支持透传功能。
-3. MixPush推荐使用小米推送作为统一的透传功能，但是如果开启小米推送作为默认透传，将无法使用小米进行全局推送，因为会导致非小米手机推送2条推送，必须走分组推送。
+
+
 
 
 
@@ -361,10 +365,8 @@ mi代表使用小米推送，huawei代表是使用华为推送。ok代表通过�
 ### TODO
 
 - 支持Google FCM
-- 提供Flutter插件，支持Android 和 iOS。
-- 清理通知栏的工具
+- Flutter插件，支持Android 和 iOS。
 - 实现消息回执功能
 - 平滑推送
 - 定时推送
-- 支持透传
-- 通知栏重要等级
+- 通知栏重要等级设置
