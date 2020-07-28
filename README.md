@@ -235,7 +235,7 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
 ```java
 class MixPushServerExample {
     public static void main(String[] args) {
-        UnifiedPushSender sender = new UnifiedPushServer.Builder()
+        MixPushSender sender = new MixPushServer.Builder()
                 .packageName("<packageName>")
                 .mi("<appSecretKey>")
                 .meizu("<appId>", "<appSecretKey>")
@@ -248,13 +248,13 @@ class MixPushServerExample {
                 // OPPO 必须在“通道配置 → 新建通道”模块中登记通道，再在发送消息时选择
                 .oppoPushChannelId("activities")
                 .build();
-        UnifiedPushMessage message = new UnifiedPushMessage.Builder()
+        MixPushMessage message = new MixPushMessage.Builder()
                 .title("这里是标题")
                 .description("这里是副标题")
                 .payload("{\"url\":\"http://github.com/taoweiji\"}")
                 .config(activitiesMessageConfig)
                 .build();
-      	UnifiedPushTarget target = UnifiedPushTarget.single("mi","xxxx");
+      	MixPushTarget target = MixPushTarget.single("mi","xxxx");
         sender.sendNotificationMessage(message,target);
     }
 }
