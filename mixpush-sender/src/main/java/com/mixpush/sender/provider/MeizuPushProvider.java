@@ -88,6 +88,9 @@ public class MeizuPushProvider extends MixPushProvider {
 
     private VarnishedMessage toMessage(MixPushMessage mixPushMessage) {
         int hour = (int) (mixPushMessage.getConfig().getTimeToLive() / 1000 / 3600);
+        if(hour == 0){
+            hour = 1;
+        }
         return new VarnishedMessage.Builder()
                 .appId(Long.valueOf(appId))
                 .title(mixPushMessage.getTitle())

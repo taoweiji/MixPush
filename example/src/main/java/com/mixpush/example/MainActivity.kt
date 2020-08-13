@@ -11,6 +11,7 @@ import com.mixpush.core.GetRegisterIdCallback
 import com.mixpush.core.MixPushPlatform
 import com.mixpush.core.MixPushClient
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
                 updateRegId()
             }
         })
+        log.text = Date().toString()
 
         updateRegId()
         onRequirePermissions()

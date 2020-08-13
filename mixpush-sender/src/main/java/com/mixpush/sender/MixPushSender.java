@@ -56,7 +56,7 @@ public class MixPushSender {
 
     private void register() {
         if (miAppSecretKey != null) {
-            addProvider(new MiPushProvider(packageName, miAppSecretKey, usePassThrough));
+            addProvider(new MiPushProvider(packageName, miAppSecretKey, usePassThrough,test));
         }
         if (miAPNsAppSecretKey != null) {
             addProvider(new MiAPNsPushProvider(miAPNsAppSecretKey, test));

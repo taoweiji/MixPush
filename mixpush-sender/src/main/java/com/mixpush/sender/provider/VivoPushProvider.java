@@ -98,9 +98,10 @@ public class VivoPushProvider extends MixPushProvider {
                 .timeToLive((int) (mixPushMessage.getConfig().getTimeToLive() / 1000))
                 .skipType(3)// 1：打开APP首页2：打开链接3：自定义4：打开app内指定页面
                 .skipContent(mixPushMessage.isJustOpenApp() ? "{}" : mixPushMessage.getPayload())
-                .requestId(mixPushMessage.getMessageId()); // 必填项，用户请求唯一标识 最大64字符
+                .requestId(mixPushMessage.getMessageId()) // 必填项，用户请求唯一标识 最大64字符
+                .classification(mixPushMessage.getConfig().isSystemMessage() ? 1 : 0); // 消息类型 0：运营类消息，1：系统类消息
 //                .pushMode(test ? 1 : 0) // 推送模式 0：正式推送；1：测试推送，不填默认为0（测试推送，只能给web界面录入的测试用户推送；审核中应用，只能用测试推送）
-//                .classification(mixPushMessage.getConfig().isSystemMessage() ? 1 : 0); // 消息类型 0：运营类消息，1：系统类消息
+
     }
 
     @Override

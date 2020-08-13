@@ -25,9 +25,10 @@ public class MiPushProvider extends MixPushProvider {
     private final String packageName;
     private final Sender sender;
     private final boolean usePassThrough;
+    private final boolean test;
 
-    public MiPushProvider(String packageName, String appSecretKey, boolean usePassThrough) {
-//        this.appSecretKey = appSecretKey;
+    public MiPushProvider(String packageName, String appSecretKey, boolean usePassThrough,boolean test) {
+        this.test = test;
         this.usePassThrough = usePassThrough;
         this.packageName = packageName;
         this.sender = new Sender(appSecretKey);
