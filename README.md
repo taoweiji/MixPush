@@ -95,12 +95,12 @@ android {
     }
 }
 dependencies {
-    implementation 'com.mixpush:mixpush-core:2.0.2'// 核心包
-    implementation 'com.mixpush:mixpush-mi:2.0.2' // 小米推送
-    implementation 'com.mixpush:mixpush-meizu:2.0.2' // 魅族推送
-    implementation 'com.mixpush:mixpush-huawei:2.0.2' // 华为推送
-    implementation 'com.mixpush:mixpush-oppo:2.0.2' // OPPO推送
-    implementation 'com.mixpush:mixpush-vivo:2.0.2' // VIVO推送
+    implementation 'com.mixpush:mixpush-core:2.0.3'// 核心包
+    implementation 'com.mixpush:mixpush-mi:2.0.3' // 小米推送
+    implementation 'com.mixpush:mixpush-meizu:2.0.3' // 魅族推送
+    implementation 'com.mixpush:mixpush-huawei:2.0.3' // 华为推送
+    implementation 'com.mixpush:mixpush-oppo:2.0.3' // OPPO推送
+    implementation 'com.mixpush:mixpush-vivo:2.0.3' // VIVO推送
 }
 ```
 
@@ -235,14 +235,15 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
 ```java
 class MixPushServerExample {
     public static void main(String[] args) {
-        MixPushSender sender = new MixPushServer.Builder()
+        MixPushSender sender = new MixPushSender.Builder()
                 .packageName("<packageName>")
-                .mi("<appSecretKey>")
+                .mi("<appSecretKey>",false)
                 .meizu("<appId>", "<appSecretKey>")
                 .huawei("<appId>", "<appSecretKey>")
                 .oppo("<appKey>", "<masterSecret>")
                 .vivo("<appId>", "<appKey>", "<appSecretKey>")
                 .miAPNs("<appSecretKey>")
+                .test(true)
                 .build();
         MixPushMessageConfig activitiesMessageConfig = new MixPushMessageConfig.Builder()
                 // OPPO 必须在“通道配置 → 新建通道”模块中登记通道，再在发送消息时选择
@@ -290,6 +291,7 @@ class MixPushServerExample {
 
 1. MIUI日联网设备数≥10000时，当日可推送`普通消息`数量为MIUI日联网设备数*5。
 2. 普通消息`每日推送数量有限，如果需要开发即时聊天/订单变化，请申请[通知消息权限](https://dev.mi.com/console/doc/detail?pId=2086#faq-permission)，发送数量不受限制。
+3. 使用使用miAPNS，并开启了沙箱，会导致Android手机失效。
 
 ##### [OPPO推送](https://open.oppomobile.com/wiki/doc#id=10194)
 
@@ -300,7 +302,7 @@ class MixPushServerExample {
 ##### [VIVO推送](https://dev.vivo.com.cn/documentCenter/doc/156)
 
 1. 目前vivo手机接收的消息为7:00-23:00，服务器允许推送时间为7:00-22:00，系统消息不受此时间限制。
-2. 用户单应用每日运营消息接收条数上限5条，系统消息无限制。
+2. 用户单应用每日运营消息接收条数`上限5条`，系统消息无限制。
 3. 正式消息分为运营消息和系统消息，两者每日限制发送量均根据SDK订阅数推算，SDK订阅数小于10000，按10000计数；大于10000，则等于SDK订阅数。
 4. 运营推送vivoSystemMessage必须设置为false，否则会被禁用推送功能。
 

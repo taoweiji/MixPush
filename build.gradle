@@ -36,8 +36,9 @@ subprojects {
         repositories {
             mavenDeployer {
 //                repository(url: uri('/Users/Wiki/Downloads/repo'))
-                repository(url: "http://maven.foreend.thejoyrun.com/repository/jiran/") {
-                    authentication(userName: 'admin', password: 'joyrun123')
+//                repository(url: "http://maven.idc.thejoyrun.com/nexus/content/groups/public") {
+                repository(url: "http://maven.idc.thejoyrun.com/nexus/content/repositories/releases/") {
+                    authentication(userName: 'admin', password: 'Letyourun')
                 }
             }
         }

@@ -12,6 +12,7 @@ public class OppoMessageReceiveActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Uri data = getIntent().getData();
+        this.finish();
         if (data != null) {
             MixPushMessage message = new MixPushMessage();
             message.setPlatform(OppoPushProvider.OPPO);
@@ -25,6 +26,5 @@ public class OppoMessageReceiveActivity extends Activity {
             MixPushClient.getInstance().openApp(this);
         }
         // mixpush://com.mixpush.oppo/message?title=title&description=description&payload=%7b%22url%22%3a%22http%3a%2f%2fsoso.com%22%7d
-        this.finish();
     }
 }

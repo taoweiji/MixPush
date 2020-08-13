@@ -19,7 +19,7 @@ import java.util.List;
 public class MiAPNsPushProvider extends MiPushProvider {
 
     public MiAPNsPushProvider(String appSecretKey, boolean test) {
-        super("", appSecretKey, false);
+        super("", appSecretKey, false,test);
         if (test) {
             Constants.useSandbox();
         } else {

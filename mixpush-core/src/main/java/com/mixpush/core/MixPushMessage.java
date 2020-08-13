@@ -1,6 +1,11 @@
 package com.mixpush.core;
 
-public class MixPushMessage {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class MixPushMessage implements Serializable, Parcelable {
     /**
      * 通知栏标题,透传该字段为空
      */
@@ -75,6 +80,7 @@ public class MixPushMessage {
                 '}';
     }
 
+
 //    public void setMsgId(String msgId) {
 //        this.msgId = msgId;
 //    }
@@ -82,4 +88,41 @@ public class MixPushMessage {
 //    public String getMsgId() {
 //        return msgId;
 //    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.title);
+        dest.writeString(this.description);
+        dest.writeString(this.platform);
+        dest.writeString(this.payload);
+        dest.writeByte(this.passThrough ? (byte) 1 : (byte) 0);
+    }
+
+    public MixPushMessage() {
+    }
+
+    protected MixPushMessage(Parcel in) {
+        this.title = in.readString();
+        this.description = in.readString();
+        this.platform = in.readString();
+        this.payload = in.readString();
+        this.passThrough = in.readByte() != 0;
+    }
+
+    public static final Parcelable.Creator<MixPushMessage> CREATOR = new Parcelable.Creator<MixPushMessage>() {
+        @Override
+        public MixPushMessage createFromParcel(Parcel source) {
+            return new MixPushMessage(source);
+        }
+
+        @Override
+        public MixPushMessage[] newArray(int size) {
+            return new MixPushMessage[size];
+        }
+    };
 }
