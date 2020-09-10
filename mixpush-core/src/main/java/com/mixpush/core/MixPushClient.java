@@ -71,7 +71,7 @@ public class MixPushClient {
     /**
      * @param defaultPlatform 默认的推送平台
      */
-    public void register(Context context, String defaultPlatform, System passThroughPlatform) {
+    public void register(Context context, String defaultPlatform, String passThroughPlatform) {
         if (!ProcessUtils.isMainProcess(context)) {
             handler.getLogger().log(TAG, "只允许在主进程初始化");
             return;
