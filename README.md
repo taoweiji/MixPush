@@ -290,7 +290,7 @@ class MixPushServerExample {
 
 1. MIUI日联网设备数≥10000时，当日可推送`普通消息`数量为MIUI日联网设备数*5。
 2. 普通消息`每日推送数量有限，如果需要开发即时聊天/订单变化，请申请[通知消息权限](https://dev.mi.com/console/doc/detail?pId=2086#faq-permission)，发送数量不受限制。
-3. 使用使用miAPNS，并开启了沙箱，会导致Android手机失效。
+3. **使用使用miAPNS，并开启了沙箱，会导致Android手机失效**。
 
 ##### [OPPO推送](https://open.oppomobile.com/wiki/doc#id=10194)
 
