@@ -79,8 +79,8 @@ public class HuaweiPushProvider extends MixPushProvider {
         String url = "mixpush://com.mixpush.huawei/message?";
         if (!mixPushMessage.isJustOpenApp()) {
             try {
-                url += "title=" + URLEncoder.encode(mixPushMessage.getTitle(), "utf-8");
-                url += "&description=" + URLEncoder.encode(mixPushMessage.getDescription(), "utf-8");
+//                url += "title=" + URLEncoder.encode(mixPushMessage.getTitle(), "utf-8");
+//                url += "&description=" + URLEncoder.encode(mixPushMessage.getDescription(), "utf-8");
                 url += "&payload=" + URLEncoder.encode(mixPushMessage.getPayload(), "utf-8");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
