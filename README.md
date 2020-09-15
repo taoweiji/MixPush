@@ -141,7 +141,7 @@ public class MyPushReceiver extends MixPushReceiver {
 ```java
 // 开启日志
 //UnifiedPush.getInstance().setLogger(new PushLogger(){});
-UnifiedPush.getInstance().setPushListener(new MyPushReceiver());
+UnifiedPush.getInstance().setPushReceiver(new MyPushReceiver());
 // 默认初始化5个推送平台（小米推送、华为推送、魅族推送、OPPO推送、VIVO推送），以小米推荐作为默认平台
 UnifiedPush.getInstance().register(this);
 ```
@@ -290,7 +290,7 @@ class MixPushServerExample {
 
 1. MIUI日联网设备数≥10000时，当日可推送`普通消息`数量为MIUI日联网设备数*5。
 2. 普通消息`每日推送数量有限，如果需要开发即时聊天/订单变化，请申请[通知消息权限](https://dev.mi.com/console/doc/detail?pId=2086#faq-permission)，发送数量不受限制。
-3. 使用使用miAPNS，并开启了沙箱，会导致Android手机失效。
+3. **使用使用miAPNS，并开启了沙箱，会导致Android手机无法收到推送（相当于只能在正式环境测试）**。
 
 ##### [OPPO推送](https://open.oppomobile.com/wiki/doc#id=10194)
 
