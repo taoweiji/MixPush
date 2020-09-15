@@ -31,7 +31,6 @@ public class MiAPNsPushProvider extends MiPushProvider {
     protected Message toMessage(MixPushMessage mixPushMessage) {
         Message.IOSBuilder builder = new Message.IOSBuilder()
                 .title(mixPushMessage.getTitle())
-                .subtitle(mixPushMessage.getTitle())
                 .body(mixPushMessage.getDescription())
                 .extra("payload", mixPushMessage.isJustOpenApp() ? "{}" : mixPushMessage.getPayload())
                 .timeToLive(mixPushMessage.getConfig().getTimeToLive())
