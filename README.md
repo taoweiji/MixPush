@@ -141,7 +141,7 @@ public class MyPushReceiver extends MixPushReceiver {
 ```java
 // 开启日志
 //UnifiedPush.getInstance().setLogger(new PushLogger(){});
-UnifiedPush.getInstance().setPushListener(new MyPushReceiver());
+UnifiedPush.getInstance().setPushReceiver(new MyPushReceiver());
 // 默认初始化5个推送平台（小米推送、华为推送、魅族推送、OPPO推送、VIVO推送），以小米推荐作为默认平台
 UnifiedPush.getInstance().register(this);
 ```
