@@ -140,10 +140,10 @@ public class MyPushReceiver extends MixPushReceiver {
 
 ```java
 // 开启日志
-//UnifiedPush.getInstance().setLogger(new PushLogger(){});
-UnifiedPush.getInstance().setPushReceiver(new MyPushReceiver());
+//MixPush.getInstance().setLogger(new PushLogger(){});
+MixPush.getInstance().setPushReceiver(new MyPushReceiver());
 // 默认初始化5个推送平台（小米推送、华为推送、魅族推送、OPPO推送、VIVO推送），以小米推荐作为默认平台
-UnifiedPush.getInstance().register(this);
+MixPush.getInstance().register(this);
 ```
 获取regId，建议在首页的onCreate调用,并上报regId给服务端
 ```java
