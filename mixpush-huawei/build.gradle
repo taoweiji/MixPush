@@ -27,7 +27,7 @@ allprojects {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':mixpush-core')
-    implementation 'com.huawei.hms:push:4.0.4.301'
+    implementation 'com.huawei.hms:push:5.0.2.300'
 }
 
 apply from: '../maven_public.gradle'
