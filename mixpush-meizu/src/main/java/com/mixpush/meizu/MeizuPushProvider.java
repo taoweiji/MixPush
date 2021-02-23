@@ -35,7 +35,7 @@ public class MeizuPushProvider extends BaseMixPushProvider {
     public boolean isSupport(Context context) {
         String manufacturer = Build.MANUFACTURER.toLowerCase();
         if (manufacturer.equals("meizu")) {
-            return MzSystemUtils.isMeizuAndFlyme();
+            return MzSystemUtils.isBrandMeizu(context);
         }
         return false;
     }
