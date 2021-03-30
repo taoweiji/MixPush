@@ -173,8 +173,14 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
 -keep class com.mixpush.vivo.VivoPushProvider {*;}
  
 # 华为推送
--keep class com.hianalytics.android.**{*;} 
--keep class com.huawei.updatesdk.**{*;} 
+-ignorewarnings
+-keepattributes *Annotation*
+-keepattributes Exceptions
+-keepattributes InnerClasses
+-keepattributes Signature
+-keepattributes SourceFile,LineNumberTable
+-keep class com.huawei.hianalytics.**{*;}
+-keep class com.huawei.updatesdk.**{*;}
 -keep class com.huawei.hms.**{*;}
 
 # 小米推送
