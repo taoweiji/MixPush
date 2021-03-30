@@ -108,7 +108,7 @@ dependencies {
 
 华为推送麻烦一些，需要做3步配置：
 
-1. 参考[官方文档](https://developer.huawei.com/consumer/cn/doc/development/HMS-Guides/Preparations)下载 `“agconnect-services.json”`并拷贝到app目录。
+1. 参考[官方文档](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/android-app-quickstart-0000001071490422)下载 `“agconnect-services.json”`并拷贝到app目录。
 2. 配置SHA256证书指纹，否则会提示 **错误 6003 **，详细查看[通用错误码](https://developer.huawei.com/consumer/cn/doc/development/HMS-2-References/hmssdk_huaweipush_api_reference_errorcode)。
 3. 配置指纹证书，否则会提示 **错误 907135702**，详细查看[通用错误码](https://developer.huawei.com/consumer/cn/doc/development/HMS-2-References/hmssdk_huaweipush_api_reference_errorcode)。
 
