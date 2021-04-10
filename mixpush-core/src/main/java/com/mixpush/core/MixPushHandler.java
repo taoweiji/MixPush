@@ -50,6 +50,11 @@ class DefaultPassThroughReceiver implements MixPushPassThroughReceiver {
         }
         passThroughPlatform = pushPlatform;
         logger.log(TAG, "onRegisterSucceed " + pushPlatform.toString());
+        if (handler.callPassThroughReceiver == null) {
+            Exception exception = new Exception("必须要在 register() 之前实现 setPassThroughReceiver()");
+            logger.log(TAG, exception.getMessage(), exception);
+            return;
+        }
         if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
             // 在异步进程回调,避免阻塞主进程
             new Thread(new Runnable() {
@@ -66,6 +71,10 @@ class DefaultPassThroughReceiver implements MixPushPassThroughReceiver {
     @Override
     public void onReceiveMessage(Context context, MixPushMessage message) {
         logger.log(TAG, "PassThroughReceiver.onReceiveMessage " + message.toString());
+        if (handler.callPassThroughReceiver == null) {
+            logger.log(TAG, "你必须设置 setPassThroughReceiver() 才能正常工作");
+            return;
+        }
         handler.callPassThroughReceiver.onReceiveMessage(context, message);
     }
 }
@@ -89,6 +98,11 @@ class DefaultMixPushReceiver extends MixPushReceiver {
         }
         notificationPlatform = mixPushPlatform;
         logger.log(TAG, "onRegisterSucceed " + mixPushPlatform.toString());
+        if (handler.callPushReceiver == null) {
+            Exception exception = new Exception("必须要在 register() 之前实现 setPushReceiver()");
+            logger.log(TAG, exception.getMessage(), exception);
+            return;
+        }
         if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
             // 在异步进程回调,避免阻塞主进程
             new Thread(new Runnable() {
@@ -105,6 +119,11 @@ class DefaultMixPushReceiver extends MixPushReceiver {
     @Override
     public void onNotificationMessageClicked(Context context, MixPushMessage message) {
         logger.log(TAG, "onNotificationMessageClicked " + message.toString());
+        if (handler.callPushReceiver == null) {
+            Exception exception = new Exception("必须设置 setPushReceiver() 才能正常工作");
+            logger.log(TAG, exception.getMessage(), exception);
+            return;
+        }
         if (message.getPayload() == null || message.getPayload().length() < 5) {
             MixPushClient.getInstance().openApp(context);
             handler.callPushReceiver.openAppCallback(context);
@@ -117,6 +136,11 @@ class DefaultMixPushReceiver extends MixPushReceiver {
     @Override
     public void onNotificationMessageArrived(Context context, MixPushMessage message) {
         logger.log(TAG, "onNotificationMessageArrived " + message.toString());
+        if (handler.callPushReceiver == null) {
+            Exception exception = new Exception("必须设置 setPushReceiver() 才能正常工作");
+            logger.log(TAG, exception.getMessage(), exception);
+            return;
+        }
         handler.callPushReceiver.onNotificationMessageArrived(context, message);
     }
 }
