@@ -2,29 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MixPush.iml" filepath="$PROJECT_DIR$/MixPush.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client-core/MixPush-client-core.iml" filepath="$PROJECT_DIR$/.idea/modules/client-core/MixPush-client-core.iml" group="MixPush/client-core" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client-getui/MixPush-client-getui.iml" filepath="$PROJECT_DIR$/.idea/modules/client-getui/MixPush-client-getui.iml" group="MixPush/client-getui" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client-meizu/MixPush-client-meizu.iml" filepath="$PROJECT_DIR$/.idea/modules/client-meizu/MixPush-client-meizu.iml" group="MixPush/client-meizu" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client-mipush/MixPush-client-mipush.iml" filepath="$PROJECT_DIR$/.idea/modules/client-mipush/MixPush-client-mipush.iml" group="MixPush/client-mipush" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo/MixPush-demo.iml" filepath="$PROJECT_DIR$/.idea/modules/demo/MixPush-demo.iml" group="MixPush/demo" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/server/MixPush-server.iml" filepath="$PROJECT_DIR$/.idea/modules/server/MixPush-server.iml" group="MixPush/server" />
-      <module fileurl="file://$PROJECT_DIR$/client-core/client-core.iml" filepath="$PROJECT_DIR$/client-core/client-core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/client-getui/client-getui.iml" filepath="$PROJECT_DIR$/client-getui/client-getui.iml" />
-      <module fileurl="file://$PROJECT_DIR$/client-meizu/client-meizu.iml" filepath="$PROJECT_DIR$/client-meizu/client-meizu.iml" />
-      <module fileurl="file://$PROJECT_DIR$/client-mipush/client-mipush.iml" filepath="$PROJECT_DIR$/client-mipush/client-mipush.iml" />
-      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/example/example.iml" filepath="$PROJECT_DIR$/.idea/modules/example/example.iml" group="MixPush/example" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/github-MixPush.iml" filepath="$PROJECT_DIR$/.idea/modules/github-MixPush.iml" group="MixPush" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/huaweipush-server-sdk/huaweipush-server-sdk.iml" filepath="$PROJECT_DIR$/.idea/modules/huaweipush-server-sdk/huaweipush-server-sdk.iml" group="MixPush/huaweipush-server-sdk" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-core/mixpush-core.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-core/mixpush-core.iml" group="MixPush/mixpush-core" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-huawei/mixpush-huawei.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-huawei/mixpush-huawei.iml" group="MixPush/mixpush-huawei" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-meizu/mixpush-meizu.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-meizu/mixpush-meizu.iml" group="MixPush/mixpush-meizu" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-mi/mixpush-mi.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-mi/mixpush-mi.iml" group="MixPush/mixpush-mi" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-oppo/mixpush-oppo.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-oppo/mixpush-oppo.iml" group="MixPush/mixpush-oppo" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-sender/mixpush-sender.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-sender/mixpush-sender.iml" group="MixPush/mixpush-sender" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-vivo/mixpush-vivo.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-vivo/mixpush-vivo.iml" group="MixPush/mixpush-vivo" />
-      <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MixPush.iml" filepath="$PROJECT_DIR$/.idea/modules/MixPush.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/example/MixPush.example.iml" filepath="$PROJECT_DIR$/.idea/modules/example/MixPush.example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/huaweipush-server-sdk/MixPush.huaweipush-server-sdk.iml" filepath="$PROJECT_DIR$/.idea/modules/huaweipush-server-sdk/MixPush.huaweipush-server-sdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-core/MixPush.mixpush-core.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-core/MixPush.mixpush-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-huawei/MixPush.mixpush-huawei.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-huawei/MixPush.mixpush-huawei.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-meizu/MixPush.mixpush-meizu.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-meizu/MixPush.mixpush-meizu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-mi/MixPush.mixpush-mi.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-mi/MixPush.mixpush-mi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-oppo/MixPush.mixpush-oppo.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-oppo/MixPush.mixpush-oppo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-sender/MixPush.mixpush-sender.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-sender/MixPush.mixpush-sender.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-vivo/MixPush.mixpush-vivo.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-vivo/MixPush.mixpush-vivo.iml" />
     </modules>
   </component>
 </project>
