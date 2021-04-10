@@ -95,12 +95,12 @@ android {
     }
 }
 dependencies {
-    implementation 'com.mixpush:mixpush-core:2.1.0'// 核心包
-    implementation 'com.mixpush:mixpush-mi:2.1.0' // 小米推送
-    implementation 'com.mixpush:mixpush-meizu:2.1.0' // 魅族推送
-    implementation 'com.mixpush:mixpush-huawei:2.1.0' // 华为推送
-    implementation 'com.mixpush:mixpush-oppo:2.1.0' // OPPO推送
-    implementation 'com.mixpush:mixpush-vivo:2.1.0' // VIVO推送
+    implementation 'com.mixpush:mixpush-core:2.1.1'// 核心包
+    implementation 'com.mixpush:mixpush-mi:2.1.1' // 小米推送
+    implementation 'com.mixpush:mixpush-meizu:2.1.1' // 魅族推送
+    implementation 'com.mixpush:mixpush-huawei:2.1.1' // 华为推送
+    implementation 'com.mixpush:mixpush-oppo:2.1.1' // OPPO推送
+    implementation 'com.mixpush:mixpush-vivo:2.1.1' // VIVO推送
 }
 ```
 
@@ -229,7 +229,7 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
     <dependency>
         <groupId>com.mixpush</groupId>
         <artifactId>mixpush-sender</artifactId>
-        <version>2.1.0</version>
+        <version>2.1.1</version>
         <type>pom</type>
     </dependency>
 </dependencies>
