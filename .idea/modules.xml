@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MixPush.iml" filepath="$PROJECT_DIR$/.idea/modules/MixPush.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/example/MixPush.example.iml" filepath="$PROJECT_DIR$/.idea/modules/example/MixPush.example.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/huaweipush-server-sdk/MixPush.huaweipush-server-sdk.iml" filepath="$PROJECT_DIR$/.idea/modules/huaweipush-server-sdk/MixPush.huaweipush-server-sdk.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-core/MixPush.mixpush-core.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-core/MixPush.mixpush-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-huawei/MixPush.mixpush-huawei.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-huawei/MixPush.mixpush-huawei.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mixpush-meizu/MixPush.mixpush-meizu.iml" filepath="$PROJECT_DIR$/.idea/modules/mixpush-meizu/MixPush.mixpush-meizu.iml" />

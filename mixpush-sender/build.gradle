@@ -7,20 +7,20 @@ dependencies {
     api 'org.apache.httpcomponents:httpclient:4.5.12'
     api 'com.alibaba:fastjson:1.2.71'
     api 'org.apache.httpcomponents:httpmime:4.5.12'
-    api 'com.mixpush:opush-server-sdk:1.0.5'
+    api 'io.github.mixpush:opush-server-sdk:2.3.1'
     // vivo依赖
-    api 'com.mixpush:vpush-server-sdk:2.2.0'
+    api 'io.github.mixpush:vpush-server-sdk:2.3.0'
     api 'org.apache.httpcomponents:httpclient:4.5.12'
     api 'com.alibaba:fastjson:1.2.71'
     api 'org.apache.httpcomponents:httpmime:4.5.12'
     // xiaomi依赖
-    api 'com.mixpush:mipush-server-sdk:2.2.21'
+    api 'io.github.mixpush:mipush-server-sdk:2.3.0'
     api 'com.googlecode.json-simple:json-simple:1.1'
     // meizu依赖
     api 'com.meizu.flyme:push-server-sdk:1.2.8.20190114_release'
     // huawei依赖
 //    api project(path: ':huaweipush-server-sdk')
-    api 'com.mixpush:huaweipush-server-sdk:2.0.0'
+    api 'io.github.mixpush:huaweipush-server-sdk:2.3.0'
     api 'org.apache.commons:commons-lang3:3.9'
     api 'com.google.guava:guava:26.0-jre'
     api 'org.slf4j:slf4j-api:1.7.26'
@@ -37,4 +37,4 @@ sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
 
 
-apply from: '../maven_public.gradle'
+//apply from: '../maven_public.gradle'

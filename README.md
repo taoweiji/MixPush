@@ -58,7 +58,7 @@
 buildscript {
     repositories {
       	...
-        jcenter()
+        mavenCentral()
         maven { url 'http://developer.huawei.com/repo/' }
     }
     dependencies {
@@ -69,6 +69,7 @@ buildscript {
 allprojects {
     repositories {
         ...
+        mavenCentral()
         jcenter()
         maven { url 'http://developer.huawei.com/repo/' }
     }
@@ -95,12 +96,12 @@ android {
     }
 }
 dependencies {
-    implementation 'com.mixpush:mixpush-core:2.1.1'// 核心包
-    implementation 'com.mixpush:mixpush-mi:2.1.1' // 小米推送
-    implementation 'com.mixpush:mixpush-meizu:2.1.1' // 魅族推送
-    implementation 'com.mixpush:mixpush-huawei:2.1.1' // 华为推送
-    implementation 'com.mixpush:mixpush-oppo:2.1.1' // OPPO推送
-    implementation 'com.mixpush:mixpush-vivo:2.1.1' // VIVO推送
+    implementation 'io.github.mixpush:mixpush-core:2.3.1'// 核心包
+    implementation 'io.github.mixpush:mixpush-mi:2.3.1' // 小米推送
+    implementation 'io.github.mixpush:mixpush-meizu:2.3.1' // 魅族推送
+    implementation 'io.github.mixpush:mixpush-huawei:2.3.1' // 华为推送
+    implementation 'io.github.mixpush:mixpush-oppo:2.3.1' // OPPO推送
+    implementation 'io.github.mixpush:mixpush-vivo:2.3.1' // VIVO推送
 }
 ```
 
@@ -221,15 +222,15 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
 ```xml
 <repositories>
     <repository>
-        <id>mixpush</id>
-        <url>https://dl.bintray.com/mixpush/maven/</url>
+        <id>maven2</id>
+        <url>https://repo.maven.apache.org/maven2</url>
     </repository>
 </repositories>
 <dependencies>
     <dependency>
-        <groupId>com.mixpush</groupId>
+        <groupId>io.github.mixpush</groupId>
         <artifactId>mixpush-sender</artifactId>
-        <version>2.1.1</version>
+        <version>2.3.1</version>
         <type>pom</type>
     </dependency>
 </dependencies>
