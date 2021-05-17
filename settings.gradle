@@ -11,7 +11,11 @@ include ':mixpush-core'
 
 
 include ':mixpush-sender'
-include ':huaweipush-server-sdk'
+
+//include ':huaweipush-server-sdk'
+//include ':opush-server-sdk'
+//include ':vpush-server-sdk'
+//include ':mipush-server-sdk'
 //include ':mixpush-server-mi'
 //include ':mixpush-server-huawei'
 //include ':mixpush-server-oppo'

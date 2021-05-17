@@ -1,14 +1,86 @@
-group = "com.mixpush"
-version = "2.1.1"
+group = "io.github.mixpush"
+version = "2.3.1"
 
 apply plugin: 'maven'
-apply plugin: 'com.novoda.bintray-release'
-publish {
-    userOrg = "mixpush"
-    groupId = group
-    artifactId = project.name
-    publishVersion = version
-    desc = "集成六大厂家推送,推送到达率高达90%以上"
-    website = "https://github.com/taoweiji/MixPush"
-    dryRun = false
+apply plugin: 'signing'
+
+
+signing {
+    sign configurations.archives
+}
+boolean isAndroid = project.getPlugins().hasPlugin('com.android.library')
+if (isAndroid) {
+    task androidJavadocs(type: Javadoc) {
+        source = android.sourceSets.main.java.source
+        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+        excludes = ['**/*.kt']
+    }
+
+    task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+        classifier = 'javadoc'
+        from androidJavadocs.destinationDir
+    }
+
+    task androidSourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.source
+    }
+} else {
+    task javadocJar(type: Jar) {
+        classifier = 'javadoc'
+        from javadoc
+    }
+
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+    artifacts {
+        archives javadocJar, sourcesJar
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://s01.oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'MixPush'
+                packaging isAndroid ? 'jar' : 'aar'
+                // optionally artifactId can be defined here
+                description 'A application used as an example on how to set up pushing its components to the Central Repository . '
+                url 'https://github.com/taoweiji/MixPush'
+
+                scm {
+                    connection 'scm:git:git@github.com:taoweiji/MixPush.git'
+                    developerConnection 'scm:git:git@github.com:taoweiji/MixPush.git'
+                    url 'https://github.com/taoweiji/MixPush'
+                }
+
+                licenses {
+                    license {
+                        name 'The Apache License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'taoweiji2008'
+                        name 'Wiki'
+                        email 'taoweiji2008@qq.com'
+                    }
+                }
+            }
+        }
+    }
 }
