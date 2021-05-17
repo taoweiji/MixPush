@@ -225,7 +225,6 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
         <groupId>io.github.mixpush</groupId>
         <artifactId>mixpush-sender</artifactId>
         <version>2.3.1</version>
-        <type>pom</type>
     </dependency>
 </dependencies>
 ```
