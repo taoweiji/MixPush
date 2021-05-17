@@ -1,6 +1,6 @@
 
 ## MixPush：混合推送SDK，快速集成六个厂商推送，共享系统推送通道，杀死也能收到推送，推送到达率90%以上
-[![Download](https://api.bintray.com/packages/mixpush/maven/mixpush-core/images/download.svg)](https://bintray.com/mixpush/maven/mixpush-core)
+[![Download](https://maven-badges.herokuapp.com/maven-central/io.github.mixpush/mixpush-core/badge.svg)](https://search.maven.org/search?q=io.github.mixpush)
 
 
 
