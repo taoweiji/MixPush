@@ -220,12 +220,6 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
 ##### 添加依赖
 
 ```xml
-<repositories>
-    <repository>
-        <id>maven2</id>
-        <url>https://repo.maven.apache.org/maven2</url>
-    </repository>
-</repositories>
 <dependencies>
     <dependency>
         <groupId>io.github.mixpush</groupId>
