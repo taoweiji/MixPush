@@ -77,7 +77,7 @@ public class HuaweiPushProvider extends BaseMixPushProvider {
             Log.e(TAG, "get token:" + regId);
             return regId;
         } catch (ApiException e) {
-            handler.getLogger().log(TAG, "hms get token failed " + e.toString() + " https://developer.huawei.com/consumer/cn/doc/development/HMSCore-References-V5/tv-errorcode-0000001050145059-V5", e);
+            handler.getLogger().log(TAG, "hms get token failed " + e.toString() + " https://developer.huawei.com/consumer/cn/doc/development/HMSCore-References-V5/error-code-0000001050255690-V5", e);
             e.printStackTrace();
         }
         return null;
