@@ -11,7 +11,9 @@ import com.huawei.push.message.AndroidConfig;
 import com.huawei.push.message.Message;
 import com.huawei.push.message.Notification;
 import com.huawei.push.messaging.HuaweiApp;
+import com.huawei.push.messaging.HuaweiCredential;
 import com.huawei.push.messaging.HuaweiMessaging;
+import com.huawei.push.messaging.HuaweiOption;
 import com.huawei.push.model.Importance;
 import com.huawei.push.model.Visibility;
 import com.huawei.push.reponse.SendResponse;
@@ -19,7 +21,9 @@ import com.huawei.push.util.InitAppUtils;
 import com.mixpush.sender.MixPushMessage;
 import com.mixpush.sender.MixPushProvider;
 import com.mixpush.sender.MixPushResult;
-
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
@@ -29,10 +33,25 @@ public class HuaweiPushProvider extends MixPushProvider {
     private final HuaweiMessaging huaweiMessaging;
 
     public HuaweiPushProvider(String appId, String appSecret) {
-        HuaweiApp app = InitAppUtils.initializeApp(appId, appSecret);
+        HuaweiApp app = myInitializeApp(appId, appSecret);
         this.huaweiMessaging = HuaweiMessaging.getInstance(app);
     }
+    
+    private static HuaweiApp myInitializeApp(String appId, String appSecret) {
+        HuaweiCredential credential = HuaweiCredential.builder().setAppId(appId).setAppSecret(appSecret).build();
 
+        HuaweiOption option = HuaweiOption.builder()
+                .setCredential(credential)
+                .setHttpClient(myCreateHttpClient())
+                .build();
+
+        return HuaweiApp.getInstance(option); // may use HuaweiApp.initializeApp?
+    }
+
+    private static CloseableHttpClient myCreateHttpClient() {
+        PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
+        return HttpClients.custom().setConnectionManager(connManager).build();
+    }
 
     @Override
     protected MixPushResult sendMessageToSingle(MixPushMessage mixPushMessage, String regId) {
