@@ -5,6 +5,7 @@ android {
 
     defaultConfig {
         minSdkVersion 14
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
