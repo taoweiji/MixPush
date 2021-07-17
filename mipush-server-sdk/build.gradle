@@ -1,0 +1,10 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation 'com.googlecode.json-simple:json-simple:1.1'
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+apply from: '../maven_public.gradle'

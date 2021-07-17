@@ -1,7 +1,6 @@
 apply plugin: 'java-library'
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     api 'org.apache.commons:commons-lang3:3.9'
     api 'com.google.guava:guava:26.0-jre'
     api 'org.slf4j:slf4j-api:1.7.26'

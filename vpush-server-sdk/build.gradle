@@ -1,0 +1,12 @@
+apply plugin: 'java-library'
+
+dependencies {
+    api 'org.apache.httpcomponents:httpclient:4.5.12'
+    api 'com.alibaba:fastjson:1.2.71'
+    api 'org.apache.httpcomponents:httpmime:4.5.12'
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+apply from: '../maven_public.gradle'
