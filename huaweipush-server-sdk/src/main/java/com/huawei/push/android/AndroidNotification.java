@@ -140,6 +140,12 @@ public class AndroidNotification {
     @JSONField(name = "foreground_show")
     private boolean foregroundShow;
 
+    @JSONField(name = "inbox_content")
+    private List<String> inboxContent;
+
+    @JSONField(name = "buttons")
+    private List<Button> buttons;
+
     private AndroidNotification(Builder builder) {
         this.title = builder.title;
         this.body = builder.body;
@@ -203,6 +209,18 @@ public class AndroidNotification {
         this.visibility = builder.visibility;
         this.lightSettings = builder.lightSettings;
         this.foregroundShow = builder.foregroundShow;
+
+        if (!CollectionUtils.isEmpty(builder.inboxContent)) {
+            this.inboxContent = builder.inboxContent;
+        } else {
+            this.inboxContent = null;
+        }
+
+        if (!CollectionUtils.isEmpty(builder.buttons)) {
+            this.buttons = builder.buttons;
+        } else {
+            this.buttons = null;
+        }
     }
 
     /**
@@ -240,11 +258,14 @@ public class AndroidNotification {
         if (this.style != null) {
             boolean isTrue = this.style == 0 ||
                     this.style == 1 ||
-                    this.style == 2;
+                    this.style == 2 ||
+                    this.style == 3;
             ValidatorUtils.checkArgument(isTrue, "style should be one of 0:default, 1: big text, 2: big picture");
 
             if (this.style == 1) {
                 ValidatorUtils.checkArgument(StringUtils.isNotEmpty(this.bigTitle) && StringUtils.isNotEmpty(this.bigBody), "title and body are required when style = 1");
+            } else if (this.style == 3) {
+                ValidatorUtils.checkArgument(!CollectionUtils.isEmpty(this.inboxContent) && this.inboxContent.size() <= 5, "inboxContent is required when style = 3 and at most 5 inbox content is needed");
             }
         }
 
@@ -269,7 +290,7 @@ public class AndroidNotification {
                 ValidatorUtils.checkArgument(vibrateTiming.matches(AndroidNotification.VIBRATE_PATTERN), "Wrong vibrate timing format");
                 long vibrateTimingValue = (long) (1000 * Double
                         .valueOf(StringUtils.substringBefore(vibrateTiming.toLowerCase(Locale.getDefault()), "s")));
-                ValidatorUtils.checkArgument(vibrateTimingValue > 0 && vibrateTimingValue < 60, "Vibrate timing duration must be greater than 0 and less than 60s");
+                ValidatorUtils.checkArgument(vibrateTimingValue > 0 && vibrateTimingValue < 60000, "Vibrate timing duration must be greater than 0 and less than 60s");
             }
         }
 
@@ -296,6 +317,13 @@ public class AndroidNotification {
 
         if (this.lightSettings != null) {
             this.lightSettings.check();
+        }
+
+        if (!CollectionUtils.isEmpty(this.buttons)) {
+            ValidatorUtils.checkArgument(this.buttons.size() <= 3, "Only three buttons can carry");
+            for (Button button : this.buttons) {
+                button.check();
+            }
         }
     }
 
@@ -438,6 +466,14 @@ public class AndroidNotification {
         return foregroundShow;
     }
 
+    public List<String> getInboxContent() {
+        return inboxContent;
+    }
+
+    public List<Button> getButtons() {
+        return buttons;
+    }
+
     /**
      * builder
      *
@@ -484,6 +520,9 @@ public class AndroidNotification {
         private String visibility;
         private LightSettings lightSettings;
         private boolean foregroundShow;
+
+        private List<String> inboxContent = new ArrayList<>();
+        private List<Button> buttons = new ArrayList<Button>();
 
         private Builder() {
         }
@@ -666,6 +705,26 @@ public class AndroidNotification {
 
         public Builder setForegroundShow(boolean foregroundShow) {
             this.foregroundShow = foregroundShow;
+            return this;
+        }
+
+        public Builder addInboxContent(String inboxContent) {
+            this.inboxContent.add(inboxContent);
+            return this;
+        }
+
+        public Builder addAllInboxContent(List<String> inboxContents) {
+            this.inboxContent.addAll(inboxContents);
+            return this;
+        }
+
+        public Builder addButton(Button button) {
+            this.buttons.add(button);
+            return this;
+        }
+
+        public Builder addAllButtons(List<Button> buttons) {
+            this.buttons.addAll(buttons);
             return this;
         }
 

@@ -63,7 +63,7 @@ buildscript {
     }
     dependencies {
         ...
-        classpath 'com.huawei.agconnect:agcp:1.4.1.300'
+        classpath 'com.huawei.agconnect:agcp:1.4.2.300'
     }
 }
 allprojects {
@@ -96,7 +96,7 @@ android {
     }
 }
 dependencies {
-    def mixpush_version = '2.3.1'
+    def mixpush_version = '2.3.2'
     implementation "io.github.mixpush:mixpush-core:$mixpush_version" // 核心包
     implementation "io.github.mixpush:mixpush-mi:$mixpush_version" // 小米推送
     implementation "io.github.mixpush:mixpush-meizu:$mixpush_version"  // 魅族推送
@@ -225,7 +225,7 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
     <dependency>
         <groupId>io.github.mixpush</groupId>
         <artifactId>mixpush-sender</artifactId>
-        <version>2.3.1</version>
+        <version>2.3.2</version>
     </dependency>
 </dependencies>
 ```

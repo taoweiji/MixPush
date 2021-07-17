@@ -36,7 +36,7 @@ import java.security.cert.CertificateException;
  */
 public class IgnoreSSLUtils {
     private static SSLContext createIgnoreVerifySSL() throws NoSuchAlgorithmException, KeyManagementException {
-        SSLContext sc = SSLContext.getInstance("SSLv3");
+        SSLContext sc = SSLContext.getInstance("TLSv1.2");
 
         X509TrustManager trustManager = new X509TrustManager() {
             @Override

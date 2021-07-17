@@ -10,6 +10,7 @@ import com.mixpush.core.MixPushClient;
 import com.mixpush.core.MixPushHandler;
 import com.vivo.push.IPushActionListener;
 import com.vivo.push.PushClient;
+import com.vivo.push.util.VivoPushException;
 
 public class VivoPushProvider extends BaseMixPushProvider {
     MixPushHandler handler = MixPushClient.getInstance().getHandler();
@@ -19,24 +20,26 @@ public class VivoPushProvider extends BaseMixPushProvider {
     @Override
     public void register(Context context, RegisterType type) {
         handler.getLogger().log(TAG, "initialize");
-        PushClient.getInstance(context).initialize();
-        PushClient.getInstance(context).turnOnPush(new IPushActionListener() {
-            @Override
-            public void onStateChanged(int state) {
+        try {
+            PushClient.getInstance(context).initialize();
+            PushClient.getInstance(context).turnOnPush(state -> {
                 // 开关状态处理， 0代表成功
                 if (state == 0) {
                     handler.getLogger().log(TAG, "开启成功");
                 } else {
                     handler.getLogger().log(TAG, "开启失败");
                 }
+            });
+            String regId = PushClient.getInstance(context).getRegId();
+            // 有时候会出现没有回调 OpenClientPushMessageReceiver.onReceiveRegId 的情况,所以需要进行检测
+            if (regId != null) {
+                MixPushPlatform mixPushPlatform = new MixPushPlatform(VivoPushProvider.VIVO, regId);
+                handler.getPushReceiver().onRegisterSucceed(context, mixPushPlatform);
             }
-        });
-        String regId = PushClient.getInstance(context).getRegId();
-        // 有时候会出现没有回调 OpenClientPushMessageReceiver.onReceiveRegId 的情况,所以需要进行检测
-        if (regId != null) {
-            MixPushPlatform mixPushPlatform = new MixPushPlatform(VivoPushProvider.VIVO, regId);
-            handler.getPushReceiver().onRegisterSucceed(context, mixPushPlatform);
+        } catch (VivoPushException e) {
+            handler.getLogger().log(TAG, "vivo 初始化失败", e);
         }
+
     }
 
     @Override

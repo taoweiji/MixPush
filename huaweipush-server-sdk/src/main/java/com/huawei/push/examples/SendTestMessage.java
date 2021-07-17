@@ -46,7 +46,7 @@ public class SendTestMessage {
         JSONObject titleKey = new JSONObject();
         titleKey.put("en","好友请求");
         JSONObject bodyKey = new JSONObject();
-        titleKey.put("en","My name is %s, I am from %s.");
+        bodyKey.put("en","My name is %s, I am from %s.");
         multiLangKey.put("key1", titleKey);
         multiLangKey.put("key2", bodyKey);
 
@@ -61,9 +61,9 @@ public class SendTestMessage {
                 .setDefaultSound(true)
                 .setTag("tagBoom")
                 .setClickAction(ClickAction.builder().setType(2).setUrl("https://www.huawei.com").build())
-                .setBodyLocKey("M.String.body")
+                .setBodyLocKey("key2")
                 .addBodyLocArgs("boy").addBodyLocArgs("dog")
-                .setTitleLocKey("M.String.title")
+                .setTitleLocKey("key1")
                 .addTitleLocArgs("Girl").addTitleLocArgs("Cat")
                 .setChannelId("Your Channel ID")
                 .setNotifySummary("some summary")

@@ -36,11 +36,12 @@ public class MeizuPushMsgReceiver extends MzPushMessageReceiver {
         handler.getPushReceiver().onRegisterSucceed(context, mixPushPlatform);
     }
 
+
     @Override
-    public void onHandleIntent(Context context, Intent intent) {
+    public void onReceive(Context context, Intent intent) {
         mipush_notification = context.getResources().getIdentifier("mipush_notification", "drawable", context.getPackageName());
         mipush_small_notification = context.getResources().getIdentifier("mipush_small_notification", "drawable", context.getPackageName());
-        super.onHandleIntent(context, intent);
+        super.onReceive(context, intent);
     }
 
     @Override

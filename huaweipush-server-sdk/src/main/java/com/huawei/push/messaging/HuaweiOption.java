@@ -32,7 +32,7 @@ public class HuaweiOption {
     private final CloseableHttpClient httpClient;
     private final ThreadManager threadManager;
 
-    private HuaweiOption(Builder builder) {
+    private HuaweiOption(HuaweiOption.Builder builder) {
         ValidatorUtils.checkArgument(builder.credential != null, "HuaweiOption must be initialized with setCredential()");
         this.credential = builder.credential;
 

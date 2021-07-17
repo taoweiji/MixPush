@@ -18,6 +18,7 @@ package com.huawei.push.examples;
 import com.alibaba.fastjson.JSONObject;
 import com.huawei.push.android.AndroidNotification;
 import com.huawei.push.android.BadgeNotification;
+import com.huawei.push.android.Button;
 import com.huawei.push.android.ClickAction;
 import com.huawei.push.android.Color;
 import com.huawei.push.android.LightSettings;
@@ -51,7 +52,7 @@ public class SendNotifyMessage {
         JSONObject titleKey = new JSONObject();
         titleKey.put("en","好友请求");
         JSONObject bodyKey = new JSONObject();
-        titleKey.put("en","My name is %s, I am from %s.");
+        bodyKey.put("en","My name is %s, I am from %s.");
         multiLangKey.put("key1", titleKey);
         multiLangKey.put("key2", bodyKey);
 
@@ -66,9 +67,9 @@ public class SendNotifyMessage {
                 .setDefaultSound(true)
                 .setTag("tagBoom")
                 .setClickAction(ClickAction.builder().setType(2).setUrl("https://www.huawei.com").build())
-                .setBodyLocKey("M.String.body")
+                .setBodyLocKey("key2")
                 .addBodyLocArgs("boy").addBodyLocArgs("dog")
-                .setTitleLocKey("M.String.title")
+                .setTitleLocKey("key1")
                 .addTitleLocArgs("Girl").addTitleLocArgs("Cat")
                 .setChannelId("Your Channel ID")
                 .setNotifySummary("some summary")
@@ -84,6 +85,10 @@ public class SendNotifyMessage {
                 .setBadge(BadgeNotification.builder().setAddNum(1).setBadgeClass("Classic").build())
                 .setVisibility(Visibility.PUBLIC.getValue())
                 .setForegroundShow(true)
+                .addInboxContent("content1").addInboxContent("content2").addInboxContent("content3").addInboxContent("content4").addInboxContent("content5")
+                .addButton(Button.builder().setName("button1").setActionType(0).build())
+                .addButton(Button.builder().setName("button2").setActionType(1).setIntentType(0).setIntent("https://com.huawei.hms.hmsdemo/deeplink").build())
+                .addButton(Button.builder().setName("button3").setActionType(4).setData("your share link").build())
                 .build();
 
         AndroidConfig androidConfig = AndroidConfig.builder().setCollapseKey(-1)

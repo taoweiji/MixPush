@@ -28,7 +28,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.text.MessageFormat;
-import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -39,7 +38,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class HuaweiCredential {
     private static final Logger logger = LoggerFactory.getLogger(HuaweiCredential.class);
 
-    private final String PUSH_AT_URL = "https://oauth-login.cloud.huawei.com/oauth2/v2/token";
+    private final String PUSH_AT_URL = "https://oauth-login.cloud.huawei.com/oauth2/v3/token";
 
     private String appId;
     private String appSecret;
@@ -47,12 +46,17 @@ public class HuaweiCredential {
     private String accessToken;
     private long expireIn;
     private Lock lock;
-    private final CloseableHttpClient httpClient = HttpClients.createDefault();
+    private CloseableHttpClient httpClient;
 
     private HuaweiCredential(Builder builder) {
         this.lock = new ReentrantLock();
         this.appId = builder.appId;
         this.appSecret = builder.appSecret;
+        if (builder.httpClient == null) {
+            httpClient = HttpClients.createDefault();
+        } else {
+            this.httpClient = builder.httpClient;
+        }
     }
 
     /**
@@ -137,6 +141,8 @@ public class HuaweiCredential {
         private String appId;
         private String appSecret;
 
+        private CloseableHttpClient httpClient;
+
         private Builder() {
         }
 
@@ -147,6 +153,11 @@ public class HuaweiCredential {
 
         public Builder setAppSecret(String appSecret) {
             this.appSecret = appSecret;
+            return this;
+        }
+
+        public Builder setHttpClient(CloseableHttpClient httpClient) {
+            this.httpClient = httpClient;
             return this;
         }
 

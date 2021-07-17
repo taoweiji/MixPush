@@ -55,7 +55,7 @@ public class MixPushSender {
 
     private void register() {
         if (miAppSecretKey != null) {
-            addProvider(new MiPushProvider(packageName, miAppSecretKey, usePassThrough,test));
+            addProvider(new MiPushProvider(packageName, miAppSecretKey, usePassThrough, test));
         }
         if (miAPNsAppSecretKey != null) {
             addProvider(new MiAPNsPushProvider(miAPNsAppSecretKey, test));
@@ -203,7 +203,8 @@ public class MixPushSender {
     }
 
     public static class Builder {
-        private MixPushSender sender = new MixPushSender();
+        private final MixPushSender sender = new MixPushSender();
+        private final Map<String, MixPushProvider> providerMap = new HashMap<>();
 
         /**
          * 如果使用了小米作为默认的透传,那么就不能使用 broadcastNotificationMessageToAll,
@@ -252,6 +253,12 @@ public class MixPushSender {
 //            return this;
 //        }
 
+        public Builder addProvider(MixPushProvider provider) {
+            if (provider != null) {
+                providerMap.put(provider.platformName(), provider);
+            }
+            return this;
+        }
 
         public Builder packageName(String packageName) {
             sender.packageName = packageName;
@@ -260,6 +267,7 @@ public class MixPushSender {
 
         public MixPushSender build() {
             sender.register();
+            sender.providerMap.putAll(providerMap);
             return sender;
         }
 

@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 29
+
     }
 
     buildTypes {
@@ -26,7 +26,7 @@ allprojects {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':mixpush-core')
-    implementation 'com.huawei.hms:push:5.0.2.300'
+    implementation 'com.huawei.hms:push:5.1.1.301'
 }
 
 apply from: '../maven_public.gradle'

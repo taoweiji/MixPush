@@ -22,6 +22,8 @@ public class MixPushServerTest2 {
             .interceptTestData(true)
             // 如果开启测试环境,数据的消息推送发送给超过10人,建议测试环境不允许使用推送,避免出现严重错误
             .test(false)
+            // 支持自定义
+            .addProvider(null)
             .build();
 
     MixPushMessageConfig activitiesMessageConfig = new MixPushMessageConfig.Builder()
@@ -77,7 +79,8 @@ public class MixPushServerTest2 {
     public void sendNotificationToSingle() {
 //        MixPushTarget target = MixPushTarget.single("huawei", "0865925049412200300007043100CN01");
 //        MixPushTarget target = MixPushTarget.single("oppo", "CN_0ffd6dabe9d8bae7770525817118d24f");
-        MixPushResult result = sender.sendMessage(getAdMessage(), MixPushTarget.single("mi","/NcWw80tkAnWoNCQ9ZxSrt+B2ueraivFkCCAWyAunMb3d5xXn0zSNHzBSTToiux9"));
+//        MixPushTarget mi = MixPushTarget.single("mi","/NcWw80tkAnWoNCQ9ZxSrt+B2ueraivFkCCAWyAunMb3d5xXn0zSNHzBSTToiux9");
+        MixPushResult result = sender.sendMessage(getAdMessage(), MixPushTarget.values(huawei_al00));
         System.out.println(result.toString());
     }
 

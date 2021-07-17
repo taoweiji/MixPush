@@ -2,6 +2,8 @@ package com.mixpush.core;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 
 import com.mixpush.core.utils.ProcessUtils;
 
@@ -149,39 +151,47 @@ public class MixPushClient {
      */
     public void getRegisterId(Context context, final GetRegisterIdCallback callback, boolean isPassThrough) {
         final Context appContext = context.getApplicationContext();
-        final BaseMixPushProvider pushProvider;
-        if (isPassThrough) {
-            pushProvider = passThroughPushProvider;
-        } else {
-            pushProvider = notificationPushProvider;
-        }
-        if (pushProvider != null) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    int checkCount = 0;
-                    while (true) {
-                        String regId = pushProvider.getRegisterId(appContext);
-                        if (regId != null && !regId.isEmpty()) {
-                            callback.callback(new MixPushPlatform(pushProvider.getPlatformName(), regId));
-                            break;
-                        }
-                        checkCount++;
-                        if (checkCount == 60) {
-                            callback.callback(null);
-                            break;
-                        }
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+        Handler handler = new Handler(Looper.getMainLooper());
+        long startTime = System.currentTimeMillis();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                if (Math.abs(System.currentTimeMillis() - startTime) > 120000) {
+                    callback.callback(null);
+                    getHandler().getLogger().log("getRegisterId", "超时");
+                    return;
+                }
+                final BaseMixPushProvider pushProvider;
+                if (isPassThrough) {
+                    pushProvider = passThroughPushProvider;
+                } else {
+                    pushProvider = notificationPushProvider;
+                }
+                if (pushProvider == null) {
+                    handler.postDelayed(this, 1000);
+                    getHandler().getLogger().log("getRegisterId", "pushProvider == null");
+                    return;
+                }
+                if (isPassThrough) {
+                    if (DefaultPassThroughReceiver.passThroughPlatform != null) {
+                        callback.callback(DefaultPassThroughReceiver.passThroughPlatform);
+                        return;
+                    }
+                } else {
+                    if (DefaultMixPushReceiver.notificationPlatform != null) {
+                        callback.callback(DefaultMixPushReceiver.notificationPlatform);
+                        return;
                     }
                 }
-            }).start();
-        } else {
-            callback.callback(null);
-        }
+                String regId = pushProvider.getRegisterId(appContext);
+                if (regId != null && !regId.isEmpty()) {
+                    callback.callback(new MixPushPlatform(pushProvider.getPlatformName(), regId));
+                    return;
+                }
+                handler.postDelayed(this, 1000);
+            }
+        };
+        handler.post(runnable);
     }
 
     public void openApp(Context context) {

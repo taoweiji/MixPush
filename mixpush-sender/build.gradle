@@ -3,12 +3,15 @@ apply plugin: 'java-library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
-    implementation 'io.github.mixpush:opush-server-sdk:2.3.1'
-    implementation 'io.github.mixpush:huaweipush-server-sdk:2.3.0'
-    implementation 'io.github.mixpush:mipush-server-sdk:2.3.0'
-    implementation 'io.github.mixpush:vpush-server-sdk:2.3.0'
-    implementation 'com.meizu.flyme:push-server-sdk:1.2.8.20190114_release'
-    implementation 'com.googlecode.json-simple:json-simple:1.1'
+    api 'io.github.mixpush:opush-server-sdk:2.3.1'
+//    api 'io.github.mixpush:huaweipush-server-sdk:2.3.0'
+    api project(path: ':huaweipush-server-sdk')
+    api 'io.github.mixpush:mipush-server-sdk:2.3.0'
+    api 'io.github.mixpush:vpush-server-sdk:2.3.0'
+    api 'com.meizu.flyme:push-server-sdk:1.2.8.20190114_release'
+    api 'com.googlecode.json-simple:json-simple:1.1'
+    // apns
+    api 'cn.teaey.apns4j:apns4j:1.1.4'
 }
 
 sourceCompatibility = "1.8"

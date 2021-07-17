@@ -1,12 +1,12 @@
 package com.mixpush.sender.provider;
 
+import com.mixpush.sender.MixPushMessage;
+import com.mixpush.sender.MixPushProvider;
+import com.mixpush.sender.MixPushResult;
 import com.oppo.push.server.Notification;
 import com.oppo.push.server.Result;
 import com.oppo.push.server.Sender;
 import com.oppo.push.server.Target;
-import com.mixpush.sender.MixPushMessage;
-import com.mixpush.sender.MixPushProvider;
-import com.mixpush.sender.MixPushResult;
 import com.oppo.push.server.TargetType;
 
 import java.io.UnsupportedEncodingException;

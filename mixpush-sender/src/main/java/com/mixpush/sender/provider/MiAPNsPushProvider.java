@@ -1,19 +1,8 @@
 package com.mixpush.sender.provider;
 
 import com.mixpush.sender.MixPushMessage;
-import com.mixpush.sender.MixPushProvider;
-import com.mixpush.sender.MixPushResult;
-import com.mixpush.sender.MixPushSender;
-import com.xiaomi.push.sdk.ErrorCode;
 import com.xiaomi.xmpush.server.Constants;
 import com.xiaomi.xmpush.server.Message;
-import com.xiaomi.xmpush.server.Result;
-import com.xiaomi.xmpush.server.Sender;
-
-import org.json.simple.parser.ParseException;
-
-import java.io.IOException;
-import java.util.List;
 
 
 public class MiAPNsPushProvider extends MiPushProvider {

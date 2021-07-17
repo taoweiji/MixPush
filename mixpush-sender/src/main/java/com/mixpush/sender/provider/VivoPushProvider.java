@@ -1,9 +1,9 @@
 package com.mixpush.sender.provider;
 
 import com.mixpush.sender.MixPushMessage;
-import com.mixpush.sender.MixPushSender;
 import com.mixpush.sender.MixPushProvider;
 import com.mixpush.sender.MixPushResult;
+import com.mixpush.sender.MixPushSender;
 import com.vivo.push.sdk.notofication.Message;
 import com.vivo.push.sdk.notofication.Result;
 import com.vivo.push.sdk.notofication.TargetMessage;

@@ -6,8 +6,8 @@ import android.util.Log;
 
 public class MixPushHandler {
     private final MixPushLogger logger;
-    private final MixPushReceiver pushReceiver;
-    private final MixPushPassThroughReceiver passThroughReceiver;
+    final DefaultMixPushReceiver pushReceiver;
+    final DefaultPassThroughReceiver passThroughReceiver;
     public MixPushLogger callLogger;
     public MixPushReceiver callPushReceiver;
     public MixPushPassThroughReceiver callPassThroughReceiver;

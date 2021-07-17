@@ -30,8 +30,8 @@ import org.slf4j.LoggerFactory;
 /**
  * This class is the entrance for all server-side HCM actions.
  *
- * <p>You can get a instance of {@link HuaweiMessaging}
- * by a instance of {@link HuaweiApp}, and then use it to send a message
+ * <p>You can get a instance of {@link com.huawei.push.messaging.HuaweiMessaging}
+ * by a instance of {@link com.huawei.push.messaging.HuaweiApp}, and then use it to send a message
  */
 public class HuaweiMessaging {
     private static final Logger logger = LoggerFactory.getLogger(HuaweiMessaging.class);

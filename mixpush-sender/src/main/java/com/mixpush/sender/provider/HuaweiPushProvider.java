@@ -1,19 +1,13 @@
 package com.mixpush.sender.provider;
 
-import com.alibaba.fastjson.JSON;
 import com.huawei.push.android.AndroidNotification;
-import com.huawei.push.android.BadgeNotification;
 import com.huawei.push.android.ClickAction;
-import com.huawei.push.android.Color;
-import com.huawei.push.android.LightSettings;
 import com.huawei.push.exception.HuaweiMesssagingException;
 import com.huawei.push.message.AndroidConfig;
 import com.huawei.push.message.Message;
 import com.huawei.push.message.Notification;
 import com.huawei.push.messaging.HuaweiApp;
 import com.huawei.push.messaging.HuaweiMessaging;
-import com.huawei.push.model.Importance;
-import com.huawei.push.model.Visibility;
 import com.huawei.push.reponse.SendResponse;
 import com.huawei.push.util.InitAppUtils;
 import com.mixpush.sender.MixPushMessage;

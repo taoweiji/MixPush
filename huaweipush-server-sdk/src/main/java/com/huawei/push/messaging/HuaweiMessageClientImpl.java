@@ -25,9 +25,7 @@ import com.huawei.push.model.TopicOperation;
 import com.huawei.push.reponse.SendResponse;
 import com.huawei.push.reponse.TopicListResponse;
 import com.huawei.push.reponse.TopicSendResponse;
-import com.huawei.push.util.ResponceCodeProcesser;
 import com.huawei.push.util.ValidatorUtils;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.HttpResponseException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -40,7 +38,6 @@ import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 public class HuaweiMessageClientImpl implements HuaweiMessageClient {
     private static final String PUSH_URL = "https://push-api.cloud.huawei.com";
@@ -107,16 +104,16 @@ public class HuaweiMessageClientImpl implements HuaweiMessageClient {
                 SendResponse sendResponse;
                 if (StringUtils.equals(operation, TopicOperation.LIST.getValue())) {
                     JSONArray topics = jsonObject.getJSONArray("topics");
-                    sendResponse = TopicListResponse.fromCode(code, ResponceCodeProcesser.process(Integer.valueOf(code)), requestId, topics);
+                    sendResponse = TopicListResponse.fromCode(code, msg, requestId, topics);
                 } else {
                     Integer failureCount = jsonObject.getInteger("failureCount");
                     Integer successCount = jsonObject.getInteger("successCount");
                     JSONArray errors = jsonObject.getJSONArray("errors");
-                    sendResponse = TopicSendResponse.fromCode(code, ResponceCodeProcesser.process(Integer.valueOf(code)), requestId, failureCount, successCount, errors);
+                    sendResponse = TopicSendResponse.fromCode(code, msg, requestId, failureCount, successCount, errors);
                 }
                 return sendResponse;
             } else {
-                String errorMsg = MessageFormat.format("error code : {0}, error message : {1}", String.valueOf(code), ResponceCodeProcesser.process(Integer.valueOf(code)));
+                String errorMsg = MessageFormat.format("error code : {0}, error message : {1}", String.valueOf(code), msg);
                 throw new HuaweiMesssagingException(HuaweiMessaging.KNOWN_ERROR, errorMsg);
             }
         }
@@ -150,9 +147,9 @@ public class HuaweiMessageClientImpl implements HuaweiMessageClient {
             String msg = jsonObject.getString("msg");
             String requestId = jsonObject.getString("requestId");
             if (StringUtils.equals(code, "80000000")) {
-                return SendResponse.fromCode(code, ResponceCodeProcesser.process(Integer.valueOf(code)), requestId);
+                return SendResponse.fromCode(code, msg, requestId);
             } else {
-                String errorMsg = MessageFormat.format("error code : {0}, error message : {1}", String.valueOf(code), ResponceCodeProcesser.process(Integer.valueOf(code)));
+                String errorMsg = MessageFormat.format("error code : {0}, error message : {1}", String.valueOf(code), msg);
                 throw new HuaweiMesssagingException(HuaweiMessaging.KNOWN_ERROR, errorMsg);
             }
         }

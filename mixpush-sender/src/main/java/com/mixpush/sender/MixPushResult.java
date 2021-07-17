@@ -1,5 +1,8 @@
 package com.mixpush.sender;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,18 +101,27 @@ public class MixPushResult {
 
     @Override
     public String toString() {
+        return toJSON().toString();
+    }
 
-        return "MixPushResult{" +
-                "succeed='" + succeed + '\'' +
-                ", platformName='" + platformName + '\'' +
-                ", statusCode='" + statusCode + '\'' +
-                ", reason='" + reason + '\'' +
-                ", messageId='" + messageId + '\'' +
-                ", taskId='" + taskId + '\'' +
-                ", results=" + results +
-                ", extra=" + extra +
-                ", error=" + error +
-                '}';
+    public JSONObject toJSON() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("succeed", succeed);
+        jsonObject.put("platformName", platformName);
+        jsonObject.put("statusCode", statusCode);
+        jsonObject.put("reason", reason);
+        jsonObject.put("messageId", messageId);
+        jsonObject.put("taskId", taskId);
+        JSONArray resultsArr = new JSONArray();
+        for (MixPushResult it : results) {
+            resultsArr.add(it.toJSON());
+        }
+        jsonObject.put("results", resultsArr);
+        jsonObject.put("extra", extra);
+        if (error != null) {
+            jsonObject.put("error", error.getMessage());
+        }
+        return jsonObject;
     }
 
     public static class Builder {
