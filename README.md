@@ -116,7 +116,7 @@ dependencies {
 
 
 
-![华为图片配置](readme_img_huawei_sha256_settings.png)
+![华为图片配置](huawei-config.jpg)
 
 
 

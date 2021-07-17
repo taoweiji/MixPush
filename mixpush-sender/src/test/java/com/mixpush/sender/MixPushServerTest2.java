@@ -52,7 +52,7 @@ public class MixPushServerTest2 {
         return new MixPushMessage.Builder()
                 .title("订单支付成功通知")
                 .description("报名成功！您已成功报名《我的课很贵的》，将在2020-09-11 19:45开课，建议提前5分钟进入课程直播间准备开练。太棒了，又多练了一次！")
-                .payload("{\"messageId\":\"b575bdb37b6f4cf48e482be5940510fa\",\"jumpUrl\":\"onfirefit://www.onfirefit.cn/course?courseId=2339\"}")
+                .payload("{\"messageId\":\"b575bdb37b6f4cf48e482be5940510fa\",\"url\":\"https://www.baidu.com\"}")
                 .passThrough(false)
                 .messageId(UUID.randomUUID().toString())
                 .config(activitiesMessageConfig)

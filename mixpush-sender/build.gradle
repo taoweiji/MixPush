@@ -4,7 +4,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
     api 'io.github.mixpush:opush-server-sdk:2.3.1'
-//    api 'io.github.mixpush:huaweipush-server-sdk:2.3.0'
     api project(path: ':huaweipush-server-sdk')
     api 'io.github.mixpush:mipush-server-sdk:2.3.0'
     api 'io.github.mixpush:vpush-server-sdk:2.3.0'
