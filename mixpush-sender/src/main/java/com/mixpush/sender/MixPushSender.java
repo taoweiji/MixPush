@@ -1,6 +1,5 @@
 package com.mixpush.sender;
 
-import com.mixpush.sender.provider.ApnsPushProvider;
 import com.mixpush.sender.provider.HuaweiPushProvider;
 import com.mixpush.sender.provider.MeizuPushProvider;
 import com.mixpush.sender.provider.MiAPNsPushProvider;

@@ -1,13 +1,11 @@
-group = "io.github.mixpush"
-version = "2.3.1"
-
+group = GROUP_ID
+version = VERSION_NAME
 apply plugin: 'maven'
 apply plugin: 'signing'
-
-
 signing {
     sign configurations.archives
 }
+
 boolean isAndroid = project.getPlugins().hasPlugin('com.android.library')
 if (isAndroid) {
     task androidJavadocs(type: Javadoc) {
@@ -15,12 +13,10 @@ if (isAndroid) {
         classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
         excludes = ['**/*.kt']
     }
-
     task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
         classifier = 'javadoc'
         from androidJavadocs.destinationDir
     }
-
     task androidSourcesJar(type: Jar) {
         classifier = 'sources'
         from android.sourceSets.main.java.source
@@ -30,7 +26,6 @@ if (isAndroid) {
         classifier = 'javadoc'
         from javadoc
     }
-
     task sourcesJar(type: Jar) {
         classifier = 'sources'
         from sourceSets.main.allSource
@@ -39,45 +34,37 @@ if (isAndroid) {
         archives javadocJar, sourcesJar
     }
 }
-
 uploadArchives {
     repositories {
         mavenDeployer {
             beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
             repository(url: "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
+                authentication(userName: OSSRH_USERNAME, password: OSSRH_PASSWORD)
             }
-
             snapshotRepository(url: "https://s01.oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
+                authentication(userName: OSSRH_USERNAME, password: OSSRH_PASSWORD)
             }
-
             pom.project {
-                name 'MixPush'
+                name POM_NAME
                 packaging isAndroid ? 'jar' : 'aar'
-                // optionally artifactId can be defined here
-                description 'A application used as an example on how to set up pushing its components to the Central Repository . '
-                url 'https://github.com/taoweiji/MixPush'
-
+                description POM_DESCRIPTION
+                url POM_URL
                 scm {
-                    connection 'scm:git:git@github.com:taoweiji/MixPush.git'
-                    developerConnection 'scm:git:git@github.com:taoweiji/MixPush.git'
-                    url 'https://github.com/taoweiji/MixPush'
+                    connection POM_SCM_CONNECTION
+                    developerConnection POM_SCM_DEV_CONNECTION
+                    url POM_SCM_URL
                 }
-
                 licenses {
                     license {
-                        name 'The Apache License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        name POM_LICENCE_NAME
+                        url POM_LICENCE_URL
                     }
                 }
-
                 developers {
                     developer {
-                        id 'taoweiji2008'
-                        name 'Wiki'
-                        email 'taoweiji2008@qq.com'
+                        id POM_DEVELOPER_ID
+                        name POM_DEVELOPER_NAME
+                        email POM_DEVELOPER_EMAIL
                     }
                 }
             }
