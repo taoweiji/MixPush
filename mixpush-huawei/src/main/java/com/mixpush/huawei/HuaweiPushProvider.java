@@ -7,6 +7,8 @@ import android.util.Log;
 
 import com.huawei.agconnect.config.AGConnectServicesConfig;
 import com.huawei.hms.aaid.HmsInstanceId;
+import com.huawei.hms.adapter.internal.AvailableCode;
+import com.huawei.hms.api.HuaweiMobileServicesUtil;
 import com.huawei.hms.common.ApiException;
 import com.mixpush.core.BaseMixPushProvider;
 import com.mixpush.core.MixPushPlatform;
@@ -16,6 +18,7 @@ import com.mixpush.core.MixPushHandler;
 
 import java.lang.reflect.Method;
 
+import static com.huawei.hms.adapter.internal.AvailableCode.SERVICE_VERSION_UPDATE_REQUIRED;
 import static com.mixpush.huawei.UnifiedHmsMessageService.TAG;
 
 public class HuaweiPushProvider extends BaseMixPushProvider {
@@ -41,10 +44,16 @@ public class HuaweiPushProvider extends BaseMixPushProvider {
             return false;
         }
         String manufacturer = Build.MANUFACTURER.toLowerCase();
-        if (manufacturer.equals("huawei")) {
-            return canHuaWeiPush();
+        if (!manufacturer.equals("huawei")) {
+            return false;
         }
-        return false;
+        int available = HuaweiMobileServicesUtil.isHuaweiMobileServicesAvailable(context);
+        if (available != AvailableCode.SUCCESS) {
+            handler.getLogger().log(TAG, "华为推送不可用 ErrorCode = " + available);
+            return false;
+        }
+        return true;
+//        return canHuaWeiPush();
     }
 
     /**

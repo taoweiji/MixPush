@@ -7,7 +7,7 @@ public abstract class MixPushReceiver {
     /**
      * 通知栏推送SDK注册成功回调
      */
-    public abstract void onRegisterSucceed(Context context, MixPushPlatform mixPushPlatform);
+    public abstract void onRegisterSucceed(Context context, MixPushPlatform platform);
 
     /**
      * 通知栏消息被点击回调

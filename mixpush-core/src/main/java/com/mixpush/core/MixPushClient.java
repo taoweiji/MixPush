@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class MixPushClient {
-    public static String TAG = "UnifiedPush";
+    public static String TAG = "MixPush";
     public static final String MI = "mi";
     public static boolean debug = true;
 
@@ -114,7 +114,6 @@ public class MixPushClient {
             handler.getLogger().log(TAG, "register notification " + pushProvider.getPlatformName());
             pushProvider.register(context, RegisterType.notification);
             notificationPushProvider = pushProvider;
-
         }
         if (passThroughPushProvider == null && passThroughPlatform != null) {
             passThroughPushProvider = pushManagerMap.get(passThroughPlatform);
@@ -140,14 +139,14 @@ public class MixPushClient {
     }
 
     /**
-     * 120秒超时
+     * 60 秒超时
      */
     public void getRegisterId(Context context, final GetRegisterIdCallback callback) {
         getRegisterId(context, callback, false);
     }
 
     /**
-     * 120秒超时
+     * 60 秒超时
      */
     public void getRegisterId(Context context, final GetRegisterIdCallback callback, boolean isPassThrough) {
         final Context appContext = context.getApplicationContext();
@@ -156,7 +155,7 @@ public class MixPushClient {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                if (Math.abs(System.currentTimeMillis() - startTime) > 120000) {
+                if (Math.abs(System.currentTimeMillis() - startTime) > 60000) {
                     callback.callback(null);
                     getHandler().getLogger().log("getRegisterId", "超时");
                     return;
@@ -168,7 +167,7 @@ public class MixPushClient {
                     pushProvider = notificationPushProvider;
                 }
                 if (pushProvider == null) {
-                    handler.postDelayed(this, 1000);
+                    handler.postDelayed(this, 2000);
                     getHandler().getLogger().log("getRegisterId", "pushProvider == null");
                     return;
                 }
@@ -188,7 +187,7 @@ public class MixPushClient {
                     callback.callback(new MixPushPlatform(pushProvider.getPlatformName(), regId));
                     return;
                 }
-                handler.postDelayed(this, 1000);
+                handler.postDelayed(this, 2000);
             }
         };
         handler.post(runnable);

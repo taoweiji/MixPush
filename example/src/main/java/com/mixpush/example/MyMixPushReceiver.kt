@@ -3,14 +3,17 @@ package com.mixpush.example
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Looper
+import android.util.Log
 import com.mixpush.core.MixPushPlatform
 import com.mixpush.core.MixPushMessage
 import com.mixpush.core.MixPushReceiver
 import org.json.JSONObject
 
 class MyMixPushReceiver : MixPushReceiver() {
-    override fun onRegisterSucceed(context: Context, mixPushPlatform: MixPushPlatform) {
+    override fun onRegisterSucceed(context: Context, platform: MixPushPlatform) {
         // TODO 上传token到服务端
+        Log.e("onRegisterSucceed", "$platform")
     }
 
     override fun onNotificationMessageClicked(context: Context, message: MixPushMessage) {

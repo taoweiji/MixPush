@@ -34,7 +34,7 @@ public class MixPushHandler {
 class DefaultPassThroughReceiver implements MixPushPassThroughReceiver {
     private final MixPushLogger logger;
     private MixPushHandler handler;
-    public static String TAG = "UnifiedPush";
+    public static String TAG = "MixPush";
     static MixPushPlatform passThroughPlatform = null;
 
     public DefaultPassThroughReceiver(MixPushHandler handler, MixPushLogger logger) {
@@ -82,7 +82,7 @@ class DefaultPassThroughReceiver implements MixPushPassThroughReceiver {
 class DefaultMixPushReceiver extends MixPushReceiver {
     private final MixPushLogger logger;
     private MixPushHandler handler;
-    public static String TAG = "UnifiedPush";
+    public static String TAG = "MixPush";
     static MixPushPlatform notificationPlatform = null;
 
     public DefaultMixPushReceiver(MixPushHandler handler, MixPushLogger logger) {
@@ -91,28 +91,26 @@ class DefaultMixPushReceiver extends MixPushReceiver {
     }
 
     @Override
-    public void onRegisterSucceed(final Context context, final MixPushPlatform mixPushPlatform) {
-        if (notificationPlatform != null) {
-            logger.log(TAG, "已经响应onRegisterSucceed,不再重复调用");
+    public void onRegisterSucceed(final Context context, final MixPushPlatform platform) {
+        if (platform == null) {
             return;
         }
-        notificationPlatform = mixPushPlatform;
-        logger.log(TAG, "onRegisterSucceed " + mixPushPlatform.toString());
+        if (notificationPlatform != null) {
+            logger.log(TAG, "已经响应 onRegisterSucceed，不再重复调用");
+            return;
+        }
+        notificationPlatform = platform;
+        logger.log(TAG, "onRegisterSucceed " + platform.toString());
         if (handler.callPushReceiver == null) {
-            Exception exception = new Exception("必须要在 register() 之前实现 setPushReceiver()");
+            Exception exception = new Exception("必须要在 register() 之前注册 setPushReceiver()");
             logger.log(TAG, exception.getMessage(), exception);
             return;
         }
         if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
             // 在异步进程回调,避免阻塞主进程
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    handler.callPushReceiver.onRegisterSucceed(context, mixPushPlatform);
-                }
-            }).start();
+            new Thread(() -> handler.callPushReceiver.onRegisterSucceed(context, platform)).start();
         } else {
-            handler.callPushReceiver.onRegisterSucceed(context, mixPushPlatform);
+            handler.callPushReceiver.onRegisterSucceed(context, platform);
         }
     }
 
