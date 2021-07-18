@@ -96,7 +96,7 @@ android {
     }
 }
 dependencies {
-    def mixpush_version = '2.3.3'
+    def mixpush_version = '2.3.4'
     implementation "io.github.mixpush:mixpush-core:$mixpush_version" // 核心包
     implementation "io.github.mixpush:mixpush-mi:$mixpush_version" // 小米推送
     implementation "io.github.mixpush:mixpush-meizu:$mixpush_version"  // 魅族推送
@@ -225,7 +225,7 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
     <dependency>
         <groupId>io.github.mixpush</groupId>
         <artifactId>mixpush-sender</artifactId>
-        <version>2.3.3</version>
+        <version>2.3.4</version>
     </dependency>
 </dependencies>
 ```
@@ -373,3 +373,4 @@ mi代表使用小米推送，huawei代表是使用华为推送。ok代表通过�
 - 定时推送
 - 通知栏重要等级设置
 - APNS 官方通道（iOS建议使用小米推送）
+
