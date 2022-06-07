@@ -9,9 +9,7 @@
         <meta-data
                 android:name="com.vivo.push.app_id"
                 android:value="${VIVO_APP_ID}" />
-        <service
-                android:name="com.vivo.push.sdk.service.CommandClientService"
-                android:exported="true" />
+
         <receiver android:name="com.mixpush.vivo.PushMessageReceiverImpl">
             <intent-filter>
                 <action android:name="com.vivo.pushclient.action.RECEIVE" />
@@ -21,7 +19,7 @@
         <!-- 该字段大于等于480，则表示支持点击消息直接打开应用activity，优化启动慢问题。 -->
         <meta-data
             android:name="sdk_version_vivo"
-            android:value="482" />
+            android:value="484" />
 
         <service
             android:name="com.vivo.push.sdk.service.CommandClientService"
