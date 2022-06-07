@@ -5,12 +5,15 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { url 'http://developer.huawei.com/repo/' }
+        maven {
+            allowInsecureProtocol true
+            url 'http://developer.huawei.com/repo/'
+        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.3'
+        classpath 'com.android.tools.build:gradle:4.2.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.huawei.agconnect:agcp:1.4.2.300'
+        classpath 'com.huawei.agconnect:agcp:1.6.0.300'
     }
 }
 
@@ -19,7 +22,10 @@ allprojects {
         google()
         mavenCentral()
         jcenter()
-        maven { url 'http://developer.huawei.com/repo/' }
+        maven {
+            allowInsecureProtocol = true
+            url 'http://developer.huawei.com/repo/'
+        }
     }
 }
 
