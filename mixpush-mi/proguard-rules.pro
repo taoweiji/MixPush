@@ -19,3 +19,14 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+#MiPushSDK的混淆规则
+-keep class com.xiaomi.mipush.sdk.MiPushMessage {*;}
+-keep class com.xiaomi.mipush.sdk.MiPushCommandMessage {*;}
+-keep class com.xiaomi.mipush.sdk.PushMessageReceiver {*;}
+-keep class com.xiaomi.mipush.sdk.MessageHandleService {*;}
+-keep class com.xiaomi.push.service.XMJobService {*;}
+-keep class com.xiaomi.push.service.XMPushService {*;}
+-keep class com.xiaomi.mipush.sdk.PushMessageHandler {*;}
+-keep class com.xiaomi.push.service.receivers.NetworkStatusReceiver {*;}
+-keep class com.xiaomi.push.service.receivers.PingReceiver {*;}
+-keep class com.xiaomi.mipush.sdk.NotificationClickedActivity {*;}
