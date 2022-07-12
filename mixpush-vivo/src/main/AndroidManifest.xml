@@ -10,7 +10,8 @@
                 android:name="com.vivo.push.app_id"
                 android:value="${VIVO_APP_ID}" />
 
-        <receiver android:name="com.mixpush.vivo.PushMessageReceiverImpl">
+        <receiver android:name="com.mixpush.vivo.PushMessageReceiverImpl"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.vivo.pushclient.action.RECEIVE" />
             </intent-filter>
@@ -23,7 +24,8 @@
 
         <service
             android:name="com.vivo.push.sdk.service.CommandClientService"
-            android:exported="true" />
+            android:permission="com.push.permission.UPSTAGESERVICE"
+            android:exported="true"/>
 
         <meta-data
             android:name="local_iv"

@@ -12,7 +12,7 @@ import com.xiaomi.mipush.sdk.MiPushClient;
 
 public class MiPushProvider extends BaseMixPushProvider {
     public static final String MI = "mi";
-    public static String TAG = MI;
+    public static String TAG = "MiPushProvider";
     MixPushHandler handler = MixPushClient.getInstance().getHandler();
     static RegisterType registerType;
 

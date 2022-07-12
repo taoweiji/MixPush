@@ -164,12 +164,12 @@ public class Alert {
             return this;
         }
 
-        public Builder AddAllLocArgs(List<String> locArgs) {
+        public Builder addAllLocArgs(List<String> locArgs) {
             this.locArgs.addAll(locArgs);
             return this;
         }
 
-        public Builder AddLocArg(String locArg) {
+        public Builder addLocArg(String locArg) {
             this.locArgs.add(locArg);
             return this;
         }

@@ -18,7 +18,8 @@
 
     <application>
         <!-- push应用定义消息receiver声明 -->
-        <receiver android:name="com.mixpush.meizu.MeizuPushMsgReceiver">
+        <receiver android:name="com.mixpush.meizu.MeizuPushMsgReceiver"
+            android:exported="false">
             <intent-filter>
                 <!-- 接收push消息 -->
                 <action android:name="com.meizu.flyme.push.intent.MESSAGE" />

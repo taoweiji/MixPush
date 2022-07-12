@@ -84,8 +84,6 @@ public class Message {
 
         ValidatorUtils.checkArgument(count == 1, "Exactly one of token, topic or condition must be specified");
 
-        boolean isEmptyData = StringUtils.isEmpty(data);
-
         if (this.notification != null) {
             this.notification.check();
         }

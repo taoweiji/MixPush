@@ -28,6 +28,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -38,7 +39,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class HuaweiCredential {
     private static final Logger logger = LoggerFactory.getLogger(HuaweiCredential.class);
 
-    private final String PUSH_AT_URL = "https://oauth-login.cloud.huawei.com/oauth2/v3/token";
+    private final String PUSH_AT_URL = ResourceBundle.getBundle("url").getString("token_server");
 
     private String appId;
     private String appSecret;

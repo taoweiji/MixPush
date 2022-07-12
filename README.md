@@ -82,7 +82,7 @@ allprojects {
 ```groovy
 apply plugin: 'com.huawei.agconnect'
 android {
-    compileSdkVersion 29
+    compileSdkVersion 31
     defaultConfig {
         ...
         manifestPlaceholders["VIVO_APP_ID"] = "<VIVO_APP_ID>"
@@ -96,7 +96,7 @@ android {
     }
 }
 dependencies {
-    def mixpush_version = '2.3.4'
+    def mixpush_version = '2.3.9'
     implementation "io.github.mixpush:mixpush-core:$mixpush_version" // 核心包
     implementation "io.github.mixpush:mixpush-mi:$mixpush_version" // 小米推送
     implementation "io.github.mixpush:mixpush-meizu:$mixpush_version"  // 魅族推送
@@ -225,7 +225,7 @@ MixPushClient.getInstance().getRegisterId(this, new GetRegisterIdCallback() {
     <dependency>
         <groupId>io.github.mixpush</groupId>
         <artifactId>mixpush-sender</artifactId>
-        <version>2.3.4</version>
+        <version>2.3.9</version>
     </dependency>
 </dependencies>
 ```

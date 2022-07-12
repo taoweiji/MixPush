@@ -32,12 +32,16 @@ public class ResponceCodeProcesser {
             put(80100004, "TTL is less than current time, please check");
             put(80100013, "Collapse_key is illegal, please check");
             put(80100016, "Message contians sensitive information, please check");
+            put(80100017, "A maximum of 100 topic-based messages can be sent at the same time.");
+            put(80100018, "Invalid message body");
             put(80200001, "Oauth authentication error");
             put(80200003, "Oauth Token expired");
             put(80300002, "APP is forbidden to send");
             put(80300007, "Invalid Token");
             put(80300008, "The message body size exceeds the default value set by the system (4K)");
             put(80300010, "Tokens exceed the default value");
+            put(80300011, "No permission to send high-level notification messages");
+            put(80600003, "Request OAuth service failed");
             put(81000001, "System inner error");
             put(82000001, "GroupKey or groupName error");
             put(82000002, "GroupKey and groupName do not match");

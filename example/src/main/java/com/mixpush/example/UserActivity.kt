@@ -2,12 +2,12 @@ package com.mixpush.example
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_user.*
+import android.widget.TextView
 
 class UserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)
-        text_user_id.text = intent.getStringExtra("userId")
+        findViewById<TextView>(R.id.text_user_id).text = intent.getStringExtra("userId")
     }
 }

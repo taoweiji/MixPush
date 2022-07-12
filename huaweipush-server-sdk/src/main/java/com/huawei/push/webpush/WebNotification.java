@@ -51,7 +51,7 @@ public class WebNotification {
     private String dir;
 
     @JSONField(name = "vibrate")
-    private List<Object> vibrate = new ArrayList<Object>();
+    private List<Integer> vibrate = new ArrayList<>();
 
     @JSONField(name = "renotify")
     private boolean renotify;
@@ -100,7 +100,7 @@ public class WebNotification {
         return dir;
     }
 
-    public List<Object> getVibrate() {
+    public List<Integer> getVibrate() {
         return vibrate;
     }
 
@@ -177,7 +177,7 @@ public class WebNotification {
         private String tag;
         private String badge;
         private String dir;
-        private List<Object> vibrate = new ArrayList<Object>();
+        private List<Integer> vibrate = new ArrayList<>();
         private boolean renotify;
         private boolean requireInteraction;
         private boolean silent;
@@ -224,12 +224,12 @@ public class WebNotification {
             return this;
         }
 
-        public Builder addAllVibrate(List<Object> vibrate) {
+        public Builder addAllVibrate(List<Integer> vibrate) {
             this.vibrate.addAll(vibrate);
             return this;
         }
 
-        public Builder addVibrate(Object vibrate) {
+        public Builder addVibrate(Integer vibrate) {
             this.vibrate.add(vibrate);
             return this;
         }

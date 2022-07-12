@@ -41,7 +41,7 @@ public class BadgeNotification {
     }
 
     public BadgeNotification(Integer addNum, String badgeClass) {
-        this.addNum = builder().addNum;
+        this.addNum = addNum;
         this.badgeClass = badgeClass;
     }
 

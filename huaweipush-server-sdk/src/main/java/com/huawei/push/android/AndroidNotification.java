@@ -146,6 +146,9 @@ public class AndroidNotification {
     @JSONField(name = "buttons")
     private List<Button> buttons;
 
+    @JSONField(name = "profile_id")
+    private String profileId;
+
     private AndroidNotification(Builder builder) {
         this.title = builder.title;
         this.body = builder.body;
@@ -221,6 +224,8 @@ public class AndroidNotification {
         } else {
             this.buttons = null;
         }
+
+        this.profileId = builder.profileId;
     }
 
     /**
@@ -258,9 +263,8 @@ public class AndroidNotification {
         if (this.style != null) {
             boolean isTrue = this.style == 0 ||
                     this.style == 1 ||
-                    this.style == 2 ||
                     this.style == 3;
-            ValidatorUtils.checkArgument(isTrue, "style should be one of 0:default, 1: big text, 2: big picture");
+            ValidatorUtils.checkArgument(isTrue, "style should be one of 0:default, 1: big text, 3: Inbox");
 
             if (this.style == 1) {
                 ValidatorUtils.checkArgument(StringUtils.isNotEmpty(this.bigTitle) && StringUtils.isNotEmpty(this.bigBody), "title and body are required when style = 1");
@@ -324,6 +328,10 @@ public class AndroidNotification {
             for (Button button : this.buttons) {
                 button.check();
             }
+        }
+
+        if (this.profileId != null) {
+            ValidatorUtils.checkArgument(this.profileId.length() > 64, "profileId length cannot exceed 64 characters");
         }
     }
 
@@ -474,6 +482,8 @@ public class AndroidNotification {
         return buttons;
     }
 
+    public String getProfileId() { return profileId; }
+
     /**
      * builder
      *
@@ -523,6 +533,8 @@ public class AndroidNotification {
 
         private List<String> inboxContent = new ArrayList<>();
         private List<Button> buttons = new ArrayList<Button>();
+
+        private String profileId;
 
         private Builder() {
         }
@@ -730,6 +742,11 @@ public class AndroidNotification {
 
         public AndroidNotification build() {
             return new AndroidNotification(this);
+        }
+
+        public Builder setProfileId(String profileId) {
+            this.profileId = profileId;
+            return this;
         }
     }
 }

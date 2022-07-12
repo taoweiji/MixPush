@@ -14,9 +14,10 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
-        <activity android:name="com.mixpush.example.UserActivity" />
-        <activity android:name="com.mixpush.example.WebViewActivity" />
-        <activity android:name="com.mixpush.example.MainActivity"  android:launchMode="singleTop">
+        <activity android:name="com.mixpush.example.UserActivity" android:exported="false"/>
+        <activity android:name="com.mixpush.example.WebViewActivity" android:exported="false"/>
+        <activity android:name="com.mixpush.example.MainActivity"  android:launchMode="singleTop"
+            android:exported="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

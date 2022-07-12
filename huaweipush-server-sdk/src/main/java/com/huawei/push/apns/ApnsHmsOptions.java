@@ -20,8 +20,8 @@ import com.huawei.push.util.ValidatorUtils;
 
 public class ApnsHmsOptions {
     private static final int TEST_USER = 1;
-    private static final int FORMAL_USER = 1;
-    private static final int VOIP_USER = 1;
+    private static final int FORMAL_USER = 2;
+    private static final int VOIP_USER = 3;
 
     @JSONField(name = "target_user_type")
     private Integer targetUserType;

@@ -3,6 +3,13 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8">
       <module name="MixPush-server" target="1.7" />
+      <module name="MixPush.example" target="11" />
+      <module name="MixPush.mixpush-core" target="11" />
+      <module name="MixPush.mixpush-huawei" target="11" />
+      <module name="MixPush.mixpush-meizu" target="11" />
+      <module name="MixPush.mixpush-mi" target="11" />
+      <module name="MixPush.mixpush-oppo" target="11" />
+      <module name="MixPush.mixpush-vivo" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -49,6 +49,9 @@ public class AndroidConfig {
     @JSONField(name = "notification")
     private AndroidNotification notification;
 
+    @JSONField(name = "receipt_id")
+    private String receiptId;
+
     public AndroidConfig(Builder builder) {
         this.collapseKey = builder.collapseKey;
         this.urgency = builder.urgency;
@@ -64,6 +67,7 @@ public class AndroidConfig {
         this.fastAppTargetType = builder.fastAppTargetType;
         this.data = builder.data;
         this.notification = builder.notification;
+        this.receiptId = builder.receiptId;
     }
 
     /**
@@ -130,6 +134,8 @@ public class AndroidConfig {
         return data;
     }
 
+    public String getReceiptId() { return receiptId; }
+
     /**
      * builder
      */
@@ -147,6 +153,7 @@ public class AndroidConfig {
         private String data;
 
         private AndroidNotification notification;
+        private String receiptId;
 
         private Builder() {
         }
@@ -196,6 +203,11 @@ public class AndroidConfig {
 
         public AndroidConfig build() {
             return new AndroidConfig(this);
+        }
+
+        public Builder setReceiptId(String receiptId) {
+            this.receiptId = receiptId;
+            return this;
         }
     }
 }

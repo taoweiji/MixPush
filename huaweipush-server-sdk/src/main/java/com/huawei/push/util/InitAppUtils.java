@@ -9,7 +9,6 @@ import com.huawei.push.messaging.HuaweiOption;
 
 import java.util.ResourceBundle;
 
-
 public class InitAppUtils {
     /**
      * @return HuaweiApp

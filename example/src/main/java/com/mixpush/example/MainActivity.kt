@@ -6,11 +6,12 @@ import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import com.mixpush.core.GetRegisterIdCallback
 import com.mixpush.core.MixPushPlatform
 import com.mixpush.core.MixPushClient
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 
@@ -24,14 +25,14 @@ class MainActivity : AppCompatActivity() {
         if (!NotificationManagerUtils.isPermissionOpen(this)) {
             NotificationManagerUtils.openPermissionSetting(this)
         }
-        copy_reg_id.setOnClickListener {
+        findViewById<View>(R.id.copy_reg_id).setOnClickListener {
             if (notificationMixPushPlatform != null) {
                 copy(notificationMixPushPlatform!!.regId!!)
             } else {
                 Toast.makeText(this, "注册失败", Toast.LENGTH_SHORT).show()
             }
         }
-        copy_pass_through_reg_id.setOnClickListener {
+        findViewById<View>(R.id.copy_pass_through_reg_id).setOnClickListener {
             if (passThroughMixPushPlatform != null) {
                 copy(passThroughMixPushPlatform!!.regId!!)
             } else {
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                 updateRegId()
             }
         })
-        log.text = Date().toString()
+        findViewById<TextView>(R.id.log).text = Date().toString()
 
         updateRegId()
         onRequirePermissions()
@@ -75,10 +76,10 @@ class MainActivity : AppCompatActivity() {
     fun updateRegId() {
         runOnUiThread {
             if (notificationMixPushPlatform != null) {
-                text_reg_id.text = notificationMixPushPlatform.toString()
+                findViewById<TextView>(R.id.text_reg_id).text = notificationMixPushPlatform.toString()
             }
             if (passThroughMixPushPlatform != null) {
-                text_pass_through_reg_id.text = passThroughMixPushPlatform.toString()
+                findViewById<TextView>(R.id.text_pass_through_reg_id).text = passThroughMixPushPlatform.toString()
             }
         }
     }
