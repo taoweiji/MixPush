@@ -96,7 +96,7 @@ android {
     }
 }
 dependencies {
-    def mixpush_version = '2.3.9'
+    def mixpush_version = '2.4.0'
     implementation "io.github.mixpush:mixpush-core:$mixpush_version" // 核心包
     implementation "io.github.mixpush:mixpush-mi:$mixpush_version" // 小米推送
     implementation "io.github.mixpush:mixpush-meizu:$mixpush_version"  // 魅族推送
