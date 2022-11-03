@@ -19,7 +19,7 @@ public class HmsMessageReceiveActivity extends Activity {
             message.setTitle(data.getQueryParameter("title"));
             message.setDescription(data.getQueryParameter("description"));
             message.setPayload(data.getQueryParameter("payload"));
-            MixPushClient.getInstance().getHandler().getPushReceiver().onNotificationMessageClicked(this,message);
+            MixPushClient.getInstance().getHandler().getPushReceiver().onNotificationMessageArrived(this,message);
         }
         //// mixpush://com.mixpush.huawei/message?title=title&description=description&payload=%7b%22url%22%3a%22http%3a%2f%2fsoso.com%22%7d
 
