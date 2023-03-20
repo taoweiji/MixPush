@@ -8,7 +8,7 @@ include ':mixpush-huawei'
 include ':mixpush-core'
 //include ':mixpush-server'
 //include ':mixpush-fcm'
-
+include ':mixpush-honor'
 
 include ':mixpush-sender'
 

@@ -7,13 +7,12 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="11" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/example" />
-            <option value="$PROJECT_DIR$/huaweipush-server-sdk" />
             <option value="$PROJECT_DIR$/mixpush-core" />
+            <option value="$PROJECT_DIR$/mixpush-honor" />
             <option value="$PROJECT_DIR$/mixpush-huawei" />
             <option value="$PROJECT_DIR$/mixpush-meizu" />
             <option value="$PROJECT_DIR$/mixpush-mi" />

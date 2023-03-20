@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+
+
+android {
+    compileSdkVersion 31
+
+    defaultConfig {
+        minSdkVersion 14
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+allprojects {
+    repositories {
+        maven { url 'https://developer.hihonor.com/repo/' }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':mixpush-core')
+    implementation 'com.hihonor.mcs:push:7.0.41.301'
+}
+apply from: '../maven_public.gradle'

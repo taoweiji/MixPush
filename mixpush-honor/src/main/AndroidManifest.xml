@@ -1,0 +1,17 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.mixpush.honor">
+    <!-- 最低支持 19-->
+    <uses-sdk tools:overrideLibrary="com.hihonor.push.sdk" />
+
+    <application>
+        <service
+            android:name="com.mixpush.honor.UnifiedHonorMessageService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.hihonor.push.action.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

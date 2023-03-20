@@ -9,6 +9,9 @@ buildscript {
             allowInsecureProtocol true
             url 'http://developer.huawei.com/repo/'
         }
+        maven {
+            url 'https://developer.hihonor.com/repo/'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.2.2'
@@ -24,6 +27,9 @@ allprojects {
         maven {
             allowInsecureProtocol = true
             url 'http://developer.huawei.com/repo/'
+        }
+        maven {
+            url 'https://developer.hihonor.com/repo/'
         }
     }
 }
