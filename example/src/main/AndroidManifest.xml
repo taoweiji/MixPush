@@ -4,7 +4,7 @@
         package="com.mixpush.example">
     <!-- 为了获取用户手机的IMEI，用来唯一的标识用户。 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <application
             android:name="com.mixpush.example.MyApplication"
             android:allowBackup="true"
