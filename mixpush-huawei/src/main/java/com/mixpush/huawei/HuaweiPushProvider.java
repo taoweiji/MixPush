@@ -17,6 +17,7 @@ import com.mixpush.core.MixPushClient;
 import com.mixpush.core.MixPushHandler;
 
 import java.lang.reflect.Method;
+import java.util.logging.Logger;
 
 import static com.huawei.hms.adapter.internal.AvailableCode.SERVICE_VERSION_UPDATE_REQUIRED;
 import static com.mixpush.huawei.UnifiedHmsMessageService.TAG;
@@ -79,16 +80,17 @@ public class HuaweiPushProvider extends BaseMixPushProvider {
 
     @Override
     public String getRegisterId(Context context) {
-        try {
-            // read from agconnect-services.json
-            String appId = AGConnectServicesConfig.fromContext(context).getString("client/app_id");
-            regId = HmsInstanceId.getInstance(context).getToken(appId, "HCM");
-            Log.e(TAG, "get token:" + regId);
-            return regId;
-        } catch (ApiException e) {
-            handler.getLogger().log(TAG, "hms get token failed " + e.toString() + " https://developer.huawei.com/consumer/cn/doc/development/HMSCore-References-V5/error-code-0000001050255690-V5", e);
-            e.printStackTrace();
-        }
+        syncGetToken(context);
+//        try {
+//            // read from agconnect-services.json
+//            String appId = AGConnectServicesConfig.fromContext(context).getString("client/app_id");
+//            regId = HmsInstanceId.getInstance(context).getToken(appId, "HCM");
+//            Log.e(TAG, "get token:" + regId);
+//            return regId;
+//        } catch (ApiException e) {
+//            handler.getLogger().log(TAG, "hms get token failed " + e.toString() + " https://developer.huawei.com/consumer/cn/doc/development/HMSCore-References-V5/error-code-0000001050255690-V5", e);
+//            e.printStackTrace();
+//        }
         return null;
     }
 
@@ -97,8 +99,17 @@ public class HuaweiPushProvider extends BaseMixPushProvider {
         new Thread() {
             @Override
             public void run() {
-                String regId = getRegisterId(context);
+                try {
+                    // read from agconnect-services.json
+                    String appId = AGConnectServicesConfig.fromContext(context).getString("client/app_id");
+                    regId = HmsInstanceId.getInstance(context).getToken(appId, "HCM");
+                    Log.e(TAG, "get token:" + regId);
+                } catch (ApiException e) {
+                    handler.getLogger().log(TAG, "hms get token failed " + e.toString() + " https://developer.huawei.com/consumer/cn/doc/development/HMSCore-References-V5/error-code-0000001050255690-V5", e);
+                    e.printStackTrace();
+                }
                 if (!TextUtils.isEmpty(regId)) {
+                    Log.e("regId", regId);
                     MixPushPlatform mixPushPlatform = new MixPushPlatform(HuaweiPushProvider.HUAWEI, regId);
                     MixPushClient.getInstance().getHandler().getPushReceiver().onRegisterSucceed(context, mixPushPlatform);
                 }

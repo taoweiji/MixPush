@@ -48,7 +48,7 @@ public class OppoPushProvider extends BaseMixPushProvider {
         String manufacturer = Build.MANUFACTURER.toLowerCase();
         if (manufacturer.equals("oneplus") || manufacturer.equals("oppo") || brand.equals("oppo") || brand.equals("realme")) {
             HeytapPushManager.init(context, true);
-            return HeytapPushManager.isSupportPush();
+            return HeytapPushManager.isSupportPush(context);
         }
         return false;
     }
@@ -93,5 +93,10 @@ class MyCallBackResultService implements ICallBackResultService {
     @Override
     public void onGetNotificationStatus(int responseCode, int status) {
         handler.getLogger().log(OppoPushProvider.TAG, "onGetNotificationStatus responseCode = " + responseCode + ", status = " + status);
+    }
+
+    @Override
+    public void onError(int i, String s) {
+
     }
 }
