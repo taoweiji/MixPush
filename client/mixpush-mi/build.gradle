@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 34
 
     defaultConfig {
         minSdkVersion 14
@@ -22,4 +22,4 @@ dependencies {
     implementation project(path: ':mixpush-core')
 }
 
-apply from: '../maven_public.gradle'
+apply from: '../../maven_public.gradle'

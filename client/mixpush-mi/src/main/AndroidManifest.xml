@@ -3,6 +3,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
@@ -16,10 +17,10 @@
     <application>
         <meta-data
             android:name="MIPUSH_SDK_VERSION_CODE"
-            android:value="50010" />
+            android:value="60001" />
         <meta-data
             android:name="MIPUSH_SDK_VERSION_NAME"
-            android:value="5_1_0-C" />
+            android:value="6_0_1-C" />
 
         <service
             android:name="com.xiaomi.push.service.XMPushService"
@@ -68,20 +69,6 @@
                 android:name="supportStyle"
                 android:value="scene|voip" />
         </activity>
-
-        <receiver
-            android:name="com.mixpush.mi.MiPushMessageReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.xiaomi.mipush.RECEIVE_MESSAGE" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="com.xiaomi.mipush.MESSAGE_ARRIVED" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="com.xiaomi.mipush.ERROR" />
-            </intent-filter>
-        </receiver>
 
         <meta-data
             android:name="MI_APP_ID"
