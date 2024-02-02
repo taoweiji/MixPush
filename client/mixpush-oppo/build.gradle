@@ -1,11 +1,10 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 34
 
     defaultConfig {
         minSdkVersion 19
-
     }
 
     repositories {
@@ -32,4 +31,4 @@ dependencies {
     implementation project(path: ':mixpush-core')
     implementation 'commons-codec:commons-codec:1.6'
 }
-apply from: '../maven_public.gradle'
+apply from: '../../maven_public.gradle'
