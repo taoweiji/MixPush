@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 34
 
     defaultConfig {
         minSdkVersion 14
@@ -23,4 +23,4 @@ dependencies {
     implementation 'com.meizu.flyme.internet:push-internal:4.1.4'
 }
 
-apply from: '../maven_public.gradle'
+apply from: '../../maven_public.gradle'
