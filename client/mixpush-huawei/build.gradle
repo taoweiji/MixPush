@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 34
 
     defaultConfig {
         minSdkVersion 14
@@ -28,4 +28,4 @@ dependencies {
     implementation project(path: ':mixpush-core')
     implementation 'com.huawei.hms:push:6.11.0.300'
 }
-apply from: '../maven_public.gradle'
+apply from: '../../maven_public.gradle'
