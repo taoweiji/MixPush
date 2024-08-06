@@ -15,4 +15,4 @@ targetCompatibility = "1.8"
 
 
 
-apply from: '../maven_public.gradle'
+apply from: '../../maven_public.gradle'

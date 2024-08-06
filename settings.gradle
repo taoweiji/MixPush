@@ -17,3 +17,12 @@ include ':mixpush-sender'
 //include ':opush-server-sdk'
 //include ':vpush-server-sdk'
 //include ':mipush-server-sdk'
+
+project(":mixpush-mi").projectDir = new File("client/mixpush-mi")
+project(":mixpush-meizu").projectDir = new File("client/mixpush-meizu")
+project(":mixpush-oppo").projectDir = new File("client/mixpush-oppo")
+project(":mixpush-vivo").projectDir = new File("client/mixpush-vivo")
+project(":mixpush-huawei").projectDir = new File("client/mixpush-huawei")
+project(":mixpush-core").projectDir = new File("client/mixpush-core")
+
+project(":mixpush-sender").projectDir = new File("client/mixpush-sender")
