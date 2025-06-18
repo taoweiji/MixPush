@@ -1,0 +1,40 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.mixpush.huawei">
+
+
+    <uses-sdk tools:overrideLibrary="com.huawei.hms.framework.network.frameworkcompat,com.huawei.hms.hatool,com.huawei.hms.framework.common,com.huawei.hms.framework.network.grs,com.huawei.hmf.tasks,com.huawei.agconnect.core,com.huawei.hms.log,com.huawei.hms.base.device,com.huawei.hms.base.ui,com.huawei.hms.stats,com.huawei.android.hms.push,com.huawei.android.hms.openid,com.huawei.android.hms.base,com.huawei.hms.base.availableupdate" />
+
+
+    <application>
+        <service
+            android:name="com.mixpush.huawei.UnifiedHmsMessageService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.huawei.push.action.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <activity
+            android:name="com.mixpush.huawei.HmsMessageReceiveActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="true">
+            <intent-filter>
+                <data
+                    android:host="com.mixpush.huawei"
+                    android:path="/message"
+                    android:scheme="mixpush" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+
+        </activity>
+    </application>
+
+    <queries>
+        <intent>
+            <action android:name="com.huawei.hms.core.aidlservice" />
+        </intent>
+    </queries>
+</manifest>
