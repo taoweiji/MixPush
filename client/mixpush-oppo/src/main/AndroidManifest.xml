@@ -1,0 +1,54 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.heytap.mcssdk">
+
+    <uses-permission android:name="com.coloros.mcs.permission.RECIEVE_MCS_MESSAGE" />
+    <uses-permission android:name="com.heytap.mcs.permission.RECIEVE_MCS_MESSAGE" />
+
+    <application>
+        <service
+            android:name="com.heytap.msp.push.service.CompatibleDataMessageCallbackService"
+            android:exported="false"
+            android:permission="com.coloros.mcs.permission.SEND_MCS_MESSAGE">
+            <intent-filter>
+                <action android:name="com.coloros.mcs.action.RECEIVE_MCS_MESSAGE" />
+            </intent-filter>
+        </service> <!--兼容Q以下版本-->
+
+        <service
+            android:name="com.heytap.msp.push.service.DataMessageCallbackService"
+            android:exported="false"
+            android:permission="com.heytap.mcs.permission.SEND_PUSH_MESSAGE">
+
+            <intent-filter>
+                <action android:name="com.heytap.mcs.action.RECEIVE_MCS_MESSAGE" />
+                <action android:name="com.heytap.msp.push.RECEIVE_MCS_MESSAGE" />
+            </intent-filter>
+        </service> <!--兼容Q版本-->
+
+        <meta-data
+            android:name="OPPO_APP_SECRET"
+            android:value="UNIFIEDPUSH-${OPPO_APP_SECRET}" />
+        <meta-data
+            android:name="OPPO_APP_KEY"
+            android:value="UNIFIEDPUSH-${OPPO_APP_KEY}" />
+
+        <activity
+            android:name="com.mixpush.oppo.OppoMessageReceiveActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <data
+                    android:host="com.mixpush.oppo"
+                    android:path="/message"
+                    android:scheme="mixpush" />
+
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="com.mixpush.oppo.message" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
